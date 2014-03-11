@@ -1,0 +1,1613 @@
+<!DOCTYPE html>
+<!-- saved from url=(0154)http://www.devjoker.com/contenidos/Articulos/82/Como-encriptar-o-cifrar-cadenas-y-campos-en-SQL-server-2005-ENCRYPTBYPASSPHRASE-y-DECRYPTBYPASSPHRASE.aspx -->
+<html lang="es"><head id="Head1"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>
+	Como encriptar o cifrar cadenas y campos en SQL server 2005 ENCRYPTBYPASSPHRASE y DECRYPTBYPASSPHRASE
+</title>
+    <meta name="description" content="Como encriptar o cifrar cadenas y campos en SQL server 2005 ENCRYPTBYPASSPHRASE y DECRYPTBYPASSPHRASE">
+    <meta name="autor" content="Pablo  Gumpert  Fernandez (aldeamedia)">
+<meta name="keywords" content=".NET, C#, Visual Basic .NET, ASP.NET, SQL Server, Oracle, SQL, T SQL, PL SQL, Windows, Linux, BSD"><link rel="icon" href="http://www.devjoker.com/favicon.ico" type="image/ico"><link rel="shortcut icon" href="http://www.devjoker.com/favicon.ico" type="image/ico">
+    
+	
+    <!--[if lt IE 9]><script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+    <!--[if IE 8]><link rel="stylesheet" href="/css/ie8.css" /><![endif]-->
+    <!--[if lt IE 8]><link rel="stylesheet" href="/css/ie7.css" /><![endif]-->
+    <link href="./Como encriptar o cifrar cadenas y campos en SQL server 2005 ENCRYPTBYPASSPHRASE y DECRYPTBYPASSPHRASE_files/colorbox.css" type="text/css" rel="stylesheet"><link href="./Como encriptar o cifrar cadenas y campos en SQL server 2005 ENCRYPTBYPASSPHRASE y DECRYPTBYPASSPHRASE_files/jquery.lightbox-0.5.css" type="text/css" rel="stylesheet"><link href="./Como encriptar o cifrar cadenas y campos en SQL server 2005 ENCRYPTBYPASSPHRASE y DECRYPTBYPASSPHRASE_files/lavalamp.css" type="text/css" rel="stylesheet"><link href="./Como encriptar o cifrar cadenas y campos en SQL server 2005 ENCRYPTBYPASSPHRASE y DECRYPTBYPASSPHRASE_files/normal.css" type="text/css" rel="stylesheet"><link href="./Como encriptar o cifrar cadenas y campos en SQL server 2005 ENCRYPTBYPASSPHRASE y DECRYPTBYPASSPHRASE_files/oldsite.css" type="text/css" rel="stylesheet"><link href="./Como encriptar o cifrar cadenas y campos en SQL server 2005 ENCRYPTBYPASSPHRASE y DECRYPTBYPASSPHRASE_files/rater.css" type="text/css" rel="stylesheet"><link href="./Como encriptar o cifrar cadenas y campos en SQL server 2005 ENCRYPTBYPASSPHRASE y DECRYPTBYPASSPHRASE_files/tipTip.css" type="text/css" rel="stylesheet"><style type="text/css">.fb_hidden{position:absolute;top:-10000px;z-index:10001}
+.fb_invisible{display:none}
+.fb_reset{background:none;border:0;border-spacing:0;color:#000;cursor:auto;direction:ltr;font-family:"lucida grande", tahoma, verdana, arial, sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}
+.fb_reset > div{overflow:hidden}
+.fb_link img{border:none}
+.fb_dialog{background:rgba(82, 82, 82, .7);position:absolute;top:-10000px;z-index:10001}
+.fb_dialog_advanced{padding:10px;-moz-border-radius:8px;-webkit-border-radius:8px;border-radius:8px}
+.fb_dialog_content{background:#fff;color:#333}
+.fb_dialog_close_icon{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 0 transparent;_background-image:url(http://static.ak.fbcdn.net/rsrc.php/v2/yL/r/s816eWC-2sl.gif);cursor:pointer;display:block;height:15px;position:absolute;right:18px;top:17px;width:15px;top:8px\9;right:7px\9}
+.fb_dialog_mobile .fb_dialog_close_icon{top:5px;left:5px;right:auto}
+.fb_dialog_padding{background-color:transparent;position:absolute;width:1px;z-index:-1}
+.fb_dialog_close_icon:hover{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -15px transparent;_background-image:url(http://static.ak.fbcdn.net/rsrc.php/v2/yL/r/s816eWC-2sl.gif)}
+.fb_dialog_close_icon:active{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -30px transparent;_background-image:url(http://static.ak.fbcdn.net/rsrc.php/v2/yL/r/s816eWC-2sl.gif)}
+.fb_dialog_loader{background-color:#f2f2f2;border:1px solid #606060;font-size:24px;padding:20px}
+.fb_dialog_top_left,
+.fb_dialog_top_right,
+.fb_dialog_bottom_left,
+.fb_dialog_bottom_right{height:10px;width:10px;overflow:hidden;position:absolute}
+.fb_dialog_top_left{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/ye/r/8YeTNIlTZjm.png) no-repeat 0 0;left:-10px;top:-10px}
+.fb_dialog_top_right{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/ye/r/8YeTNIlTZjm.png) no-repeat 0 -10px;right:-10px;top:-10px}
+.fb_dialog_bottom_left{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/ye/r/8YeTNIlTZjm.png) no-repeat 0 -20px;bottom:-10px;left:-10px}
+.fb_dialog_bottom_right{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/ye/r/8YeTNIlTZjm.png) no-repeat 0 -30px;right:-10px;bottom:-10px}
+.fb_dialog_vert_left,
+.fb_dialog_vert_right,
+.fb_dialog_horiz_top,
+.fb_dialog_horiz_bottom{position:absolute;background:#525252;filter:alpha(opacity=70);opacity:.7}
+.fb_dialog_vert_left,
+.fb_dialog_vert_right{width:10px;height:100%}
+.fb_dialog_vert_left{margin-left:-10px}
+.fb_dialog_vert_right{right:0;margin-right:-10px}
+.fb_dialog_horiz_top,
+.fb_dialog_horiz_bottom{width:100%;height:10px}
+.fb_dialog_horiz_top{margin-top:-10px}
+.fb_dialog_horiz_bottom{bottom:0;margin-bottom:-10px}
+.fb_dialog_iframe{line-height:0}
+.fb_dialog_content .dialog_title{background:#6d84b4;border:1px solid #3b5998;color:#fff;font-size:14px;font-weight:bold;margin:0}
+.fb_dialog_content .dialog_title > span{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/yd/r/Cou7n-nqK52.gif)
+no-repeat 5px 50%;float:left;padding:5px 0 7px 26px}
+body.fb_hidden{-webkit-transform:none;height:100%;margin:0;overflow:visible;position:absolute;top:-10000px;left:0;width:100%}
+.fb_dialog.fb_dialog_mobile.loading{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/ya/r/3rhSv5V8j3o.gif)
+white no-repeat 50% 50%;min-height:100%;min-width:100%;overflow:hidden;position:absolute;top:0;z-index:10001}
+.fb_dialog.fb_dialog_mobile.loading.centered{max-height:590px;min-height:590px;max-width:500px;min-width:500px}
+#fb-root #fb_dialog_ipad_overlay{background:rgba(0, 0, 0, .45);position:absolute;left:0;top:0;width:100%;min-height:100%;z-index:10000}
+#fb-root #fb_dialog_ipad_overlay.hidden{display:none}
+.fb_dialog.fb_dialog_mobile.loading iframe{visibility:hidden}
+.fb_dialog_content .dialog_header{-webkit-box-shadow:white 0 1px 1px -1px inset;background:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#738ABA), to(#2C4987));border-bottom:1px solid;border-color:#1d4088;color:#fff;font:14px Helvetica, sans-serif;font-weight:bold;text-overflow:ellipsis;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0;vertical-align:middle;white-space:nowrap}
+.fb_dialog_content .dialog_header table{-webkit-font-smoothing:subpixel-antialiased;height:43px;width:100%
+}
+.fb_dialog_content .dialog_header td.header_left{font-size:12px;padding-left:5px;vertical-align:middle;width:60px
+}
+.fb_dialog_content .dialog_header td.header_right{font-size:12px;padding-right:5px;vertical-align:middle;width:60px
+}
+.fb_dialog_content .touchable_button{background:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#4966A6),
+color-stop(0.5, #355492), to(#2A4887));border:1px solid #29447e;-webkit-background-clip:padding-box;-webkit-border-radius:3px;-webkit-box-shadow:rgba(0, 0, 0, .117188) 0 1px 1px inset,
+rgba(255, 255, 255, .167969) 0 1px 0;display:inline-block;margin-top:3px;max-width:85px;line-height:18px;padding:4px 12px;position:relative}
+.fb_dialog_content .dialog_header .touchable_button input{border:none;background:none;color:#fff;font:12px Helvetica, sans-serif;font-weight:bold;margin:2px -12px;padding:2px 6px 3px 6px;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}
+.fb_dialog_content .dialog_header .header_center{color:#fff;font-size:16px;font-weight:bold;line-height:18px;text-align:center;vertical-align:middle}
+.fb_dialog_content .dialog_content{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/y9/r/jKEcVPZFk-2.gif) no-repeat 50% 50%;border:1px solid #555;border-bottom:0;border-top:0;height:150px}
+.fb_dialog_content .dialog_footer{background:#f2f2f2;border:1px solid #555;border-top-color:#ccc;height:40px}
+#fb_dialog_loader_close{float:left}
+.fb_dialog.fb_dialog_mobile .fb_dialog_close_button{text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}
+.fb_dialog.fb_dialog_mobile .fb_dialog_close_icon{visibility:hidden}
+.fb_iframe_widget{display:inline-block;position:relative}
+.fb_iframe_widget span{display:inline-block;position:relative;text-align:justify}
+.fb_iframe_widget iframe{position:absolute}
+.fb_iframe_widget_lift{z-index:1}
+.fb_hide_iframes iframe{position:relative;left:-10000px}
+.fb_iframe_widget_loader{position:relative;display:inline-block}
+.fb_iframe_widget_fluid{display:inline}
+.fb_iframe_widget_fluid span{width:100%}
+.fb_iframe_widget_loader iframe{min-height:32px;z-index:2;zoom:1}
+.fb_iframe_widget_loader .FB_Loader{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/y9/r/jKEcVPZFk-2.gif) no-repeat;height:32px;width:32px;margin-left:-16px;position:absolute;left:50%;z-index:4}
+.fb_connect_bar_container div,
+.fb_connect_bar_container span,
+.fb_connect_bar_container a,
+.fb_connect_bar_container img,
+.fb_connect_bar_container strong{background:none;border-spacing:0;border:0;direction:ltr;font-style:normal;font-variant:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal;vertical-align:baseline}
+.fb_connect_bar_container{position:fixed;left:0 !important;right:0 !important;height:42px !important;padding:0 25px !important;margin:0 !important;vertical-align:middle !important;border-bottom:1px solid #333 !important;background:#3b5998 !important;z-index:99999999 !important;overflow:hidden !important}
+.fb_connect_bar_container_ie6{position:absolute;top:expression(document.compatMode=="CSS1Compat"? document.documentElement.scrollTop+"px":body.scrollTop+"px")}
+.fb_connect_bar{position:relative;margin:auto;height:100%;width:100%;padding:6px 0 0 0 !important;background:none;color:#fff !important;font-family:"lucida grande", tahoma, verdana, arial, sans-serif !important;font-size:13px !important;font-style:normal !important;font-variant:normal !important;font-weight:normal !important;letter-spacing:normal !important;line-height:1 !important;text-decoration:none !important;text-indent:0 !important;text-shadow:none !important;text-transform:none !important;white-space:normal !important;word-spacing:normal !important}
+.fb_connect_bar a:hover{color:#fff}
+.fb_connect_bar .fb_profile img{height:30px;width:30px;vertical-align:middle;margin:0 6px 5px 0}
+.fb_connect_bar div a,
+.fb_connect_bar span,
+.fb_connect_bar span a{color:#bac6da;font-size:11px;text-decoration:none}
+.fb_connect_bar .fb_buttons{float:right;margin-top:7px}
+.fbpluginrecommendationsbarleft,
+.fbpluginrecommendationsbarright{position:fixed !important;bottom:0;z-index:999}
+.fbpluginrecommendationsbarleft{left:10px}
+.fbpluginrecommendationsbarright{right:10px}</style></head>
+<body data-twttr-rendered="true"><div id="cboxOverlay" style="display: none;"></div><div id="colorbox" style="padding-bottom: 57px; padding-right: 28px; display: none;"><div id="cboxWrapper"><div><div id="cboxTopLeft" style="float: left;"></div><div id="cboxTopCenter" style="float: left;"></div><div id="cboxTopRight" style="float: left;"></div></div><div><div id="cboxMiddleLeft" style="float: left;"></div><div id="cboxContent" style="float: left;"><div id="cboxLoadedContent" class=" " style="width: 0px; height: 0px;"></div><div id="cboxLoadingOverlay" class=" "></div><div id="cboxLoadingGraphic" class=" "></div><div id="cboxTitle" class=" "></div><div id="cboxCurrent" class=" "></div><div id="cboxSlideshow" class=" "></div><div id="cboxNext" class=" "></div><div id="cboxPrevious" class=" "></div><div id="cboxClose" class=" "></div></div><div id="cboxMiddleRight" style="float: left;"></div></div><div><div id="cboxBottomLeft" style="float: left;"></div><div id="cboxBottomCenter" style="float: left;"></div><div id="cboxBottomRight" style="float: left;"></div></div></div><div style="position:absolute; top:0; left:0; width:9999px; height:0;"></div></div>
+    <div id="fb-root" class=" fb_reset"><div style="position: absolute; top: -10000px; height: 0px; width: 0px;"><div><iframe name="fb_xdm_frame_http" frameborder="0" allowtransparency="true" scrolling="no" id="fb_xdm_frame_http" aria-hidden="true" title="Facebook Cross Domain Communication Frame" tab-index="-1" src="./Como encriptar o cifrar cadenas y campos en SQL server 2005 ENCRYPTBYPASSPHRASE y DECRYPTBYPASSPHRASE_files/63KoCqPoniC.htm" style="border: none;"></iframe><iframe name="fb_xdm_frame_https" frameborder="0" allowtransparency="true" scrolling="no" id="fb_xdm_frame_https" aria-hidden="true" title="Facebook Cross Domain Communication Frame" tab-index="-1" src="./Como encriptar o cifrar cadenas y campos en SQL server 2005 ENCRYPTBYPASSPHRASE y DECRYPTBYPASSPHRASE_files/63KoCqPoniC(1).htm" style="border: none;"></iframe></div></div><div style="position: absolute; top: -10000px; height: 0px; width: 0px;"><div></div></div></div>
+    <div id="container">
+        <form method="post" action="http://www.devjoker.com/contenidos/Articulos/82/Como-encriptar-o-cifrar-cadenas-y-campos-en-SQL-server-2005-ENCRYPTBYPASSPHRASE-y-DECRYPTBYPASSPHRASE.aspx?co_contenido=82" id="form1">
+<div class="aspNetHidden">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwULLTEwMTY3NDc2NDEPZBYCZg9kFgICAw9kFgICAw9kFgICBw9kFgICAQ8PFgIeB1Zpc2libGVnZBYIAgUPFgQeBGhyZWYFPy9jb250ZW5pZG9zL0FydGljdWxvcy83Ni9VYnVudHUtZW4tVm1XYXJlLWNvbi1WTXdhcmUtVG9vbHMuYXNweB4FdGl0bGUFIVVidW50dSBlbiBWbVdhcmUgY29uIFZNd2FyZSBUb29sc2QCBw8WBB8BBSN+L2dydS9BcnRpY3Vsb3MvQVJUSS9BcnRpY3Vsb3MuYXNweB8CBQlBcnRpY3Vsb3NkAgkPFgQfAQVHL2NvbnRlbmlkb3MvQXJ0aWN1bG9zLzgzL1RyYWJhamFyLWNvbi1kYXRvcy1kZS10aXBvLUJMT0ItZW4tT1JBQ0xFLmFzcHgfAgUpVHJhYmFqYXIgY29uIGRhdG9zIGRlIHRpcG8gQkxPQiBlbiBPUkFDTEVkAgsPDxYCHgtOYXZpZ2F0ZVVybAUjfi9wcmludC9BcnRpY3Vsb3MvODIvQXJ0aWN1bG9zLmFzcHhkZGSNtArES4db8o/44PJ1kl1rxFazCwmJzZ/92oW3ZF9ZHg==">
+</div>
+
+
+<script src="./Como encriptar o cifrar cadenas y campos en SQL server 2005 ENCRYPTBYPASSPHRASE y DECRYPTBYPASSPHRASE_files/cb=gapi.loaded_0" async=""></script><script type="text/javascript" async="" src="./Como encriptar o cifrar cadenas y campos en SQL server 2005 ENCRYPTBYPASSPHRASE y DECRYPTBYPASSPHRASE_files/plusone.js" gapi_processed="true"></script><script id="twitter-wjs" src="./Como encriptar o cifrar cadenas y campos en SQL server 2005 ENCRYPTBYPASSPHRASE y DECRYPTBYPASSPHRASE_files/widgets.js"></script><script type="text/javascript" async="" src="./Como encriptar o cifrar cadenas y campos en SQL server 2005 ENCRYPTBYPASSPHRASE y DECRYPTBYPASSPHRASE_files/ga.js"></script><script id="facebook-jssdk" src="./Como encriptar o cifrar cadenas y campos en SQL server 2005 ENCRYPTBYPASSPHRASE y DECRYPTBYPASSPHRASE_files/all.js"></script><script src="./Como encriptar o cifrar cadenas y campos en SQL server 2005 ENCRYPTBYPASSPHRASE y DECRYPTBYPASSPHRASE_files/jquery-lib.js" type="text/javascript"></script>
+<script src="./Como encriptar o cifrar cadenas y campos en SQL server 2005 ENCRYPTBYPASSPHRASE y DECRYPTBYPASSPHRASE_files/jquery.easing.min.js" type="text/javascript"></script>
+<script src="./Como encriptar o cifrar cadenas y campos en SQL server 2005 ENCRYPTBYPASSPHRASE y DECRYPTBYPASSPHRASE_files/jquery.lavalamp.min.js" type="text/javascript"></script>
+<script src="./Como encriptar o cifrar cadenas y campos en SQL server 2005 ENCRYPTBYPASSPHRASE y DECRYPTBYPASSPHRASE_files/jquery.lightbox-0.5.min.js" type="text/javascript"></script>
+<script src="./Como encriptar o cifrar cadenas y campos en SQL server 2005 ENCRYPTBYPASSPHRASE y DECRYPTBYPASSPHRASE_files/jquery.colorbox.js" type="text/javascript"></script>
+<script src="./Como encriptar o cifrar cadenas y campos en SQL server 2005 ENCRYPTBYPASSPHRASE y DECRYPTBYPASSPHRASE_files/jquery.rater.packed.js" type="text/javascript"></script>
+<script src="./Como encriptar o cifrar cadenas y campos en SQL server 2005 ENCRYPTBYPASSPHRASE y DECRYPTBYPASSPHRASE_files/jquery.tipTip.js" type="text/javascript"></script>
+<script src="./Como encriptar o cifrar cadenas y campos en SQL server 2005 ENCRYPTBYPASSPHRASE y DECRYPTBYPASSPHRASE_files/comportamientos.js" type="text/javascript"></script>
+        <!--[if lt IE 9]><script type="text/javascript" src="/js/tagcanvas/excanvas.js"></script><![endif]-->
+        <script src="./Como encriptar o cifrar cadenas y campos en SQL server 2005 ENCRYPTBYPASSPHRASE y DECRYPTBYPASSPHRASE_files/jquery.tagcanvas.min.js" type="text/javascript"></script>
+        <script>
+            (function (d, s, id) {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) return;
+                js = d.createElement(s); js.id = id;
+                js.src = "//connect.facebook.net/es_ES/all.js#xfbml=1";
+                fjs.parentNode.insertBefore(js, fjs);
+            } (document, 'script', 'facebook-jssdk'));
+            var relative = '/';
+            var _gaq = _gaq || [];
+            _gaq.push(['_setAccount', 'UA-1026064-1']);
+            _gaq.push(['_trackPageview']);
+
+            (function () {
+                var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+                ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+                var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+            })();
+
+            $(function () {
+                $("#menuCategorias").lavaLamp({
+                    fx: "backout",
+                    speed: 700
+                });
+                if (!$('#tagCloudCanvas').tagcanvas(
+                { textColour: '#000099', outlineThickness: 2, maxSpeed: 0.1, depth: 0.65, outlineColour: '#FF9909', textHeight: 18, stretchX: 7 }, 'tagsList')) {
+                    // TagCanvas failed to load
+                    $('#tagCloudCanvasContainer').hide();
+                }
+            });     
+        </script>
+        
+    <script type="text/javascript">
+        // <!CDATA[
+        var codcontenido = "82";
+        var posttitle = "Como encriptar o cifrar cadenas y campos en SQL server 2005 ENCRYPTBYPASSPHRASE y DECRYPTBYPASSPHRASE";
+        var comenturl = "/control.aspx";
+        var visitcounturl = "/handlers/visitcounter.ashx";
+
+        var ratingurl = "/handlers/rating.ashx";
+        var actualRating = "5"
+        var comments = "S";
+
+        var targeturl = comenturl + " #render";
+
+        $(document).ready(
+            function () {
+                $("div.post a[href*=images/UploadFiles/WindowsLiveWriter], div.post a[href*=images/UploadFiles/Windows-Live-Writer]").colorbox({ title: posttitle });
+                $("#post_rating").rater(ratingurl,
+                                { "style": "basic",
+                                    "curvalue": actualRating,
+                                    "code": codcontenido
+                                },
+                                function (r) {//callback del rating
+                                    $("#post_rating_area").html(r);
+                                }); //rating
+
+                if (comments === "S") {
+                    cargaComentarios();
+                    $("#comentarios-add-comment").load(targeturl,
+                        {
+                            "ControlFile": "~/controls/post/addcoment.ascx",
+                            "CodContenido": codcontenido
+                        },
+                        function () {//callback de la carga de add coment
+
+                        }); //carga de comentarios
+                }
+
+                $.post(visitcounturl, { "CodContenido": codcontenido });
+                (function () {
+                    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+                    po.src = 'https://apis.google.com/js/plusone.js';
+                    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+                })();
+
+            }); // document.ready
+
+        function cargaComentarios() {
+
+            $("#comentarios-list").load(targeturl,
+                        {
+                            "ControlFile": "~/controls/post/listacomentarios.ascx",
+                            "CodContenido": codcontenido
+                        },
+                        function () {//callback de la carga de comentarios
+                            $('div.listacomentarios-container div.listacomentarios-item div.listacomentarios-body').each(function (index, item) {
+                                var a = linkify($(item).html());
+                                $(item).html(a);
+                            });                          
+                        });  //load
+        }
+
+
+        function linkify(inputText) {
+            //URLs starting with http://, https://, or ftp://
+            var replacePattern1 = /(\b(https?|ftp):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/gim;
+            var replacedText = inputText.replace(replacePattern1, '<a href="$1" target="_blank">$1</a>');
+
+            //URLs starting with www. (without // before it, or it'd re-link the ones done above)
+            var replacePattern2 = /(^|[^\/])(www\.[\S]+(\b|$))/gim;
+            var replacedText = replacedText.replace(replacePattern2, '$1<a href="http://$2" target="_blank">$2</a>');
+
+            return replacedText;
+        }
+
+        // ]]>  
+    </script>
+    <script type="text/javascript">
+        // <!CDATA[
+
+        function btnAddComentario_onclick() {
+            var comentario = $("textarea[rel=ComentBody]").val();
+            if (comentario.trim() === "") {
+                alert('No hay comentario');
+                return;
+            }
+            var data = {
+                "autor": $("input[rel=ComentAutor]").val(),
+                "titulo": $("input[rel=ComentTitle]").val(),
+                "comentario": comentario,
+
+                "codcontenido": codcontenido
+            };
+            var posturl = relative + "handlers/addcoment.ashx";
+            $.post(posturl, data,
+                function (r) {//callback
+                    $("div .addcoment-botones").html(r);
+                    cargaComentarios();
+                });
+        }
+
+        function deleteComment(cod, bt) {
+            var data = {
+                "codcomentario": cod
+            };
+            var posturl = relative + "handlers/deletecoment.ashx";
+            var span = $(bt).parent();
+            span.html(""); span.addClass("wait-loading-mini");
+            span.parents('.listacomentarios-item').find("*").addClass("tachado");
+
+            $.post(posturl, data,
+                function (r) {//callback
+                    span.removeClass("wait-loading-mini");
+                    span.parents('.listacomentarios-item').hide('slow');
+                });
+        }
+        // ]]>
+    </script>
+    <style>
+        .fb_iframe_widget
+        {
+        }
+        .fb-like-peque
+        {
+            height: 30px;
+            padding-left: 167px;
+            width: 604px;
+            top: -108px;
+        }
+        .fb-like-box
+        {
+            top: -45px;
+        }
+        #autor
+        {
+            left: -8px;
+            height: 236px;
+        }
+    </style>
+        
+        <header>
+            <nav id="menu">
+                
+ 
+<ul class="lavaLampNoImage" id="menuCategorias">
+    <li id="menu1_li_inicio" class="current"><a href="http://www.devjoker.com/Default.aspx" class="homelink">Inicio</a></li>
+    <li id="menu1_li_articulos"><a href="http://www.devjoker.com/cat/articulos_noticias/8/articulos_noticias.aspx">Articulos y noticias</a></li>
+    <li id="menu1_li_programacion"><a href="http://www.devjoker.com/cat/programacion/1/programacion.aspx">Programacion</a></li>
+    <li id="menu1_li_bases_datos"><a href="http://www.devjoker.com/cat/bases_datos/2/bases_datos.aspx">Bases de datos</a></li>
+    <li id="menu1_li_foros"><a href="http://www.devjoker.com/foros.aspx">Foros</a></li>
+    <li id="menu1_li_internet"><a href="http://www.devjoker.com/cat/internet/3/internet.aspx">Internet</a></li>
+    <li id="menu1_li_servicios"><a href="http://www.devjoker.com/cat/internet/6/servicios.aspx">Servicios</a></li>
+    <li id="menu1_li_contratacion"><a href="http://www.infolancer.net/freelance/Devjokercom/008mgflrqqip4464qs8" class="contratacionlink">Contratacion</a></li>
+    
+    <li id="menu1_li_mapa"><a href="http://www.devjoker.com/mapaweb.aspx">Mapa</a></li>
+<li class="back" style="left: 15px; width: 75px; display: block; overflow: hidden;"><div class="left"></div></li></ul>
+
+ <iframe id="menu1_buscar1_iframebuscar" frameborder="0" scrolling="no" class="ifrm-buscar" src="./Como encriptar o cifrar cadenas y campos en SQL server 2005 ENCRYPTBYPASSPHRASE y DECRYPTBYPASSPHRASE_files/buscar.htm">
+</iframe>
+
+            </nav>
+            <div id="header">
+                <a type="application/rss+xml" class="feeds-link" href="http://feeds.feedburner.com/devjoker">
+                    <img src="./Como encriptar o cifrar cadenas y campos en SQL server 2005 ENCRYPTBYPASSPHRASE y DECRYPTBYPASSPHRASE_files/feeds.png" id="Img1" alt="feeds">
+                </a>               
+            </div>
+        </header>
+        <div id="content">
+            <section id="content_2" class="chip">
+                
+    <article>
+        <header>
+            
+        </header>
+        <div id="Content_2PlaceHolder_post_" class="post"><p><span class="Titulo1">Como encriptar cadenas y campos en SQL server 2005</span></p>
+<p>SQL server 2005 trae soporte para todo tipo de encriptación, en pero en este articulo nos centraremos en el más rápido y sencillo, también es el más inseguro, pero es infinitamente mejor que nada.<a href="" target="_blank"><img alt="encriptar con SQL server 2005" src="./Como encriptar o cifrar cadenas y campos en SQL server 2005 ENCRYPTBYPASSPHRASE y DECRYPTBYPASSPHRASE_files/seguridad.jpg" align="right" border="0"></a></p>
+<p>Ante todo un consejo: a más datos encriptados más lento y complejo será nuestro trabajo y el acceso a los datos, hay que encriptar sólo lo necesario.</p>
+<p>Supongamos que tenemos una base de datos donde se almacenan todos los usuarios y sus contraseñas y queremos guardar el valor de esas contraseñas encriptadas, podemos usar la nueva función <font color="#0000a0"><strong>ENCRYPTBYPASSPHRASE</strong></font></p>
+<p><strong><font color="#0000a0"><span class="texto">Supongamos que la tabla tenga dos campos user y pass:</span></font></strong></p><strong><font color="#0000a0"><span class="texto">
+<p>
+</p><table class="ejemplo" style="TABLE-LAYOUT: fixed; WIDTH: 605px; HEIGHT: 87px" width="607" align="center">
+<tbody>
+<tr>
+<td class="texto">
+<blockquote dir="ltr" style="MARGIN-RIGHT: 0px"><pre><span lang="EN-US" style="COLOR: blue; FONT-FAMILY: &#39;Courier New&#39;; mso-no-proof: yes; mso-ansi-language: EN-US"><br>INSERT</span><span lang="EN-US" style="FONT-FAMILY: &#39;Courier New&#39;; mso-no-proof: yes; mso-ansi-language: EN-US"> <span style="COLOR: blue">INTO</span> USUARIOS<br></span><span lang="EN-US" style="COLOR: blue; FONT-FAMILY: &#39;Courier New&#39;; mso-no-proof: yes; mso-ansi-language: EN-US">VALUES</span><span lang="EN-US" style="FONT-FAMILY: &#39;Courier New&#39;; mso-no-proof: yes; mso-ansi-language: EN-US"> <span style="COLOR: gray">("Aldeamedia", <br>        </span>ENCRYPTBYPASSPHRASE<span style="COLOR: gray">(</span><span style="COLOR: red">'C1traseña'</span><span style="COLOR: gray">,</span><span style="COLOR: red">'MiContraseña'</span><span style="COLOR: gray">)</span><span style="COLOR: gray">)<br></span></span><span style="FONT-FAMILY: &#39;Courier New&#39;; mso-no-proof: yes">GO</span></pre></blockquote></td></tr></tbody></table></span></font></strong><span lang="EN-US" style="COLOR: blue; FONT-FAMILY: &#39;Courier New&#39;; mso-no-proof: yes; mso-ansi-language: EN-US"><span class="Titulo1"><font size="2"><span style="FONT-FAMILY: &#39;Courier New&#39;; mso-no-proof: yes"></span><p></p></font></span></span>
+<p class="MsoNormal" style="mso-layout-grid-align: none"><span lang="EN-US" style="COLOR: blue; FONT-FAMILY: &#39;Courier New&#39;; mso-no-proof: yes; mso-ansi-language: EN-US"><span class="Titulo1"><span class="Titulo1"><span class="texto">&nbsp;&nbsp;&nbsp; Si examinamos el contenido de la tabla usuarios veremos que el campo password contendrá un valor similar a este: <font face="Courier New"><font color="#0000a0">0x02000000B351570EC53EE578CB15ED15BEDA340BFE55C44C6C2833F1</font> <span class="texto">es nuestra contraseña encriptada.</span></font></span></span></span></span></p>
+<p class="MsoNormal" style="mso-layout-grid-align: none"><span lang="EN-US" style="COLOR: blue; FONT-FAMILY: &#39;Courier New&#39;; mso-no-proof: yes; mso-ansi-language: EN-US"><span class="Titulo1"><span class="Titulo1"><span class="texto"><font face="Courier New"><span class="texto">&nbsp;&nbsp;&nbsp; Para poder leerla tendremos que usar la misma contraseña que usamos para encriptar y la función DECRYPTBYPASSPHRASE.</span></font></span></span></span></span></p><span lang="EN-US" style="COLOR: blue; FONT-FAMILY: &#39;Courier New&#39;; mso-no-proof: yes; mso-ansi-language: EN-US"><span class="Titulo1"><span class="Titulo1"><span class="texto"><font face="Courier New"><span class="texto">
+<p>
+</p><table class="ejemplo" style="TABLE-LAYOUT: fixed; WIDTH: 605px; HEIGHT: 87px" width="607" align="center">
+<tbody>
+<tr>
+<td class="texto">
+<blockquote dir="ltr" style="MARGIN-RIGHT: 0px"><pre><span lang="EN-US" style="COLOR: blue; FONT-FAMILY: &#39;Courier New&#39;; mso-no-proof: yes; mso-ansi-language: EN-US"><span class="Titulo1"><span class="Titulo1"><span class="texto"><span style="COLOR: blue; FONT-FAMILY: &#39;Courier New&#39;; mso-no-proof: yes"><br>SELECT</span><span style="FONT-FAMILY: &#39;Courier New&#39;; mso-no-proof: yes">&nbsp; User, <span style="COLOR: fuchsia">CONVERT</span><span style="COLOR: gray">(</span><span style="COLOR: blue">VARCHAR</span><span style="COLOR: gray">(</span>300<span style="COLOR: gray">),<br></span></span><span><span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>DECRYPTBYPASSPHRASE<span style="COLOR: gray">(</span><span style="COLOR: red"><span style="COLOR: red">'C1traseña'</span></span><span>,<font color="#000000">Pass</font>))<br></span>FROM</span><span style="FONT-FAMILY: &#39;Courier New&#39;; mso-no-proof: yes"> USUARIOS</span></span></span></span></span></pre></blockquote></td></tr></tbody></table><p></p>
+<p class="MsoNormal" style="mso-layout-grid-align: none"><br></p></span></font></span></span></span></span><span lang="EN-US" style="COLOR: blue; FONT-FAMILY: &#39;Courier New&#39;; mso-no-proof: yes; mso-ansi-language: EN-US"><span class="Titulo1"><span class="Titulo1"><span class="texto">
+<p class="MsoNormal" style="mso-layout-grid-align: none"><strong><span style="FONT-FAMILY: &#39;Courier New&#39;; mso-no-proof: yes"><span class="texto">&nbsp;&nbsp;&nbsp; Como digo hay por lo menos tres formás más de encriptar, usando claves simetricas, asimetricas y certificados digitales, pero esta es la más sencilla y muy eficiente siempre que mantengamos la contraseña de encriptación bién segura.</span></span></strong></p>
+<p class="MsoNormal" style="mso-layout-grid-align: none"><strong><span style="FONT-FAMILY: &#39;Courier New&#39;; mso-no-proof: yes"><span class="texto">&nbsp;&nbsp;&nbsp; La mejor forma de usar esta encriptación es mediante procedimientos almacenados que tomen la contraseña de encriptación como parametro.</span></span></strong></p>
+<p class="MsoNormal" style="mso-layout-grid-align: none"><strong><span style="FONT-FAMILY: &#39;Courier New&#39;; mso-no-proof: yes"><span class="texto">¿Dudas? no os canseis de preguntar en los foros de devjoker.</span></span></strong></p>
+<p class="MsoNormal" style="mso-layout-grid-align: none"><strong><span style="FONT-FAMILY: &#39;Courier New&#39;; mso-no-proof: yes"><span class="texto">Pablo Gumpert Fernandez</span></span></strong></p>
+<p class="MsoNormal" style="mso-layout-grid-align: none"><strong><span style="FONT-FAMILY: &#39;Courier New&#39;; mso-no-proof: yes"><span class="texto"><a href="http://www.aldeamedia.com/" target="_blank"></a><a href="http://www.aldeamedia.com/" target="_blank"></a></span></span></strong></p></span></span></span></span></div>
+        
+        <div id="Content_2PlaceHolder_menu_contenido">                
+                
+<div class="navegadorcontenido-container">
+    <div class="navegadorcontenido-links">
+        <a id="Content_2PlaceHolder_NavegadorContenido1_lnkInicio">Inicio</a>|<a id="Content_2PlaceHolder_NavegadorContenido1_lnkIndiceSup">Indice</a>
+    </div>
+    <nav class="navegadorcontenido-buttons">
+        <a href="http://www.devjoker.com/contenidos/Articulos/76/Ubuntu-en-VmWare-con-VMware-Tools.aspx" id="Content_2PlaceHolder_NavegadorContenido1_lnkPrevio" class="navigation prev" title="Ubuntu en VmWare con VMware Tools">
+            Anterior            
+        </a>        
+        <a href="http://www.devjoker.com/gru/Articulos/ARTI/Articulos.aspx" id="Content_2PlaceHolder_NavegadorContenido1_lnkIndice" class="navigation" title="Articulos">
+            Indice            
+        </a>
+        <a href="http://www.devjoker.com/contenidos/Articulos/83/Trabajar-con-datos-de-tipo-BLOB-en-ORACLE.aspx" id="Content_2PlaceHolder_NavegadorContenido1_lnkSiguiente" class="navigation next" title="Trabajar con datos de tipo BLOB en ORACLE">
+            Siguiente            
+        </a>
+    </nav>
+    <div class="navegadorcontenido-print">
+        <a id="Content_2PlaceHolder_NavegadorContenido1_lnkImprimir" href="http://www.devjoker.com/print/Articulos/82/Articulos.aspx">Version para imprimir</a>
+    </div>
+</div>
+                
+        </div>
+        <footer class="post-footer">
+            
+            <section id="autor">
+                
+<div class="autorpost-container">
+    <div class="autorpost-container-foto">
+        <img id="Content_2PlaceHolder_autorpost1_imgFotoAutor" title="Pablo  Gumpert  Fernandez (aldeamedia)" src="./Como encriptar o cifrar cadenas y campos en SQL server 2005 ENCRYPTBYPASSPHRASE y DECRYPTBYPASSPHRASE_files/Yoaldeamedia.jpg" alt="Pablo  Gumpert  Fernandez (aldeamedia)">
+    </div>
+    <div class="autorpost-container-datos">
+        <span id="Content_2PlaceHolder_autorpost1_lblTituloPost" class="Subtitulo">Como encriptar o cifrar cadenas y campos en SQL server 2005 ENCRYPTBYPASSPHRASE y DECRYPTBYPASSPHRASE</span>
+        <br>
+                
+        <a id="Content_2PlaceHolder_autorpost1_lnkAutor" href="http://www.aldeamedia.com/">Pablo  Gumpert  Fernandez (aldeamedia)</a>
+        <br>
+        <span id="Content_2PlaceHolder_autorpost1_lblFechaPublicacion"></span>
+        <br>
+        <span id="Content_2PlaceHolder_autorpost1_lblPerfil">Pablo Gumpert es formador y consultor oficial de Microsoft  para .NET y SQL server.Lleva desarrollando desde hace más de diez años y durante ese tiempo ha trabajado como programador de videojuegos ,analista informático, experto en seguridad, DBA ...
+Actualmente se dedica sobre todo a la formación.
+Su especialidad es la programación en .NET aunque también es experto en MSSQL Server y en el año 2002 fundó su propia empresa colaboradora de diversos centros partner Microsoft.</span>
+    </div>
+</div>
+
+            </section>
+
+            <div id="post-info-container">
+                <div id="Content_2PlaceHolder_postinfo1_lblFechaAlta" class="label-calendar">Fecha de alta:01/09/2006</div>
+<div id="Content_2PlaceHolder_postinfo1_lblFechaActualizacion" class="label-calendar">Última actualizacion:01/09/2006</div>
+<div id="Content_2PlaceHolder_postinfo1_lblVisitas" class="label-visitas">Visitas totales:<b>53329</b></div>
+            </div>
+            
+            <div id="social-container">
+                <div class="twitter-container">
+                    <iframe id="twitter-widget-0" scrolling="no" frameborder="0" allowtransparency="true" src="./Como encriptar o cifrar cadenas y campos en SQL server 2005 ENCRYPTBYPASSPHRASE y DECRYPTBYPASSPHRASE_files/tweet_button.1393899192.htm" class="twitter-share-button twitter-tweet-button twitter-count-horizontal" title="Twitter Tweet Button" data-twttr-rendered="true" style="width: 122px; height: 20px;"></iframe><script>!function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0]; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = "//platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js, fjs); } } (document, "script", "twitter-wjs");</script>
+                    
+                </div>
+                <div class="plusone">
+                </div>
+                <div class="post_rating-container">
+                    <div id="post_rating_area">
+                        <span id="Content_2PlaceHolder_lblValorar" class="label-form" style="display:inline-block;width:200px;">Valorar el contenido:</span>
+                        <div id="post_rating">
+                        <ul class="star-rating" style="width:125px"><li class="current-rating" style="width:100%;">5/5</li><li class="star"><a href="http://www.devjoker.com/contenidos/Articulos/82/Como-encriptar-o-cifrar-cadenas-y-campos-en-SQL-server-2005-ENCRYPTBYPASSPHRASE-y-DECRYPTBYPASSPHRASE.aspx#1" title="1/5" style="width:20%;z-index:6">1</a></li><li class="star"><a href="http://www.devjoker.com/contenidos/Articulos/82/Como-encriptar-o-cifrar-cadenas-y-campos-en-SQL-server-2005-ENCRYPTBYPASSPHRASE-y-DECRYPTBYPASSPHRASE.aspx#2" title="2/5" style="width:40%;z-index:5">2</a></li><li class="star"><a href="http://www.devjoker.com/contenidos/Articulos/82/Como-encriptar-o-cifrar-cadenas-y-campos-en-SQL-server-2005-ENCRYPTBYPASSPHRASE-y-DECRYPTBYPASSPHRASE.aspx#3" title="3/5" style="width:60%;z-index:4">3</a></li><li class="star"><a href="http://www.devjoker.com/contenidos/Articulos/82/Como-encriptar-o-cifrar-cadenas-y-campos-en-SQL-server-2005-ENCRYPTBYPASSPHRASE-y-DECRYPTBYPASSPHRASE.aspx#4" title="4/5" style="width:80%;z-index:3">4</a></li><li class="star"><a href="http://www.devjoker.com/contenidos/Articulos/82/Como-encriptar-o-cifrar-cadenas-y-campos-en-SQL-server-2005-ENCRYPTBYPASSPHRASE-y-DECRYPTBYPASSPHRASE.aspx#5" title="5/5" style="width:100%;z-index:2">5</a></li></ul><span class="star-rating-result"></span></div>
+                    </div>
+                </div>
+                <div class="fb-like fb-like-peque fb_iframe_widget" data-href="http://www.facebook.com/pages/devjokercom/188781521219799" data-send="false" data-width="550" data-show-faces="false" fb-xfbml-state="rendered" fb-iframe-plugin-query="app_id=&amp;href=http%3A%2F%2Fwww.facebook.com%2Fpages%2Fdevjokercom%2F188781521219799&amp;locale=es_ES&amp;sdk=joey&amp;send=false&amp;show_faces=false&amp;width=550"><span style="vertical-align: bottom; width: 550px; height: 20px;"><iframe name="fe3e6036c" width="550px" height="1000px" frameborder="0" allowtransparency="true" scrolling="no" title="fb:like Facebook Social Plugin" src="./Como encriptar o cifrar cadenas y campos en SQL server 2005 ENCRYPTBYPASSPHRASE y DECRYPTBYPASSPHRASE_files/like.htm" class="" style="border: none; visibility: visible; width: 550px; height: 20px;"></iframe></span></div>
+            </div>
+            
+        </footer>
+    </article>
+    <section id="comentarios-container">
+        <div id="comentarios-add-comment"><div id="render">    
+        
+
+<div class="addcoment-container">
+    <h2>Añadir comentario:</h2>
+    <div class="addcoment-identificacion">
+        <span id="ctl09_Label1" class="label-form label-comment">Autor:</span>
+        <input name="ctl09$txtAutor" type="text" maxlength="64" id="ctl09_txtAutor" class="label-form text-comment" rel="ComentAutor">
+        <span id="ctl09_RequiredFieldValidator1" style="visibility:hidden;">*</span>
+        <br>
+        <span id="ctl09_Label2" class="label-form label-comment">Titulo:</span>
+        <input name="ctl09$txtTitulo" type="text" maxlength="100" id="ctl09_txtTitulo" class="label-form text-comment" rel="ComentTitle">            
+    </div>
+    <div class="addcoment-comentario">
+        <textarea name="ctl09$txtComentario" rows="2" cols="20" id="ctl09_txtComentario" class="text-form-comment" rel="ComentBody"></textarea>
+    </div>
+    <div class="addcoment-botones">
+        <input name="ctl09$btnAddComentario" type="button" id="ctl09_btnAddComentario" rel="ComentButton" value="Enviar comentario" onclick="return btnAddComentario_onclick()" class="boton roundedbutton">  
+    </div>
+</div>
+
+    </div></div>
+        <div id="comentarios-list"><div id="render">    
+        
+        <div class="listacomentarios-container">
+            
+        <div class="listacomentarios-item">
+            <div class="listacomentarios-top">
+                <span class="listacomentarios-counter">#52</span>
+                <div class="listacomentarios-buttons">
+                    
+                </div>
+                <div class="listacomentarios-titulo">
+                    duda</div>
+            </div>
+            <div class="listacomentarios-body">en sql server no existe las funciones que nos das de ejemplo existe otra forma de realizar la encriptacion de cadenas</div>
+            <div class="listacomentarios-footer">
+                <span class="listacomentarios-autor">
+                    Lucely</span>
+                09/05/2007 6:07:08
+            </div>
+        </div>
+    
+        <div class="listacomentarios-item">
+            <div class="listacomentarios-top">
+                <span class="listacomentarios-counter">#53</span>
+                <div class="listacomentarios-buttons">
+                    
+                </div>
+                <div class="listacomentarios-titulo">
+                    duda</div>
+            </div>
+            <div class="listacomentarios-body">en sql server 2003 no existe las funciones que nos das de ejemplo existe otra forma de realizar la encriptacion</div>
+            <div class="listacomentarios-footer">
+                <span class="listacomentarios-autor">
+                    Lucely</span>
+                09/05/2007 6:09:36
+            </div>
+        </div>
+    
+        <div class="listacomentarios-item">
+            <div class="listacomentarios-top">
+                <span class="listacomentarios-counter">#63</span>
+                <div class="listacomentarios-buttons">
+                    
+                </div>
+                <div class="listacomentarios-titulo">
+                    Tienes que hacerte tú las func...</div>
+            </div>
+            <div class="listacomentarios-body">Tienes que hacerte tú las funciones, o bien un procedure. Todo lo tendar que hacer tu mismo, no hay nada interado.
+Un consejo, actualiza a 2005</div>
+            <div class="listacomentarios-footer">
+                <span class="listacomentarios-autor">
+                    Devjoker</span>
+                20/05/2007 4:23:30
+            </div>
+        </div>
+    
+        <div class="listacomentarios-item">
+            <div class="listacomentarios-top">
+                <span class="listacomentarios-counter">#96</span>
+                <div class="listacomentarios-buttons">
+                    
+                </div>
+                <div class="listacomentarios-titulo">
+                    En SQL Server 2000 tambien se puede</div>
+            </div>
+            <div class="listacomentarios-body">Creas la tabla y el campo contraseña lo declaras como varbinary entonces cuando insertar un registro lo haces asi: 
+
+declare @hash varbinary(255)
+set @hash=pwdencrypt('123') --&gt;encriptas la valor que estas introduciendo y lo almacenas en la variable @hash
+--luego haces la insercion a la tabla
+insert into tabla1 values ('hola1',@hash)
+--
+--luego haces una consulta y el campo contraseña aparecera almacenado asi:
+0x01002C101B56EA54DB6881F13428E9AAE5E4D0E65D804A703789EA54DB6881F13428E9AAE5E4D0E65D804A703789
+
+--para comparar la contraseña almacenada con un string es asi:
+select pwdcompare('123',0x01002C101B56EA54DB6881F13428E9AAE5E4D0E65D804A703789EA54DB6881F13428E9AAE5E4D0E65D804A703789)
+--
+--sin son iguales te regresara 1 sino es igual te regresara cero. 
+
+Espero que les funcione Bye</div>
+            <div class="listacomentarios-footer">
+                <span class="listacomentarios-autor">
+                    chele tobar</span>
+                05/06/2007 23:34:29
+            </div>
+        </div>
+    
+        <div class="listacomentarios-item">
+            <div class="listacomentarios-top">
+                <span class="listacomentarios-counter">#97</span>
+                <div class="listacomentarios-buttons">
+                    
+                </div>
+                <div class="listacomentarios-titulo">
+                    Referencia al comentario anterior</div>
+            </div>
+            <div class="listacomentarios-body">Si no me entienden el codigo mandeme un correo a cheletobar@yahoo.com.mx y yo con gusto se los mando sin ningun problema; tambien proximamente lo estare  publicando en mi blog <a href="http://elbunkerdelprogramador.blogspot.com/" target="_blank">http://elbunkerdelprogramador.blogspot.com</a>
+
+Saludos...</div>
+            <div class="listacomentarios-footer">
+                <span class="listacomentarios-autor">
+                    chele tobar</span>
+                05/06/2007 23:39:49
+            </div>
+        </div>
+    
+        <div class="listacomentarios-item">
+            <div class="listacomentarios-top">
+                <span class="listacomentarios-counter">#98</span>
+                <div class="listacomentarios-buttons">
+                    
+                </div>
+                <div class="listacomentarios-titulo">
+                    Pero que muy buena ! Desconoci...</div>
+            </div>
+            <div class="listacomentarios-body">Pero que muy buena ! Desconocia esta funcion. chapo</div>
+            <div class="listacomentarios-footer">
+                <span class="listacomentarios-autor">
+                    Devjoker</span>
+                06/06/2007 0:41:29
+            </div>
+        </div>
+    
+        <div class="listacomentarios-item">
+            <div class="listacomentarios-top">
+                <span class="listacomentarios-counter">#99</span>
+                <div class="listacomentarios-buttons">
+                    
+                </div>
+                <div class="listacomentarios-titulo">
+                    Aunque parece que es de un sol...</div>
+            </div>
+            <div class="listacomentarios-body">Aunque parece que es de un solo para encriptar, es decir, que no puedes obtener el valor original.
+Es muy válido para claves, pero para otro tipos de datos (numeros de cuenta, tarjatas de credito ... )no parece util.</div>
+            <div class="listacomentarios-footer">
+                <span class="listacomentarios-autor">
+                    Devjoker</span>
+                06/06/2007 1:20:45
+            </div>
+        </div>
+    
+        <div class="listacomentarios-item">
+            <div class="listacomentarios-top">
+                <span class="listacomentarios-counter">#102</span>
+                <div class="listacomentarios-buttons">
+                    
+                </div>
+                <div class="listacomentarios-titulo">
+                    ¿Qué es cada parametro?</div>
+            </div>
+            <div class="listacomentarios-body">¿Para encriptar y desencriptar qué es el primero y el segundo parámetro?</div>
+            <div class="listacomentarios-footer">
+                <span class="listacomentarios-autor">
+                    Berizzo</span>
+                06/06/2007 13:10:11
+            </div>
+        </div>
+    
+        <div class="listacomentarios-item">
+            <div class="listacomentarios-top">
+                <span class="listacomentarios-counter">#103</span>
+                <div class="listacomentarios-buttons">
+                    
+                </div>
+                <div class="listacomentarios-titulo">
+                    Tabla de usuarios existente y con datos</div>
+            </div>
+            <div class="listacomentarios-body">Si ya tengo la tabla de usuarios con datos cargados ¿cómo tengo que hacer para modificar la clave considerando que tengo una clase en C# donde creo parametros con este método: SqlCommand.Parameters.Add(new SqlParameter("@NombreCampo", System.Data.SqlDbType.Int)).Value = valor;?</div>
+            <div class="listacomentarios-footer">
+                <span class="listacomentarios-autor">
+                    Berizzo</span>
+                06/06/2007 14:12:03
+            </div>
+        </div>
+    
+        <div class="listacomentarios-item">
+            <div class="listacomentarios-top">
+                <span class="listacomentarios-counter">#161</span>
+                <div class="listacomentarios-buttons">
+                    
+                </div>
+                <div class="listacomentarios-titulo">
+                    Hola Pues resolvi mi problema ...</div>
+            </div>
+            <div class="listacomentarios-body">Hola Pues resolvi mi problema de encriptacion mandando el campo encriptado y para recuperarlo consulto lo q tengo en la BD con lo q pongo en mi campo de texto. antes debí haber encriptado lo q escribí en el campo de texto para poderlo comparar con lo de la base de Datos Gracias por la ayuda</div>
+            <div class="listacomentarios-footer">
+                <span class="listacomentarios-autor">
+                    Lucely</span>
+                10/07/2007 5:29:58
+            </div>
+        </div>
+    
+        <div class="listacomentarios-item">
+            <div class="listacomentarios-top">
+                <span class="listacomentarios-counter">#944</span>
+                <div class="listacomentarios-buttons">
+                    
+                </div>
+                <div class="listacomentarios-titulo">
+                    urgente</div>
+            </div>
+            <div class="listacomentarios-body">necesitamos encriptar y desencriptar datos desde una aplicacion de visual 6.0 a sql server 2005 como le hago ayuda por favor</div>
+            <div class="listacomentarios-footer">
+                <span class="listacomentarios-autor">
+                    carmen</span>
+                02/05/2008 13:49:47
+            </div>
+        </div>
+    
+        <div class="listacomentarios-item">
+            <div class="listacomentarios-top">
+                <span class="listacomentarios-counter">#1000</span>
+                <div class="listacomentarios-buttons">
+                    
+                </div>
+                <div class="listacomentarios-titulo">
+                    Para Carmen</div>
+            </div>
+            <div class="listacomentarios-body">Te envio estos Links, a mi me parecieron interesantes........
+intenta cambiar a VB 2005 o 2008 es mucho mas actual que el 6.0.
+Saludos y espero que te sirva de algo
+
+<a href="http://msdn.microsoft.com/es-es/library/ms172831" target="_blank">http://msdn.microsoft.com/es-es/library/ms172831</a>(VS.80).aspx
+
+<a href="http://franciscomolina.wordpress.com/2007/11/16/encriptar-en-visual-basic-y-visual-basicnet/" target="_blank">http://franciscomolina.wordpress.com/2007/11/16/encriptar-en-visual-basic-y-visual-basicnet/</a></div>
+            <div class="listacomentarios-footer">
+                <span class="listacomentarios-autor">
+                    OrLaNdO HeRReRa</span>
+                15/05/2008 13:23:11
+            </div>
+        </div>
+    
+        <div class="listacomentarios-item">
+            <div class="listacomentarios-top">
+                <span class="listacomentarios-counter">#1141</span>
+                <div class="listacomentarios-buttons">
+                    
+                </div>
+                <div class="listacomentarios-titulo">
+                    pregunta</div>
+            </div>
+            <div class="listacomentarios-body">En SQL Server 2000 tambien se puede por chele tobar 
+
+ESTA BUENO PERO QUISIERA SABER LA FORMA DE CONVERTIR ESA ENCRIPTACION EN CADENA</div>
+            <div class="listacomentarios-footer">
+                <span class="listacomentarios-autor">
+                    rappar</span>
+                17/06/2008 15:37:44
+            </div>
+        </div>
+    
+        <div class="listacomentarios-item">
+            <div class="listacomentarios-top">
+                <span class="listacomentarios-counter">#1182</span>
+                <div class="listacomentarios-buttons">
+                    
+                </div>
+                <div class="listacomentarios-titulo">
+                    fdsfsfsdaf</div>
+            </div>
+            <div class="listacomentarios-body">fewufhweaufhajksdhfdsf</div>
+            <div class="listacomentarios-footer">
+                <span class="listacomentarios-autor">
+                    iydsaiudisahdsa</span>
+                26/06/2008 13:29:11
+            </div>
+        </div>
+    
+        <div class="listacomentarios-item">
+            <div class="listacomentarios-top">
+                <span class="listacomentarios-counter">#1242</span>
+                <div class="listacomentarios-buttons">
+                    
+                </div>
+                <div class="listacomentarios-titulo">
+                    Error en visual basic 2005</div>
+            </div>
+            <div class="listacomentarios-body">porfavor necesito ayuda al desencriptar me sale este error alguien podria ayudarme?
+"Argument data type int is invalid for argument 2 of DecryptByPassPhrase function."</div>
+            <div class="listacomentarios-footer">
+                <span class="listacomentarios-autor">
+                    Ragnarok</span>
+                13/07/2008 15:46:58
+            </div>
+        </div>
+    
+        <div class="listacomentarios-item">
+            <div class="listacomentarios-top">
+                <span class="listacomentarios-counter">#1314</span>
+                <div class="listacomentarios-buttons">
+                    
+                </div>
+                <div class="listacomentarios-titulo">
+                    Duda???</div>
+            </div>
+            <div class="listacomentarios-body">Que viene ha ser el parametro C1traseña, y supongo que el parámetro 'MiContraseña' es la contraseña a insertar, pero no entiendo que viene ha ser 'C1traseña'.</div>
+            <div class="listacomentarios-footer">
+                <span class="listacomentarios-autor">
+                    CésarVallejo</span>
+                05/08/2008 14:30:16
+            </div>
+        </div>
+    
+        <div class="listacomentarios-item">
+            <div class="listacomentarios-top">
+                <span class="listacomentarios-counter">#1482</span>
+                <div class="listacomentarios-buttons">
+                    
+                </div>
+                <div class="listacomentarios-titulo">
+                    Repuesta</div>
+            </div>
+            <div class="listacomentarios-body">'C1traseña' es una clave publica que se conoce y que siver como semilla para el cibrador genere un HASH, puede ser caulquier palabra, en el caso de usar una tabla de usuarios y claves (usuarioID, Clave), yo podria en el campo 'C1traseña' el usuarioID, ya que este lo tengo a la mano y por cada usuario variaria, pero siempre seria el mismo para este (siempre se tendra un usuarioID diferente para cada persona, pero el usuarioID una vez creadado nunca cambia).
+
+INSERT INTO USUARIOSVALUES ("Aldeamedia",         ENCRYPTBYPASSPHRASE('Aldeamedia','MiContraseña'))GO
+</div>
+            <div class="listacomentarios-footer">
+                <span class="listacomentarios-autor">
+                    Repuesta</span>
+                18/09/2008 0:02:33
+            </div>
+        </div>
+    
+        <div class="listacomentarios-item">
+            <div class="listacomentarios-top">
+                <span class="listacomentarios-counter">#1579</span>
+                <div class="listacomentarios-buttons">
+                    
+                </div>
+                <div class="listacomentarios-titulo">
+                    GRacias</div>
+            </div>
+            <div class="listacomentarios-body">gracias me salvaron la vida</div>
+            <div class="listacomentarios-footer">
+                <span class="listacomentarios-autor">
+                    Daniel Gomez</span>
+                08/10/2008 7:07:55
+            </div>
+        </div>
+    
+        <div class="listacomentarios-item">
+            <div class="listacomentarios-top">
+                <span class="listacomentarios-counter">#1758</span>
+                <div class="listacomentarios-buttons">
+                    
+                </div>
+                <div class="listacomentarios-titulo">
+                    como hacer el store procedure </div>
+            </div>
+            <div class="listacomentarios-body">mi duda es que como ago el procedure para la encriptacion 
+ps esque iio estudio sql 2005 conectado a visual c# 2005 pero no puedo encriptar aun </div>
+            <div class="listacomentarios-footer">
+                <span class="listacomentarios-autor">
+                    cesar</span>
+                10/11/2008 11:38:52
+            </div>
+        </div>
+    
+        <div class="listacomentarios-item">
+            <div class="listacomentarios-top">
+                <span class="listacomentarios-counter">#1764</span>
+                <div class="listacomentarios-buttons">
+                    
+                </div>
+                <div class="listacomentarios-titulo">
+                    datos  encryptados</div>
+            </div>
+            <div class="listacomentarios-body">como hago para insertar en un procedure mi tabla usuarios me sale el error:
+Implicit conversion from data type varchar to varbinary is not allowed. Use the CONVERT function to run this query.
+</div>
+            <div class="listacomentarios-footer">
+                <span class="listacomentarios-autor">
+                    chasca</span>
+                11/11/2008 7:53:36
+            </div>
+        </div>
+    
+        <div class="listacomentarios-item">
+            <div class="listacomentarios-top">
+                <span class="listacomentarios-counter">#1770</span>
+                <div class="listacomentarios-buttons">
+                    
+                </div>
+                <div class="listacomentarios-titulo">
+                    urgente!!.necesito el codigo de este algoritmo de encriptacion</div>
+            </div>
+            <div class="listacomentarios-body">Paso 1:  contraseña -   1234
+Paso 2:  sacar longitud-  4
+Paso 3: sacar código ASCII
+Paso 3: Tomar la cadena  de la contraseña y la vamos a multiplicar por la longitud de la misma y por el primero y ultimo carácter de la contraseña (1234)*4*1*4
+Paso 4: lo que resulte  lo vamos a multiplicar por el número original y el resultado que arroje le vamos a restar el doble del original. (19744*1234-2468)= 24361628
+Paso 5: Multiplicar por dos el resultado del paso 4 para sacar el residuo del numero con el que trabajamos. (24361628*2)=48723256
+Paso 6: Repetir paso 3.
+Paso 7: Repetir paso 4.
+Paso 8:  contraseña encriptada ( ]9U0 )
+</div>
+            <div class="listacomentarios-footer">
+                <span class="listacomentarios-autor">
+                    carlos    </span>
+                11/11/2008 17:30:23
+            </div>
+        </div>
+    
+        <div class="listacomentarios-item">
+            <div class="listacomentarios-top">
+                <span class="listacomentarios-counter">#1816</span>
+                <div class="listacomentarios-buttons">
+                    
+                </div>
+                <div class="listacomentarios-titulo">
+                    eliminar</div>
+            </div>
+            <div class="listacomentarios-body">como elimino una contraseña encriptada</div>
+            <div class="listacomentarios-footer">
+                <span class="listacomentarios-autor">
+                    yo</span>
+                23/11/2008 13:57:19
+            </div>
+        </div>
+    
+        <div class="listacomentarios-item">
+            <div class="listacomentarios-top">
+                <span class="listacomentarios-counter">#2380</span>
+                <div class="listacomentarios-buttons">
+                    
+                </div>
+                <div class="listacomentarios-titulo">
+                    permisos en sql  server</div>
+            </div>
+            <div class="listacomentarios-body">hola estoy tratando de pogramar en sql server 2005 y vb 2005,pero nose por que rason no me deja correr el programa en la cuenta de un usuario sino est dado de alta en sql, y no se si haya alguna manera de hacer esto, que cuando compile mi programa lo pueda accesar cualquier usuario aunque no este en dado de alta en sql. por favor ayuda. se les voy a agradecer muchjo, mandenme una respuesta en mi corrreo q es david_1985_t@hotmail.com y mi contraseña es locodavo*23$/()ppesd</div>
+            <div class="listacomentarios-footer">
+                <span class="listacomentarios-autor">
+                    david</span>
+                20/04/2009 18:01:36
+            </div>
+        </div>
+    
+        <div class="listacomentarios-item">
+            <div class="listacomentarios-top">
+                <span class="listacomentarios-counter">#2412</span>
+                <div class="listacomentarios-buttons">
+                    
+                </div>
+                <div class="listacomentarios-titulo">
+                    Gracias por la Informacion</div>
+            </div>
+            <div class="listacomentarios-body">Gracias por la informacion proporcionada para la encriptacion y desencripatcion de capos en el sql server 2005, me has salvado la vida </div>
+            <div class="listacomentarios-footer">
+                <span class="listacomentarios-autor">
+                    Coca</span>
+                28/04/2009 14:54:38
+            </div>
+        </div>
+    
+        <div class="listacomentarios-item">
+            <div class="listacomentarios-top">
+                <span class="listacomentarios-counter">#2537</span>
+                <div class="listacomentarios-buttons">
+                    
+                </div>
+                <div class="listacomentarios-titulo">
+                    excelente</div>
+            </div>
+            <div class="listacomentarios-body">ya lo probe, funciona perfecto, gracias</div>
+            <div class="listacomentarios-footer">
+                <span class="listacomentarios-autor">
+                    magali flores</span>
+                03/06/2009 12:24:50
+            </div>
+        </div>
+    
+        <div class="listacomentarios-item">
+            <div class="listacomentarios-top">
+                <span class="listacomentarios-counter">#2544</span>
+                <div class="listacomentarios-buttons">
+                    
+                </div>
+                <div class="listacomentarios-titulo">
+                    Encriptacion</div>
+            </div>
+            <div class="listacomentarios-body">Bajense una Dll ó si lo que quieres es encriptar los procedimientos almacenados arriaba del AS pogan lo siguiente WITH ENCRYPTION y ya con eso bastara para encriptar 
+Nota: SQL SERVER 2005 No podras ver los procedimientos tendras qeu descargarte DMT SQL Decryptor 2 y ya con eso es mas que suficiente.
+Si alguien tiene dudas EFAN_00@hotmail.com</div>
+            <div class="listacomentarios-footer">
+                <span class="listacomentarios-autor">
+                    Scorpio</span>
+                05/06/2009 10:52:39
+            </div>
+        </div>
+    
+        <div class="listacomentarios-item">
+            <div class="listacomentarios-top">
+                <span class="listacomentarios-counter">#3734</span>
+                <div class="listacomentarios-buttons">
+                    
+                </div>
+                <div class="listacomentarios-titulo">
+                    Barbaro</div>
+            </div>
+            <div class="listacomentarios-body">Lo hice correr bajo sql server express y me funcionó de lujo, no tuve que crear ningún procedimiento ni bajarme nada, me sirvió de mucho, mil gracias Pablo</div>
+            <div class="listacomentarios-footer">
+                <span class="listacomentarios-autor">
+                    Jorge Federico</span>
+                20/04/2010 13:10:37
+            </div>
+        </div>
+    
+        <div class="listacomentarios-item">
+            <div class="listacomentarios-top">
+                <span class="listacomentarios-counter">#4443</span>
+                <div class="listacomentarios-buttons">
+                    
+                </div>
+                <div class="listacomentarios-titulo">
+                    ME TRAE DESDE JDBC UNA SOLA LETRA</div>
+            </div>
+            <div class="listacomentarios-body">HOLA, TE COMENTO QUE EL CODIGO ME FUNCIONA PERFECTO SI HAGO LAS CONSULTAS DESDE LA ADMINISTRADOR, PERO SI LO UTILIZO DESDE JDBC DESDE JAVA, ME DESENCRIPTA LA PRIMERA LETRA DE LA CONTRASEÑA, QUE PUEDE SER?, MUCHAS GRACIAS.</div>
+            <div class="listacomentarios-footer">
+                <span class="listacomentarios-autor">
+                    Mariano</span>
+                03/10/2010 13:45:01
+            </div>
+        </div>
+    
+        <div class="listacomentarios-item">
+            <div class="listacomentarios-top">
+                <span class="listacomentarios-counter">#4831</span>
+                <div class="listacomentarios-buttons">
+                    
+                </div>
+                <div class="listacomentarios-titulo">
+                    Encriptacion</div>
+            </div>
+            <div class="listacomentarios-body">Tengo el siguiente Problema Estoy creando un proyecto en ASP .NET y necesito que la informacion que quiero guardar en SQL viaje Encriptada omo puedo hacer para que los parametros que le paso al SPU Viajen Encriptados? y luego como hago para desencriptarlos?? necesito ayuda!!</div>
+            <div class="listacomentarios-footer">
+                <span class="listacomentarios-autor">
+                    Jhon Alvarez</span>
+                27/01/2011 16:11:52
+            </div>
+        </div>
+    
+        <div class="listacomentarios-item">
+            <div class="listacomentarios-top">
+                <span class="listacomentarios-counter">#5693</span>
+                <div class="listacomentarios-buttons">
+                    
+                </div>
+                <div class="listacomentarios-titulo">
+                    podrian ayudarme</div>
+            </div>
+            <div class="listacomentarios-body">estoy en una prueba de base de datos y el profesor me pide cifrar el login y contraseña permitiendo q el usuari pueda realizar sus transacciones en linea esto es sql server 2005 gracias </div>
+            <div class="listacomentarios-footer">
+                <span class="listacomentarios-autor">
+                    eduardo jarquin</span>
+                26/10/2011 18:30:21
+            </div>
+        </div>
+    
+        <div class="listacomentarios-item">
+            <div class="listacomentarios-top">
+                <span class="listacomentarios-counter">#5844</span>
+                <div class="listacomentarios-buttons">
+                    
+                </div>
+                <div class="listacomentarios-titulo">
+                    encriptar en programacion vb.net</div>
+            </div>
+            <div class="listacomentarios-body">lo puedo encriptar y leer desde visual studio 2008.net</div>
+            <div class="listacomentarios-footer">
+                <span class="listacomentarios-autor">
+                    marcos</span>
+                04/12/2011 3:13:37
+            </div>
+        </div>
+    
+        <div class="listacomentarios-item">
+            <div class="listacomentarios-top">
+                <span class="listacomentarios-counter">#6091</span>
+                <div class="listacomentarios-buttons">
+                    
+                </div>
+                <div class="listacomentarios-titulo">
+                    Problema</div>
+            </div>
+            <div class="listacomentarios-body">Cuando utilizo este método para encriptar un dato tengo el problema para desencriptarlo pues cuando uso el DECRYPTBYPASSPHRASE con varchar me pone caracteres raros, hice luego la sustitución por nvarchar y lo hizo bien, pero en otra ocasión me hizo lo me puso nuevamente caracteres raros, es curioso por que a pesar de que se le aplica así a varios registros solo con solo unos cuantos lo hace.</div>
+            <div class="listacomentarios-footer">
+                <span class="listacomentarios-autor">
+                    Luis Miguel Miranda Castillo</span>
+                30/03/2012 23:33:51
+            </div>
+        </div>
+    
+        <div class="listacomentarios-item">
+            <div class="listacomentarios-top">
+                <span class="listacomentarios-counter">#6165</span>
+                <div class="listacomentarios-buttons">
+                    
+                </div>
+                <div class="listacomentarios-titulo">
+                    e44+65f641f549+ed54ea+r7+94+5rg+979ear+97+9we+8w47</div>
+            </div>
+            <div class="listacomentarios-body">e44+65f641f549+ed54ea+r7+94+5rg+979ear+97+9we+8w47+5+9rwehg6htjjhòwefgr</div>
+            <div class="listacomentarios-footer">
+                <span class="listacomentarios-autor">
+                    </span>
+                13/05/2012 20:47:57
+            </div>
+        </div>
+    
+        <div class="listacomentarios-item">
+            <div class="listacomentarios-top">
+                <span class="listacomentarios-counter">#6305</span>
+                <div class="listacomentarios-buttons">
+                    
+                </div>
+                <div class="listacomentarios-titulo">
+                    Consulta</div>
+            </div>
+            <div class="listacomentarios-body">Esto se puede aplicar para una aplicacion en visual studio?
+al procedimiento almacenado que utilizo para dar de alta un campo por ejemplo.. se le puede agregar esta funcion ? gracias.</div>
+            <div class="listacomentarios-footer">
+                <span class="listacomentarios-autor">
+                    Yo</span>
+                03/07/2012 0:58:28
+            </div>
+        </div>
+    
+        <div class="listacomentarios-item">
+            <div class="listacomentarios-top">
+                <span class="listacomentarios-counter">#6927</span>
+                <div class="listacomentarios-buttons">
+                    
+                </div>
+                <div class="listacomentarios-titulo">
+                    Muy bueno Igual que en MYSQL CON ENCRYPTACION AES </div>
+            </div>
+            <div class="listacomentarios-body">Muy bueno Igual que en MYSQL CON ENCRYPTACION AES 
+
+SOLO QUE EL CAMPO SE ESTABLECE COMO VARCHAR(100) 
+
+Y CLARO AY OTRAS FORMAS DE CREAR UN ALGORITMO UNICO Y APLICARLO EN UNA FUNCION PERO DESPUES TODO ESTA OK GRACIAS AMIGO</div>
+            <div class="listacomentarios-footer">
+                <span class="listacomentarios-autor">
+                    Graciass!!!</span>
+                26/07/2013 5:08:07
+            </div>
+        </div>
+    
+        <div class="listacomentarios-item">
+            <div class="listacomentarios-top">
+                <span class="listacomentarios-counter">#6928</span>
+                <div class="listacomentarios-buttons">
+                    
+                </div>
+                <div class="listacomentarios-titulo">
+                    Muy bueno Igual que en MYSQL CON ENCRYPTACION AES </div>
+            </div>
+            <div class="listacomentarios-body">Muy bueno Igual que en MYSQL CON ENCRYPTACION AES 
+
+SOLO QUE EL CAMPO SE ESTABLECE COMO VARCHAR(100) 
+
+Y CLARO AY OTRAS FORMAS DE CREAR UN ALGORITMO UNICO Y APLICARLO EN UNA FUNCION PERO DESPUES TODO ESTA OK GRACIAS AMIGO</div>
+            <div class="listacomentarios-footer">
+                <span class="listacomentarios-autor">
+                    Graciass!!!</span>
+                26/07/2013 5:08:07
+            </div>
+        </div>
+    
+        <div class="listacomentarios-item">
+            <div class="listacomentarios-top">
+                <span class="listacomentarios-counter">#7178</span>
+                <div class="listacomentarios-buttons">
+                    
+                </div>
+                <div class="listacomentarios-titulo">
+                    Gracias</div>
+            </div>
+            <div class="listacomentarios-body">Gracias capo me sirvieron estas funciones para encriptar/desencriptar , un abrazo.</div>
+            <div class="listacomentarios-footer">
+                <span class="listacomentarios-autor">
+                    Cristian</span>
+                15/01/2014 20:22:16
+            </div>
+        </div>
+    
+        </div>
+    
+
+
+    </div></div>
+    </section>
+    <div id="Content_2PlaceHolder_ValidationSummary1" style="display:none;">
+
+</div>
+
+                
+    <div class="fb-like-box fb_iframe_widget" data-href="http://www.facebook.com/pages/devjokercom/188781521219799" data-width="770" data-show-faces="true" data-stream="false" data-header="true" fb-xfbml-state="rendered" fb-iframe-plugin-query="app_id=&amp;header=true&amp;href=http%3A%2F%2Fwww.facebook.com%2Fpages%2Fdevjokercom%2F188781521219799&amp;locale=es_ES&amp;sdk=joey&amp;show_faces=true&amp;stream=false&amp;width=770"><span style="vertical-align: bottom; width: 770px; height: 271px;"><iframe name="f13e4f281c" width="770px" height="1000px" frameborder="0" allowtransparency="true" scrolling="no" title="fb:like_box Facebook Social Plugin" src="./Como encriptar o cifrar cadenas y campos en SQL server 2005 ENCRYPTBYPASSPHRASE y DECRYPTBYPASSPHRASE_files/like_box.htm" class="" style="border: none; visibility: visible; width: 770px; height: 271px;"></iframe></span></div>
+    <section>
+        
+<div class="controlcabecera-container">
+    <div class="controlcabecera-imagen">
+        
+        
+    </div>
+    <div class="controlcabecera-body">
+        <span id="Content_facebook_uccabecera_lblTitulo" class="titulocabecera-label">Últimas consultas realizadas en los foros</span>
+        <br>
+        <span id="Content_facebook_uccabecera_lblTexto" class="textocabecera-label">Últimas preguntas sin contestar en los foros de devjoker.com</span>
+    </div>
+</div>
+        
+
+<div id="lomasnuevo-foros-body">
+    <div class="adsense-container botton">
+        
+<script type="text/javascript"><!--
+google_ad_client = "pub-4941153863616679";
+google_ad_width = 120;
+google_ad_height = 500;
+google_ad_format = "120x600_as";
+google_ad_type = "text_image";
+google_ad_channel ="";
+google_color_border = "000099";
+google_color_bg = "FFFFFF";
+google_color_link = "000099";
+google_color_url = "008000";
+google_color_text = "000000";
+//--></script>
+<script type="text/javascript" src="./Como encriptar o cifrar cadenas y campos en SQL server 2005 ENCRYPTBYPASSPHRASE y DECRYPTBYPASSPHRASE_files/show_ads.js">
+</script><ins style="display:inline-table;border:none;height:500px;margin:0;padding:0;position:relative;visibility:visible;width:120px;background-color:transparent"><ins id="aswift_0_anchor" style="display:block;border:none;height:500px;margin:0;padding:0;position:relative;visibility:visible;width:120px;background-color:transparent"><iframe width="120" height="500" frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}" id="aswift_0" name="aswift_0" style="left:0;position:absolute;top:0;"></iframe></ins></ins>
+
+    </div>
+    <div id="Content_facebook_ucLoMasNuevoForos_posttitleRepeater1_divcontainer">
+    <div class="topdatapager-container">
+        
+    </div>
+    <div class="posttitlerepeater-container">
+        
+                <div class="posttitlerepeater-body-item">
+                    <div class="posttitlerepeater-body-item-fecha">
+                        04/03/2007
+                    </div>
+                    <div class="posttitlerepeater-body-item-contenido">
+                        
+                        <div class="posttitlerepeater-body-item-titulo">
+                            <a id="Content_facebook_ucLoMasNuevoForos_posttitleRepeater1_dlTitleRepeater_lnkContenido_0" class="titulo-novedad" href="http://www.devjoker.com/foros/Foro-C/514/Ejecutar-procedimientos-almacenados-con-C.aspx">Ejecutar procedimientos almacenados con C#</a>
+                        </div>
+                    </div>
+                    <div class="posttitlerepeater-body-item-labels">
+                        <div class="posttitlerepeater-body-item-labels-text">
+                            <div class="imagen-comentario-div">
+                            </div>
+                            <span id="Content_facebook_ucLoMasNuevoForos_posttitleRepeater1_dlTitleRepeater_lblComentarios_0" class="posttitlerepeater-label" style="display:inline-block;width:10px;">8</span>
+                            <span id="Content_facebook_ucLoMasNuevoForos_posttitleRepeater1_dlTitleRepeater_Label3_0" class="posttitlerepeater-label"></span>
+                            <div>
+                                <div class="imagen-visitas-div">
+                                </div>
+                                <span id="Content_facebook_ucLoMasNuevoForos_posttitleRepeater1_dlTitleRepeater_lblVisitas_0" style="display:inline-block;width:40px;">14535</span></div>
+                            <div id="Content_facebook_ucLoMasNuevoForos_posttitleRepeater1_dlTitleRepeater_RatingDiv_0" class="rating0"></div>
+                    
+                        </div>
+                        <div class="posttitlerepeater-body-item-labels-box">
+                            
+                                    <a id="Content_facebook_ucLoMasNuevoForos_posttitleRepeater1_dlTitleRepeater_lstViewCategorias_0_lnkElementos_0" href="http://www.devjoker.com/foros.aspx?coForo=3">C#</a>
+                                
+                        </div>                        
+                        <div class="posttitlerepeater-body-item-labels-box">
+                            
+                        </div>                        
+                    </div>
+                </div>
+            
+                <div class="posttitlerepeater-body-item">
+                    <div class="posttitlerepeater-body-item-fecha">
+                        01/03/2010
+                    </div>
+                    <div class="posttitlerepeater-body-item-contenido">
+                        
+                        <div class="posttitlerepeater-body-item-titulo">
+                            <a id="Content_facebook_ucLoMasNuevoForos_posttitleRepeater1_dlTitleRepeater_lnkContenido_1" class="titulo-novedad" href="http://www.devjoker.com/foros/Temas-de-actualidad-/3849/Solicitud-certificado-de-semanas-cotizadas-.aspx">Solicitud certificado de semanas cotizadas </a>
+                        </div>
+                    </div>
+                    <div class="posttitlerepeater-body-item-labels">
+                        <div class="posttitlerepeater-body-item-labels-text">
+                            <div class="imagen-comentario-div">
+                            </div>
+                            <span id="Content_facebook_ucLoMasNuevoForos_posttitleRepeater1_dlTitleRepeater_lblComentarios_1" class="posttitlerepeater-label" style="display:inline-block;width:10px;">183</span>
+                            <span id="Content_facebook_ucLoMasNuevoForos_posttitleRepeater1_dlTitleRepeater_Label3_1" class="posttitlerepeater-label"></span>
+                            <div>
+                                <div class="imagen-visitas-div">
+                                </div>
+                                <span id="Content_facebook_ucLoMasNuevoForos_posttitleRepeater1_dlTitleRepeater_lblVisitas_1" style="display:inline-block;width:40px;">3416</span></div>
+                            <div id="Content_facebook_ucLoMasNuevoForos_posttitleRepeater1_dlTitleRepeater_RatingDiv_1" class="rating0"></div>
+                    
+                        </div>
+                        <div class="posttitlerepeater-body-item-labels-box">
+                            
+                                    <a id="Content_facebook_ucLoMasNuevoForos_posttitleRepeater1_dlTitleRepeater_lstViewCategorias_1_lnkElementos_0" href="http://www.devjoker.com/foros.aspx?coForo=24">Actualidad</a>
+                                
+                        </div>                        
+                        <div class="posttitlerepeater-body-item-labels-box">
+                            
+                        </div>                        
+                    </div>
+                </div>
+            
+                <div class="posttitlerepeater-body-item">
+                    <div class="posttitlerepeater-body-item-fecha">
+                        15/11/2008
+                    </div>
+                    <div class="posttitlerepeater-body-item-contenido">
+                        
+                        <div class="posttitlerepeater-body-item-titulo">
+                            <a id="Content_facebook_ucLoMasNuevoForos_posttitleRepeater1_dlTitleRepeater_lnkContenido_2" class="titulo-novedad" href="http://www.devjoker.com/foros/Foro-Access/2281/Cargar-un-Formulario-sin-abrir-la-base-de-datos-en-Access-2007.aspx">Cargar un Formulario sin abrir la base de datos en Access 2007</a>
+                        </div>
+                    </div>
+                    <div class="posttitlerepeater-body-item-labels">
+                        <div class="posttitlerepeater-body-item-labels-text">
+                            <div class="imagen-comentario-div">
+                            </div>
+                            <span id="Content_facebook_ucLoMasNuevoForos_posttitleRepeater1_dlTitleRepeater_lblComentarios_2" class="posttitlerepeater-label" style="display:inline-block;width:10px;">3</span>
+                            <span id="Content_facebook_ucLoMasNuevoForos_posttitleRepeater1_dlTitleRepeater_Label3_2" class="posttitlerepeater-label"></span>
+                            <div>
+                                <div class="imagen-visitas-div">
+                                </div>
+                                <span id="Content_facebook_ucLoMasNuevoForos_posttitleRepeater1_dlTitleRepeater_lblVisitas_2" style="display:inline-block;width:40px;">2796</span></div>
+                            <div id="Content_facebook_ucLoMasNuevoForos_posttitleRepeater1_dlTitleRepeater_RatingDiv_2" class="rating0"></div>
+                    
+                        </div>
+                        <div class="posttitlerepeater-body-item-labels-box">
+                            
+                                    <a id="Content_facebook_ucLoMasNuevoForos_posttitleRepeater1_dlTitleRepeater_lstViewCategorias_2_lnkElementos_0" href="http://www.devjoker.com/foros.aspx?coForo=7">Access</a>
+                                
+                        </div>                        
+                        <div class="posttitlerepeater-body-item-labels-box">
+                            
+                        </div>                        
+                    </div>
+                </div>
+            
+                <div class="posttitlerepeater-body-item">
+                    <div class="posttitlerepeater-body-item-fecha">
+                        26/03/2010
+                    </div>
+                    <div class="posttitlerepeater-body-item-contenido">
+                        
+                        <div class="posttitlerepeater-body-item-titulo">
+                            <a id="Content_facebook_ucLoMasNuevoForos_posttitleRepeater1_dlTitleRepeater_lnkContenido_3" class="titulo-novedad" href="http://www.devjoker.com/foros/Temas-de-actualidad-/4074/certificado-porvenir.aspx">certificado porvenir</a>
+                        </div>
+                    </div>
+                    <div class="posttitlerepeater-body-item-labels">
+                        <div class="posttitlerepeater-body-item-labels-text">
+                            <div class="imagen-comentario-div">
+                            </div>
+                            <span id="Content_facebook_ucLoMasNuevoForos_posttitleRepeater1_dlTitleRepeater_lblComentarios_3" class="posttitlerepeater-label" style="display:inline-block;width:10px;">298</span>
+                            <span id="Content_facebook_ucLoMasNuevoForos_posttitleRepeater1_dlTitleRepeater_Label3_3" class="posttitlerepeater-label"></span>
+                            <div>
+                                <div class="imagen-visitas-div">
+                                </div>
+                                <span id="Content_facebook_ucLoMasNuevoForos_posttitleRepeater1_dlTitleRepeater_lblVisitas_3" style="display:inline-block;width:40px;">5955</span></div>
+                            <div id="Content_facebook_ucLoMasNuevoForos_posttitleRepeater1_dlTitleRepeater_RatingDiv_3" class="rating0"></div>
+                    
+                        </div>
+                        <div class="posttitlerepeater-body-item-labels-box">
+                            
+                                    <a id="Content_facebook_ucLoMasNuevoForos_posttitleRepeater1_dlTitleRepeater_lstViewCategorias_3_lnkElementos_0" href="http://www.devjoker.com/foros.aspx?coForo=24">Actualidad</a>
+                                
+                        </div>                        
+                        <div class="posttitlerepeater-body-item-labels-box">
+                            
+                        </div>                        
+                    </div>
+                </div>
+            
+                <div class="posttitlerepeater-body-item">
+                    <div class="posttitlerepeater-body-item-fecha">
+                        14/01/2009
+                    </div>
+                    <div class="posttitlerepeater-body-item-contenido">
+                        
+                        <div class="posttitlerepeater-body-item-titulo">
+                            <a id="Content_facebook_ucLoMasNuevoForos_posttitleRepeater1_dlTitleRepeater_lnkContenido_4" class="titulo-novedad" href="http://www.devjoker.com/foros/Foro-Visual-Basic-NET/2431/necesito-guardar-dato-decimal-en-mysql-con-aplicacion-de-vbnet.aspx">necesito guardar dato decimal en mysql con aplicacion de vb.net</a>
+                        </div>
+                    </div>
+                    <div class="posttitlerepeater-body-item-labels">
+                        <div class="posttitlerepeater-body-item-labels-text">
+                            <div class="imagen-comentario-div">
+                            </div>
+                            <span id="Content_facebook_ucLoMasNuevoForos_posttitleRepeater1_dlTitleRepeater_lblComentarios_4" class="posttitlerepeater-label" style="display:inline-block;width:10px;">5</span>
+                            <span id="Content_facebook_ucLoMasNuevoForos_posttitleRepeater1_dlTitleRepeater_Label3_4" class="posttitlerepeater-label"></span>
+                            <div>
+                                <div class="imagen-visitas-div">
+                                </div>
+                                <span id="Content_facebook_ucLoMasNuevoForos_posttitleRepeater1_dlTitleRepeater_lblVisitas_4" style="display:inline-block;width:40px;">2549</span></div>
+                            <div id="Content_facebook_ucLoMasNuevoForos_posttitleRepeater1_dlTitleRepeater_RatingDiv_4" class="rating0"></div>
+                    
+                        </div>
+                        <div class="posttitlerepeater-body-item-labels-box">
+                            
+                                    <a id="Content_facebook_ucLoMasNuevoForos_posttitleRepeater1_dlTitleRepeater_lstViewCategorias_4_lnkElementos_0" href="http://www.devjoker.com/foros.aspx?coForo=4">Visual Basic .NET</a>
+                                
+                        </div>                        
+                        <div class="posttitlerepeater-body-item-labels-box">
+                            
+                        </div>                        
+                    </div>
+                </div>
+            
+    </div>    
+    <div class="bottomdatapager-container">
+        
+    </div>
+</div> 
+</div>
+
+    </section>
+
+                <div id="tagCloudCanvasContainer">
+                    <canvas width="800" height="120" id="tagCloudCanvas">
+                    </canvas>
+                </div>
+                <nav id="tagsList" style="display: none;">
+                    <ul>
+                        <li><a href="http://www.devjoker.com/ele/programacion/6/AspNET.aspx">ASP.NET</a></li>
+                        <li><a href="http://www.devjoker.com/gru/TutorialCSharp/TUCS/C.aspx">C#</a></li>
+                        <li><a href="http://www.devjoker.com/ele/programacion/64/WCF.aspx">WCF</a></li>
+                        <li><a href="http://www.devjoker.com/gru/tutorial-PL-SQL/PLSQ/Tutorial-PL-SQL.aspx">PL/SQL</a></li>
+                        <li><a href="http://www.devjoker.com/gru/Tutorial-Transact-SQL/TSQL/Tutorial-Transact-SQL.aspx">Transact SQL</a></li>
+                        <li><a href="http://www.devjoker.com/gru/Tutorial-Transact-SQL/TSQL/Tutorial-Transact-SQL.aspx">SQL</a></li>
+                        <li><a href="http://www.devjoker.com/ele/programacion/4/VisualBasicNET.aspx">Visual Basic .NET</a></li>
+                        <li><a href="http://www.devjoker.com/ele/programacion/43/ADO_NET.aspx">ADO.NET</a></li>
+                        <li><a href="http://www.devjoker.com/ele/programacion/61/LinQ.aspx">LINQ</a></li>
+                        <li><a href="http://www.devjoker.com/ele/programacion/65/TFS.aspx">TFS</a></li>
+                        <li><a href="http://www.devjoker.com/ele/programacion/27/ASP.aspx">ASP</a></li>
+                        <li><a href="http://www.devjoker.com/ele/programacion/63/Visual_Studio.aspx">Visual Studio</a></li>
+                        <li><a href="http://www.devjoker.com/ele/programacion/17/CSS.aspx">CSS</a></li>
+                        <li><a href="http://www.devjoker.com/gru/Tutorial-RSS/TRSS/Tutorial-RSS.aspx">RSS</a></li>
+                        <li><a href="http://www.devjoker.com/foros.aspx">Foros</a></li>
+                        <li><a href="http://www.devjoker.com/ele/programacion/46/Windows_9x_2000.aspx">Windows</a></li>
+                        <li><a href="http://www.devjoker.com/ele/programacion/48/Linux.aspx">Linux</a></li>
+                        <li><a href="http://www.devjoker.com/ele/programacion/49/BSD.aspx">BSD</a></li>
+                        <li><a href="http://www.devjoker.com/ele/programacion/53/PL-SQL.aspx">ORACLE</a></li>
+                        <li><a href="http://www.devjoker.com/ele/programacion/9/Transact-SQL.aspx">SQL Server</a></li>
+                        <li><a href="http://www.devjoker.com/ele/programacion/3/Java.aspx">Java</a></li>
+                        <li><a href="http://www.devjoker.com/ele/programacion/43/ADO_NET.aspx">Entity Framework</a></li>
+                    </ul>
+                </nav>
+            </section>            
+            <aside id="content_3">                
+                
+    <div id="Content_3_menu_PlaceHolder_menucontexto"></div>
+
+                <table id="menuLateal1_DataListMenuElementos" cellspacing="0" style="border-collapse:collapse;">
+	<tbody><tr>
+		<td>    
+       <div id="menuLateal1_DataListMenuElementos_MenuElementosItem_0_divHead_0" class="menu-lateral-head titulo-menu">.NET</div>
+<nav class="menu-lateral-body">
+    <ul>
+        
+                <li><a href="http://www.devjoker.com/contenidos/programacion/25/Introduccion-a-NET.aspx">
+                    Introducción a.NET</a></li>
+            
+                <li><a href="http://www.devjoker.com/gru/Conceptos-generales-NET/INET/Conceptos-generales-NET.aspx">
+                    Conceptos generales .NET</a></li>
+            
+                <li><a href="http://www.devjoker.com/ele/programacion/5/CSharp.aspx">
+                    C#</a></li>
+            
+                <li><a href="http://www.devjoker.com/gru/TutorialCSharp/TUCS/C.aspx">
+                    Tutorial C#</a></li>
+            
+                <li><a href="http://www.devjoker.com/ele/programacion/6/AspNET.aspx">
+                    ASP.NET</a></li>
+            
+                <li><a href="http://www.devjoker.com/ele/programacion/43/ADO_NET.aspx">
+                    ADO.NET</a></li>
+            
+                <li><a href="http://www.devjoker.com/ele/programacion/61/LinQ.aspx">
+                    LinQ</a></li>
+            
+                <li><a href="http://www.devjoker.com/ele/programacion/64/WCF.aspx">
+                    WCF</a></li>
+            
+    </ul>
+</nav>
+<div class="menu-lateral-foot">
+</div>
+       
+    </td>
+	</tr><tr>
+		<td>    
+       <div id="menuLateal1_DataListMenuElementos_MenuElementosItem_1_divHead_1" class="menu-lateral-head titulo-menu">SQL</div>
+<nav class="menu-lateral-body">
+    <ul>
+        
+                <li><a href="http://www.devjoker.com/gru/Tutorial-SQL/CSQL/TutorialSQL.aspx">
+                    Tutorial SQL</a></li>
+            
+    </ul>
+</nav>
+<div class="menu-lateral-foot">
+</div>
+       
+    </td>
+	</tr><tr>
+		<td>    
+       <div id="menuLateal1_DataListMenuElementos_MenuElementosItem_2_divHead_2" class="menu-lateral-head titulo-menu">SQL Server</div>
+<nav class="menu-lateral-body">
+    <ul>
+        
+                <li><a href="http://www.devjoker.com/ele/programacion/9/Transact-SQL.aspx">
+                    Transact-SQL</a></li>
+            
+                <li><a href="http://www.devjoker.com/gru/Tutorial-Transact-SQL/TSQL/Tutorial-Transact-SQL.aspx">
+                    Tutorial de Transact-SQL</a></li>
+            
+    </ul>
+</nav>
+<div class="menu-lateral-foot">
+</div>
+       
+    </td>
+	</tr><tr>
+		<td>    
+       <div id="menuLateal1_DataListMenuElementos_MenuElementosItem_3_divHead_3" class="menu-lateral-head titulo-menu">ORACLE</div>
+<nav class="menu-lateral-body">
+    <ul>
+        
+                <li><a href="http://www.devjoker.com/gru/tutorial-PL-SQL/PLSQ/Tutorial-PL-SQL.aspx">
+                    Tutorial PL/SQL</a></li>
+            
+                <li><a href="http://www.devjoker.com/ele/programacion/53/PL-SQL.aspx">
+                    PL/SQL</a></li>
+            
+    </ul>
+</nav>
+<div class="menu-lateral-foot">
+</div>
+       
+    </td>
+	</tr><tr>
+		<td>    
+       <div id="menuLateal1_DataListMenuElementos_MenuElementosItem_4_divHead_4" class="menu-lateral-head titulo-menu">Reina Roja</div>
+<nav class="menu-lateral-body">
+    <ul>
+        
+                <li><a href="http://www.devjoker.com/ele/programacion/57/Humor.aspx">
+                    Humor</a></li>
+            
+                <li><a href="http://www.devjoker.com/contenidos/bibliografia/24/bibliografia.aspx">
+                    Bibliografia</a></li>
+            
+                <li><a href="http://www.devjoker.com/mapaweb.aspx">
+                    Mapa devjoker.com</a></li>
+            
+                <li><a href="http://www.devjoker.com/contenidos/acercade/23/acercade.aspx">
+                    Acerca de ...</a></li>
+            
+                <li><a href="http://www.devjoker.com/comentarios.aspx">
+                    Comentarios</a></li>
+            
+    </ul>
+</nav>
+<div class="menu-lateral-foot">
+</div>
+       
+    </td>
+	</tr>
+</tbody></table>
+
+<div class="banner-lateral-container">
+    <div class="banner-lateral">
+        <a href="http://www.radarc.net/" target="_blank">
+            <img src="./Como encriptar o cifrar cadenas y campos en SQL server 2005 ENCRYPTBYPASSPHRASE y DECRYPTBYPASSPHRASE_files/Radarc.png" alt="Radarc">
+        </a>
+    </div>
+    <div class="banner-lateral">
+        <a href="http://www.aldeamedia.com/" target="_blank">
+            <img src="./Como encriptar o cifrar cadenas y campos en SQL server 2005 ENCRYPTBYPASSPHRASE y DECRYPTBYPASSPHRASE_files/aldeamedia.jpg" id="menuLateal1_BannerEnlacesLateralIzq1_img1" alt="aldeamedia"></a>
+    </div>
+    <div class="banner-lateral">
+        <a href="http://www.geeks.ms/" target="_blank">
+            <img src="./Como encriptar o cifrar cadenas y campos en SQL server 2005 ENCRYPTBYPASSPHRASE y DECRYPTBYPASSPHRASE_files/geeks.gif" id="menuLateal1_BannerEnlacesLateralIzq1_img2" alt="geeks.ms"></a>
+    </div>
+    <div class="banner-lateral">
+        <a href="http://www.mobilenug.com/default.aspx" target="_blank">
+            <img src="./Como encriptar o cifrar cadenas y campos en SQL server 2005 ENCRYPTBYPASSPHRASE y DECRYPTBYPASSPHRASE_files/Mnug.jpg" id="menuLateal1_BannerEnlacesLateralIzq1_img3" alt="www.mobilenug.com"></a></div>
+    <div class="banner-lateral">
+        <a href="http://www.onglasses.net/" target="_blank">
+            <img src="./Como encriptar o cifrar cadenas y campos en SQL server 2005 ENCRYPTBYPASSPHRASE y DECRYPTBYPASSPHRASE_files/LOGO4_Onglases.jpg" id="menuLateal1_BannerEnlacesLateralIzq1_img4" alt="www.onglasses.net"></a></div>
+    <div class="banner-lateral">
+        <a href="http://www.clikear.com/" target="_blank">
+            <img src="./Como encriptar o cifrar cadenas y campos en SQL server 2005 ENCRYPTBYPASSPHRASE y DECRYPTBYPASSPHRASE_files/logoClikear.jpg" id="menuLateal1_BannerEnlacesLateralIzq1_img5" alt="www.clikear.com"></a></div>
+    <div class="banner-lateral">
+        <a href="http://www.lawebdelprogramador.com/" target="_blank">
+            <img src="./Como encriptar o cifrar cadenas y campos en SQL server 2005 ENCRYPTBYPASSPHRASE y DECRYPTBYPASSPHRASE_files/lwplogo.gif" id="menuLateal1_BannerEnlacesLateralIzq1_img6" alt="www.lawebdelprogramador.com"></a></div>
+    <div class="banner-lateral">
+        <a href="http://www.mundoprogramacion.com/default.aspx" target="_blank">
+            <img src="./Como encriptar o cifrar cadenas y campos en SQL server 2005 ENCRYPTBYPASSPHRASE y DECRYPTBYPASSPHRASE_files/el_guille_logo.gif" id="menuLateal1_BannerEnlacesLateralIzq1_img7" alt="http://www.mundoprogramacion.com/default.aspx"></a></div>
+    <div>
+        <img src="./Como encriptar o cifrar cadenas y campos en SQL server 2005 ENCRYPTBYPASSPHRASE y DECRYPTBYPASSPHRASE_files/PoweredByAsp.GIF" id="menuLateal1_BannerEnlacesLateralIzq1_img8" alt="ASP.Net Logo"></div>
+</div>
+
+
+                
+<div class="banner-lateral-container">
+    <div>
+        <a href="http://www.prchecker.info/" target="_blank">
+            <img src="./Como encriptar o cifrar cadenas y campos en SQL server 2005 ENCRYPTBYPASSPHRASE y DECRYPTBYPASSPHRASE_files/getpr.php" alt="Free PageRank Checker" border="0"></a>
+    </div>
+    
+</div>
+
+<div class="banner-lateral-container">
+    
+<script type="text/javascript"><!--
+google_ad_client = "pub-4941153863616679";
+google_ad_width = 120;
+google_ad_height = 600;
+google_ad_format = "120x600_as";
+google_ad_type = "text_image";
+google_ad_channel ="";
+google_color_border = "000099";
+google_color_bg = "FFFFFF";
+google_color_link = "000099";
+google_color_url = "008000";
+google_color_text = "000000";
+//--></script>
+<script type="text/javascript" src="./Como encriptar o cifrar cadenas y campos en SQL server 2005 ENCRYPTBYPASSPHRASE y DECRYPTBYPASSPHRASE_files/show_ads.js">
+</script><ins style="display:inline-table;border:none;height:600px;margin:0;padding:0;position:relative;visibility:visible;width:120px;background-color:transparent"><ins id="aswift_1_anchor" style="display:block;border:none;height:600px;margin:0;padding:0;position:relative;visibility:visible;width:120px;background-color:transparent"><iframe width="120" height="600" frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}" id="aswift_1" name="aswift_1" style="left:0;position:absolute;top:0;"></iframe></ins></ins>
+
+</div>
+
+            </aside>
+        </div>
+        <footer id="footer">
+            <div id="footerin">
+                <a id="aHomeLink" class="homelink footerlink" href="http://www.devjoker.com/">www.devjoker.com</a>|
+                <a id="aFacebookLink" class="fblink footerlink" href="http://www.facebook.com/pages/devjokercom/188781521219799" target="_blank">Siguenos en facebook!</a>|
+                <a href="http://www.devjoker.com/contenidos/acercade/23/acercade.aspx" id="A1">Acerca de ...</a>|
+                <a href="http://www.infolancer.net/freelance/Devjokercom/008mgflrqqip4464qs8" id="aContrataLink" class="contratacionlink footerlink">Contratación</a>|
+                <a href="http://www.devjoker.com/contenidos/Articulos/82/mapaweb.aspx">Mapa del site</a>
+            </div>
+        </footer>
+        
+<script type="text/javascript">
+//<![CDATA[
+var Page_ValidationSummaries =  new Array(document.getElementById("Content_2PlaceHolder_ValidationSummary1"));
+//]]>
+</script>
+
+<script type="text/javascript">
+//<![CDATA[
+var Content_2PlaceHolder_ValidationSummary1 = document.all ? document.all["Content_2PlaceHolder_ValidationSummary1"] : document.getElementById("Content_2PlaceHolder_ValidationSummary1");
+Content_2PlaceHolder_ValidationSummary1.showmessagebox = "True";
+Content_2PlaceHolder_ValidationSummary1.showsummary = "False";
+//]]>
+</script>
+</form>
+    </div>
+
+
+</body></html>

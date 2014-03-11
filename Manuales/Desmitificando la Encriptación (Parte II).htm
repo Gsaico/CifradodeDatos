@@ -1,0 +1,1301 @@
+<!DOCTYPE html>
+<!-- saved from url=(0053)http://msdn.microsoft.com/es-es/library/bb972217.aspx -->
+<html dir="ltr" xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta name="WT.seg_1" content="es-es"><link rel="canonical" href="./Desmitificando la Encriptación (Parte II)_files/Desmitificando la Encriptación (Parte II).htm">
+        <title>Desmitificando la Encriptación (Parte II)</title>
+
+
+
+
+<meta name="DCS.dcsuri" content="/es-es/library/bb972217(d=default,l=es-es,v=msdn.10).aspx">
+
+<meta name="NormalizedUrl" content="http://msdn.microsoft.com/es-es/library/bb972217(d=default,l=es-es,v=msdn.10).aspx">
+
+<meta name="ms.normalizedurl" content="http://msdn.microsoft.com/es-es/library/bb972217(d=default,l=es-es,v=msdn.10).aspx">
+
+<meta name="VotingContextUrl" content="http://msdn.microsoft.com/es-es/library/bb972217(d=default,l=es-es,v=msdn.10).aspx">
+
+<meta name="MN" content="4B9B1F31-10:38:11 PM">
+
+<meta name="Search.ShortId" content="bb972217">
+
+<meta name="ms.shortidmsdn" content="bb972217">
+
+<meta name="Ms.Locale" content="es-es">
+
+
+
+
+
+
+
+        
+    <link rel="stylesheet" type="text/css" href="./Desmitificando la Encriptación (Parte II)_files/Combined.css"><script type="text/javascript" async="" src="./Desmitificando la Encriptación (Parte II)_files/ms2.js"></script><script type="text/javascript" src="./Desmitificando la Encriptación (Parte II)_files/da.js" async=""></script><script class="mtps-injected">try {
+/**/
+(window.MTPS || (window.MTPS = {})).cdnDomains || (window.MTPS.cdnDomains = { 
+	"image": "http://i.msdn.microsoft.com", 
+	"js": "http://i2.msdn.microsoft.com", 
+	"css": "http://i3.msdn.microsoft.com"
+});
+/**/
+} finally { MTPS._injectNextScript_0 && MTPS._injectNextScript_0(); }</script><script class="mtps-injected" src="./Desmitificando la Encriptación (Parte II)_files/jquery-1.8.2.min.js"></script><script class="mtps-injected">try {
+//
+    window.appInsightsId = '3760cd7b-6401-4f33-bfd9-226063ffa136';
+    //
+} finally { MTPS._injectNextScript_2 && MTPS._injectNextScript_2(); }</script><script class="mtps-injected">try {
+//
+  var literalNormalizedUrl = '/es-es/library/bb972217(d=default,l=es-es,v=msdn.10).aspx';
+  var wt_nvr_ru = 'WT_NVR_RU';
+  var wt_fpcdom = '.microsoft.com';
+  var wt_domlist = 'msdn.microsoft.com';
+  var wt_pathlist = '';
+  var wt_paramlist = 'DCSext.mtps_devcenter';
+  var wt_siteid = 'MSDN';
+  var gDomain = 'm.webtrends.com';
+  var gDcsId = 'dcsmgru7m99k7mqmgrhudo0k8_8c6m';
+  var gFpc = 'WT_FPC';
+
+
+
+  if (document.cookie.indexOf(gFpc + "=") == -1) {
+    var wtidJs = document.createElement("script");
+    wtidJs.src = "//" + gDomain + "/" + gDcsId + "/wtid.js";
+    document.getElementsByTagName("head")[0].appendChild(wtidJs);
+  }
+
+
+
+  var detectedLocale = 'es-es';
+  var wtsp = 'msdnlib_techart';
+  var gTrackEvents = '0';
+/**/
+} finally { MTPS._injectNextScript_3 && MTPS._injectNextScript_3(); }</script><script class="mtps-injected">try {
+/**/
+  var omni_guid = "b8b49f98-04ce-438a-aea3-6be279074cbf";
+/**/
+} finally { MTPS._injectNextScript_4 && MTPS._injectNextScript_4(); }</script><script class="mtps-injected" src="./Desmitificando la Encriptación (Parte II)_files/Combined.js"></script><script class="mtps-injected" src="./Desmitificando la Encriptación (Parte II)_files/SearchBox.jss"></script><script class="mtps-injected" src="./Desmitificando la Encriptación (Parte II)_files/Combined(1).js"></script><script src="./Desmitificando la Encriptación (Parte II)_files/broker.js"></script><script class="mtps-injected">try {
+$(document).ready(function() {
+        try {
+            var token = $("#globalRequestVerification input[name='__RequestVerificationToken']").clone();
+            $("#siteFeedbackForm").append(token);
+        } catch(err) {
+            
+        }
+    });
+} finally { MTPS._injectNextScript_8 && MTPS._injectNextScript_8(); }</script><link href="./Desmitificando la Encriptación (Parte II)_files/PrintView.css" rel="stylesheet" type="text/css" media="print"></head>
+    <body class="library">
+        <div id="page">
+            
+            
+  
+            
+        <input type="hidden" id="isHeaderBleeding" value="true">
+    <div id="ux-header" dir="ltr" class="ltr">
+        
+    
+    <div id="ux-banner" style="display: block;">
+        <div class="banner">
+            <div class="row">
+                <div class="left">Al usar este sitio acepta el uso de cookies para análisis, contenido personalizado y publicidad.</div>
+                <div class="middle"><a tabindex="1" href="http://www.microsoft.com/privacystatement/es-es/core/default.aspx">Saber más</a></div>
+                <div class="right"><a tabindex="1" title="Cerrar"></a></div>
+            </div>
+        </div>
+    </div>
+    
+    
+
+        <header>
+            <div class="row">
+                <div class="top mobile"></div>
+                <div class="left">
+                    <div data-fragmentname="SiteLogo" id="Fragment_SiteLogo" xmlns="http://www.w3.org/1999/xhtml">
+  <a href="http://msdn.microsoft.com/" id="27762_1" xmlns="http://www.w3.org/1999/xhtml">Developer Network</a>
+</div>     
+                    <div id="grip"></div>  
+                </div>
+                
+                <div class="right desktop">
+                    <div class="auxNav">
+                        <div data-fragmentname="Subscriptions" id="Fragment_Subscriptions" xmlns="http://www.w3.org/1999/xhtml">
+  <a href="http://msdn.microsoft.com/dn369243" id="27762_5" xmlns="http://www.w3.org/1999/xhtml">Suscripciones a MSDN</a>
+</div>   
+                        <div data-fragmentname="GetTools" id="Fragment_GetTools" xmlns="http://www.w3.org/1999/xhtml">
+  <a href="http://msdn.microsoft.com/dn369242" id="27762_3" xmlns="http://www.w3.org/1999/xhtml">Obtener herramientas</a>
+</div>   
+                        
+
+    <div class="signIn"><a class="scarabLink" href="https://login.live.com/login.srf?wa=wsignin1.0&rpsnv=12&ct=1394516291&rver=6.0.5276.0&wp=MCLBI&wlcxt=MSDN%24MSDN%24MSDN&wreply=http%3a%2f%2fmsdn.microsoft.com%2fes-es%2flibrary%2fbb972217.aspx&lc=3082&id=254354&mkt=es-ES" title=" Iniciar sesión  "> Iniciar sesión  </a></div>
+
+                    </div>
+                    <div data-fragmentname="SearchBox" id="Fragment_SearchBox" xmlns="http://www.w3.org/1999/xhtml">
+  
+  <div class="SearchBox">
+    <form id="HeaderSearchForm" name="HeaderSearchForm" method="get" onsubmit="return Epx.Controls.SearchBox.searchBoxOnSubmit(this);">
+      <input id="HeaderSearchTextBox" name="query" type="text" maxlength="200" onfocus="Epx.Controls.SearchBox.watermarkFocus()" onblur="Epx.Controls.SearchBox.watermarkBlur()" autocomplete="off">
+      <button id="HeaderSearchButton" value="" type="submit" class="header-search-button" title=""></button>
+    <div id="SearchFlyoutContainer" style="display: none; text-align: left; border: 1px solid buttonshadow; position: absolute; z-index: 1000; padding: 2px; background-color: rgb(255, 255, 255); color: rgb(255, 255, 255); font-family: &#39;Segoe UI&#39;, Tahoma, Helvetica, sans-serif; font-size: 13px;"><div id="SuggestionContainer"><ul style="list-style: none; padding: 4px 2px 0px 1px; cursor: pointer; margin: 1px; white-space: nowrap;"></ul></div></div></form>
+    
+  </div>
+</div> 
+                </div>
+            </div>
+       
+            <div class="row" id="droor">
+                <div class="left">
+                            <nav>
+            <ul>
+                     <li class="inactive">
+
+                         <a href="http://msdn.microsoft.com/dn308572" title="Página principal">Página principal</a>
+
+                     </li>
+                     <li class="inactive">
+
+                         <a href="http://msdn.microsoft.com/dn271881" title="Oportunidad">Oportunidad</a>
+                                 <div class="area">
+                                     <div class="arrow"></div>
+                                 </div>
+                                 <div class="subNav">
+                                     <ul>
+                                                 <li><a href="http://msdn.microsoft.com/dn469160" title="Escritorio">Escritorio</a></li>
+                                                 <li><a href="http://msdn.microsoft.com/dn338451" title="iOS">iOS</a></li>
+                                                 <li><a href="http://msdn.microsoft.com/dn338440" title="Android">Android</a></li>
+                                                 <li><a href="http://msdn.microsoft.com/dn338449" title="Web">Web</a></li>
+                                                 <li><a href="http://msdn.microsoft.com/dn338450" title=".NET">.NET</a></li>
+                                                 <li><a href="http://msdn.microsoft.com/dn338447" title="Diseño">Diseño</a></li>
+                                                 <li><a href="http://msdn.microsoft.com/dn338446" title="Juegos">Juegos</a></li>
+                                                 <li><a href="http://msdn.microsoft.com/dn308583" title="Tabletas y PC">Tabletas y PC</a></li>
+                                                 <li><a href="http://msdn.microsoft.com/dn338268" title="Teléfono">Teléfono</a></li>
+                                                 <li><a href="http://msdn.microsoft.com/dn338159" title="Nube">Nube</a></li>
+                                     </ul>
+                                 </div>
+
+                     </li>
+                     <li class="inactive">
+
+                         <a href="http://msdn.microsoft.com/dn271880" title="Plataforma">Plataforma</a>
+
+                     </li>
+                     <li class="inactive">
+
+                         <a href="http://msdn.microsoft.com/dn338064" title="Conecta">Conecta</a>
+                                 <div class="area">
+                                     <div class="arrow"></div>
+                                 </div>
+                                 <div class="subNav">
+                                     <ul>
+                                                 <li><a href="http://tech-advisors.msdn.microsoft.com/es-es/" title="Tech Advisors">Tech Advisors</a></li>
+                                                 <li><a href="http://events.msdn.microsoft.com/es-es" title="Eventos">Eventos</a></li>
+                                                 <li><a href="http://social.msdn.microsoft.com/forums/" title="Foros">Foros</a></li>
+                                     </ul>
+                                 </div>
+
+                     </li>
+                     <li class="inactive">
+
+                         <a href="http://msdn.microsoft.com/dn292944" title="Descargas">Descargas</a>
+                                 <div class="area">
+                                     <div class="arrow"></div>
+                                 </div>
+                                 <div class="subNav">
+                                     <ul>
+                                                 <li><a href="http://msdn.microsoft.com/dn369242" title="Herramientas para desarrolladores">Herramientas para desarrolladores</a></li>
+                                                 <li><a href="http://msdn.microsoft.com/dn369240" title="Kits de desarrollo de software">Kits de desarrollo de software</a></li>
+                                                 <li><a href="http://msdn.microsoft.com/dn369243" title="Suscripciones a MSDN">Suscripciones a MSDN</a></li>
+                                     </ul>
+                                 </div>
+
+                     </li>
+                     <li class="active current">
+
+                         <a href="http://msdn.microsoft.com/library" title="Biblioteca">Biblioteca</a>
+
+                     </li>
+                     <li class="inactive">
+
+                         <a href="http://code.msdn.microsoft.com/" title="Ejemplos">Ejemplos</a>
+
+                     </li>
+            </ul>
+          
+        </nav>        
+       
+                </div>
+                <div class="right mobile"></div>
+                <div class="right">
+                    <div data-fragmentname="SocialLinks" id="Fragment_SocialLinks" xmlns="http://www.w3.org/1999/xhtml">
+  
+  <div class="LinkList">
+    <div class="LinkListTitle">Únete a nosotros</div>
+    <div class="Links">
+      <ul class="LinkColumn horizontal">
+        <li>
+          <a href="http://www.facebook.com/microsoftdeveloper" target="_blank" id="SocialLinks_430_7" class="facebook" xmlns="http://www.w3.org/1999/xhtml">http://www.facebook.com/microsoftdeveloper</a>
+        </li>
+        <li>
+          <a href="https://twitter.com/msdev_es" target="_blank" id="SocialLinks_430_8" class="twitter" xmlns="http://www.w3.org/1999/xhtml">https://twitter.com/msdev_es</a>
+        </li>
+        <li>
+          <a href="http://plus.google.com/111221966647232053570/" target="_blank" id="SocialLinks_430_9" class="googlePlus" xmlns="http://www.w3.org/1999/xhtml">http://plus.google.com/111221966647232053570/</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div> 
+                </div>
+                <span id="singleCol"></span>
+                <span id="doubleCol"></span>
+            </div>
+        </header>
+    </div>
+    
+    
+
+        
+    <div class="printExportMenus ltr">
+        <a id="isd_printABook" href="http://msdn.microsoft.com/es-es/library/export/help/?returnUrl=%2fes-es%2flibrary%2fbb972217.aspx" style="display: inline;">
+            Exportar (<span class="count">0</span>)
+        </a>
+        <a id="isd_print" href="http://msdn.microsoft.com/es-es/library/bb972217(d=printer).aspx" rel="nofollow">
+            Imprimir 
+        </a>
+    </div>
+    
+
+        <div class="printExportMenus ltr">
+        <a id="expandCollapseAll" href="javascript:void(0)" style="display: none;">Expandir todo</a>
+    </div>
+
+    
+
+        
+            <div id="body">
+                
+
+
+
+
+
+    <div id="leftNav" style="width: 280px; max-width: 480px; height: auto;">
+
+
+
+<div id="tocnav">
+            <div class="toclevel0" data-toclevel="0" style="padding-left: 0px;">
+<a class="toc_collapsed" href="http://msdn.microsoft.com/es-es/library/bb972217.aspx#"></a><a data-tochassubtree="true" href="http://msdn.microsoft.com/es-es/library/ms123401.aspx" id="ms310241_MSDN.10_es-es" mtpsaliasid="" mtpsassetid="5DDC0A78-6B2C-43E3-9C56-55F45C0DFFA5_MSDN.10_es-es" mtpsshortid="ms123401_MSDN.10_es-es" title="MSDN Library">MSDN Library</a>            </div>
+            <div class="toclevel0" data-toclevel="0" style="padding-left: 0px;">
+<a class="toc_collapsed" href="http://msdn.microsoft.com/es-es/library/bb972217.aspx#"></a><a data-tochassubtree="true" href="http://msdn.microsoft.com/es-es/library/jj130728.aspx" id="bb814937_MSDN.10_es-es" mtpsaliasid="" mtpsassetid="a18ffadd-4f6c-4feb-bca3-138e41b20bd5_MSDN.10_es-es" mtpsshortid="jj130728_MSDN.10_es-es" title="Artículos Técnicos">Artículos Técnicos</a>            </div>
+            <div class="toclevel0" data-toclevel="0" style="padding-left: 0px;">
+<a class="toc_collapsed" href="http://msdn.microsoft.com/es-es/library/bb972217.aspx#"></a><a data-tochassubtree="true" href="http://msdn.microsoft.com/es-es/library/jj130744.aspx" id="jj130744_MSDN.10_es-es" mtpsaliasid="" mtpsassetid="MSDN|TA_Archivo_TOC|$\ta_archivo_toc.hxt@0,0_MSDN.10_es-es" mtpsshortid="jj130744_MSDN.10_es-es" title="Archivo">Archivo</a>            </div>
+            <div class="toclevel1" data-toclevel="1" data-childrenloaded="true" style="padding-left: 17px;">
+<a class="toc_expanded" href="http://msdn.microsoft.com/es-es/library/bb972217.aspx#"></a><a data-tochassubtree="true" href="http://msdn.microsoft.com/es-es/library/jj130745.aspx" id="jj130745_MSDN.10_es-es" mtpsaliasid="" mtpsassetid="MSDN|TA_Archivo_TOC|$\ta_archivo_toc.hxt@0,0,0_MSDN.10_es-es" mtpsshortid="jj130745_MSDN.10_es-es" title="MSDN10">MSDN10</a>            </div>
+            <div class="toclevel2" data-toclevel="2" style="padding-left: 34px;">
+<a class="toc_collapsed" href="http://msdn.microsoft.com/es-es/library/bb972217.aspx#"></a><a data-tochassubtree="true" href="http://msdn.microsoft.com/es-es/library/bb932296.aspx" id="bb932296_MSDN.10_es-es" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="MSDN10">MSDN10</a>            </div>
+            <div class="toclevel2" data-toclevel="2" style="padding-left: 34px;">
+<span class="toc_empty"></span><a href="http://msdn.microsoft.com/es-es/library/bb220802.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Creación de aplicaciones de negocio de Office">Creación de aplicaciones de negocio de Office</a>            </div>
+            <div class="toclevel2" data-toclevel="2" style="padding-left: 34px;">
+<span class="toc_empty"></span><a href="http://msdn.microsoft.com/es-es/library/bb972185.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="ASP .NET - Controles Inteligentes Incrementales (I²C)">ASP .NET - Controles Inteligentes Incrementales (I²C)</a>            </div>
+            <div class="toclevel2" data-toclevel="2" style="padding-left: 34px;">
+<span class="toc_empty"></span><a href="http://msdn.microsoft.com/es-es/library/bb972186.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Simple ejemplo utilizando el control Collapsable Panel Extender del Atlas Control Toolkit">Simple ejemplo utilizando el control Collapsable Panel Extender del Atlas Control Toolkit</a>            </div>
+            <div class="toclevel2" data-toclevel="2" style="padding-left: 34px;">
+<span class="toc_empty"></span><a href="http://msdn.microsoft.com/es-es/library/bb972187.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Como utilizar &lt;hover&gt; para crear un efecto emergente (popup) en una página Web">Como utilizar &lt;hover&gt; para crear un efecto emergente (popup) en una página Web</a>            </div>
+            <div class="toclevel2" data-toclevel="2" style="padding-left: 34px;">
+<span class="toc_empty"></span><a href="http://msdn.microsoft.com/es-es/library/bb972188.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Clonación de Objetos de Estructura Compleja">Clonación de Objetos de Estructura Compleja</a>            </div>
+            <div class="toclevel2" data-toclevel="2" style="padding-left: 34px;">
+<span class="toc_empty"></span><a href="http://msdn.microsoft.com/es-es/library/bb972191.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="El Poder de AJAX en Tiempo Real">El Poder de AJAX en Tiempo Real</a>            </div>
+            <div class="toclevel2" data-toclevel="2" style="padding-left: 34px;">
+<span class="toc_empty"></span><a href="http://msdn.microsoft.com/es-es/library/bb972192.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Usando el Patrón de Diseño Observer Manual de Laboratorio (Hands-On Lab)">Usando el Patrón de Diseño Observer Manual de Laboratorio (Hands-On Lab)</a>            </div>
+            <div class="toclevel2" data-toclevel="2" style="padding-left: 34px;">
+<span class="toc_empty"></span><a href="http://msdn.microsoft.com/es-es/library/bb972193.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Transmutación de código VB6 a lenguajes .NET">Transmutación de código VB6 a lenguajes .NET</a>            </div>
+            <div class="toclevel2" data-toclevel="2" style="padding-left: 34px;">
+<span class="toc_empty"></span><a href="http://msdn.microsoft.com/es-es/library/bb972194.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Cifrando datos con SQL Server 2005">Cifrando datos con SQL Server 2005</a>            </div>
+            <div class="toclevel2" data-toclevel="2" style="padding-left: 34px;">
+<span class="toc_empty"></span><a href="http://msdn.microsoft.com/es-es/library/bb972197.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Rotación de tablas [Crosstab-Queries]">Rotación de tablas [Crosstab-Queries]</a>            </div>
+            <div class="toclevel2" data-toclevel="2" style="padding-left: 34px;">
+<span class="toc_empty"></span><a href="http://msdn.microsoft.com/es-es/library/bb972198.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Creación de una clase para dibujar en Windows Forms utilizando un buffer doble">Creación de una clase para dibujar en Windows Forms utilizando un buffer doble</a>            </div>
+            <div class="toclevel2" data-toclevel="2" style="padding-left: 34px;">
+<span class="toc_empty"></span><a href="http://msdn.microsoft.com/es-es/library/bb972201.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Ejemplo de una Aplicación de Localización en ASP.NET">Ejemplo de una Aplicación de Localización en ASP.NET</a>            </div>
+            <div class="toclevel2" data-toclevel="2" style="padding-left: 34px;">
+<span class="toc_empty"></span><a href="http://msdn.microsoft.com/es-es/library/bb972203.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="MS Agent en VB .NET">MS Agent en VB .NET</a>            </div>
+            <div class="toclevel2" data-toclevel="2" style="padding-left: 34px;">
+<span class="toc_empty"></span><a href="http://msdn.microsoft.com/es-es/library/bb972207.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Llenando un DropDownList mediante Columnas Computadas en ASP .NET">Llenando un DropDownList mediante Columnas Computadas en ASP .NET</a>            </div>
+            <div class="toclevel2" data-toclevel="2" style="padding-left: 34px;">
+<span class="toc_empty"></span><a href="http://msdn.microsoft.com/es-es/library/bb972208.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="¿Visual Basic .NET ó C#?">¿Visual Basic .NET ó C#?</a>            </div>
+            <div class="toclevel2" data-toclevel="2" style="padding-left: 34px;">
+<span class="toc_empty"></span><a href="http://msdn.microsoft.com/es-es/library/bb972209.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Implementando Componentes de Procesos de Usuario">Implementando Componentes de Procesos de Usuario</a>            </div>
+            <div class="toclevel2" data-toclevel="2" style="padding-left: 34px;">
+<span class="toc_empty"></span><a href="http://msdn.microsoft.com/es-es/library/bb972212.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Una barra de progreso en VFP “puro”">Una barra de progreso en VFP “puro”</a>            </div>
+            <div class="toclevel2" data-toclevel="2" style="padding-left: 34px;">
+<span class="toc_empty"></span><a href="http://msdn.microsoft.com/es-es/library/bb972213.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="ADO .NET para Programadores de ADO">ADO .NET para Programadores de ADO</a>            </div>
+            <div class="toclevel2" data-toclevel="2" style="padding-left: 34px;">
+<span class="toc_empty"></span><a href="http://msdn.microsoft.com/es-es/library/bb972231.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Creación de Controles en CF .NET">Creación de Controles en CF .NET</a>            </div>
+            <div class="toclevel2" data-toclevel="2" style="padding-left: 34px;">
+<span class="toc_empty"></span><a href="http://msdn.microsoft.com/es-es/library/bb972234.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="¿Herencia Visual en WebForms y Web User Controls?">¿Herencia Visual en WebForms y Web User Controls?</a>            </div>
+            <div class="toclevel2" data-toclevel="2" style="padding-left: 34px;">
+<span class="toc_empty"></span><a href="http://msdn.microsoft.com/es-es/library/bb972235.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Datagrids con imágenes">Datagrids con imágenes</a>            </div>
+            <div class="toclevel2" data-toclevel="2" style="padding-left: 34px;">
+<span class="toc_empty"></span><a href="http://msdn.microsoft.com/es-es/library/bb972237.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Enviando y recibiendo lo necesario de un Servidor Web a través de XML y XSL">Enviando y recibiendo lo necesario de un Servidor Web a través de XML y XSL</a>            </div>
+            <div class="toclevel2" data-toclevel="2" style="padding-left: 34px;">
+<span class="toc_empty"></span><a href="http://msdn.microsoft.com/es-es/library/bb972238.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Soporte “Intellisense” para los datos de configuración de una aplicación Web ASP .NET">Soporte “Intellisense” para los datos de configuración de una aplicación Web ASP .NET</a>            </div>
+            <div class="toclevel2" data-toclevel="2" style="padding-left: 34px;">
+<span class="toc_empty"></span><a href="http://msdn.microsoft.com/es-es/library/bb972239.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Exponer eventos en controles de servidor ASP .NET personalizados">Exponer eventos en controles de servidor ASP .NET personalizados</a>            </div>
+            <div class="toclevel2" data-toclevel="2" style="padding-left: 34px;">
+<span class="toc_empty"></span><a href="http://msdn.microsoft.com/es-es/library/bb972241.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Técnicas de Navegación entre Web Forms en ASP .Net">Técnicas de Navegación entre Web Forms en ASP .Net</a>            </div>
+            <div class="toclevel2" data-toclevel="2" style="padding-left: 34px;">
+<span class="toc_empty"></span><a href="http://msdn.microsoft.com/es-es/library/bb972244.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="FlickerFree en CompactFramework">FlickerFree en CompactFramework</a>            </div>
+            <div class="toclevel2" data-toclevel="2" style="padding-left: 34px;">
+<span class="toc_empty"></span><a href="http://msdn.microsoft.com/es-es/library/bb972247.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Accediendo a datos de VFP 9.0 desde la Web con el Proveedor OLE DB de VFP 9.0">Accediendo a datos de VFP 9.0 desde la Web con el Proveedor OLE DB de VFP 9.0</a>            </div>
+            <div class="toclevel2" data-toclevel="2" style="padding-left: 34px;">
+<span class="toc_empty"></span><a href="http://msdn.microsoft.com/es-es/library/bb972248.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Web Services, un ejemplo práctico">Web Services, un ejemplo práctico</a>            </div>
+            <div class="toclevel2" data-toclevel="2" style="padding-left: 34px;">
+<span class="toc_empty"></span><a href="http://msdn.microsoft.com/es-es/library/bb972249.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Programación de Redes con .Net 2.0 - Parte I">Programación de Redes con .Net 2.0 - Parte I</a>            </div>
+            <div class="toclevel2" data-toclevel="2" style="padding-left: 34px;">
+<span class="toc_empty"></span><a href="http://msdn.microsoft.com/es-es/library/bb972250.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="MSMQ en Compact-Framework">MSMQ en Compact-Framework</a>            </div>
+            <div class="toclevel2" data-toclevel="2" style="padding-left: 34px;">
+<span class="toc_empty"></span><a href="http://msdn.microsoft.com/es-es/library/bb972251.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Patrones y Antipatrones: una Introducción - Parte II">Patrones y Antipatrones: una Introducción - Parte II</a>            </div>
+            <div class="toclevel2" data-toclevel="2" style="padding-left: 34px;">
+<span class="toc_empty"></span><a href="http://msdn.microsoft.com/es-es/library/bb972252.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Interoperabilidad entre .Net y J2EE">Interoperabilidad entre .Net y J2EE</a>            </div>
+            <div class="toclevel2" data-toclevel="2" style="padding-left: 34px;">
+<span class="toc_empty"></span><a href="http://msdn.microsoft.com/es-es/library/bb972253.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Cómo evaluar expresiones matemáticas en VB .Net">Cómo evaluar expresiones matemáticas en VB .Net</a>            </div>
+            <div class="toclevel2" data-toclevel="2" style="padding-left: 34px;">
+<span class="toc_empty"></span><a href="http://msdn.microsoft.com/es-es/library/bb972254.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Construcción de Sistemas Multiplataforma basados en Servicios">Construcción de Sistemas Multiplataforma basados en Servicios</a>            </div>
+            <div class="toclevel2" data-toclevel="2" style="padding-left: 34px;">
+<span class="toc_empty"></span><a href="http://msdn.microsoft.com/es-es/library/bb972255.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Generación de Código usando CodeDOM">Generación de Código usando CodeDOM</a>            </div>
+            <div class="toclevel2" data-toclevel="2" style="padding-left: 34px;">
+<span class="toc_empty"></span><a href="http://msdn.microsoft.com/es-es/library/bb972256.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="RDA &amp; Merge Replication">RDA &amp; Merge Replication</a>            </div>
+            <div class="toclevel2" data-toclevel="2" style="padding-left: 34px;">
+<span class="toc_empty"></span><a href="http://msdn.microsoft.com/es-es/library/bb972257.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Lectura y Escritura en Puertos Serie con .Net Framework 2.0">Lectura y Escritura en Puertos Serie con .Net Framework 2.0</a>            </div>
+            <div class="toclevel2" data-toclevel="2" style="padding-left: 34px;">
+<span class="toc_empty"></span><a href="http://msdn.microsoft.com/es-es/library/bb972258.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Patrones de Fabricación: Fábricas de Objetos">Patrones de Fabricación: Fábricas de Objetos</a>            </div>
+            <div class="toclevel2" data-toclevel="2" style="padding-left: 34px;">
+<span class="toc_empty"></span><a href="http://msdn.microsoft.com/es-es/library/bb972259.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="BizTalk Messaging, Implementación del Patrón MESSAGE BROKER">BizTalk Messaging, Implementación del Patrón MESSAGE BROKER</a>            </div>
+            <div class="toclevel2" data-toclevel="2" style="padding-left: 34px;">
+<span class="toc_empty"></span><a href="http://msdn.microsoft.com/es-es/library/bb972260.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Nuevos Controles de Reporte en Visual Studio 2005">Nuevos Controles de Reporte en Visual Studio 2005</a>            </div>
+            <div class="toclevel2" data-toclevel="2" style="padding-left: 34px;">
+<span class="toc_empty"></span><a href="http://msdn.microsoft.com/es-es/library/bb972261.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Utilizando NullableTypes">Utilizando NullableTypes</a>            </div>
+            <div class="toclevel2" data-toclevel="2" style="padding-left: 34px;">
+<span class="toc_empty"></span><a href="http://msdn.microsoft.com/es-es/library/bb972262.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Usando y Extendiendo el Namespace My">Usando y Extendiendo el Namespace My</a>            </div>
+            <div class="toclevel2" data-toclevel="2" style="padding-left: 34px;">
+<span class="toc_empty"></span><a href="http://msdn.microsoft.com/es-es/library/bb972263.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Implementación de Callback usando ASP .net 2.0 – Parte II">Implementación de Callback usando ASP .net 2.0 – Parte II</a>            </div>
+            <div class="toclevel2" data-toclevel="2" style="padding-left: 34px;">
+<span class="toc_empty"></span><a href="http://msdn.microsoft.com/es-es/library/bb972264.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Contadores para Rendimiento de SQL Server">Contadores para Rendimiento de SQL Server</a>            </div>
+            <div class="toclevel2" data-toclevel="2" style="padding-left: 34px;">
+<span class="toc_empty"></span><a href="http://msdn.microsoft.com/es-es/library/bb972265.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Test Driven Development con Visual Studio Team System">Test Driven Development con Visual Studio Team System</a>            </div>
+            <div class="toclevel2" data-toclevel="2" style="padding-left: 34px;">
+<span class="toc_empty"></span><a href="http://msdn.microsoft.com/es-es/library/bb972266.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Almacenar una Imagen en una Base de Datos">Almacenar una Imagen en una Base de Datos</a>            </div>
+            <div class="toclevel2" data-toclevel="2" style="padding-left: 34px;">
+<span class="toc_empty"></span><a href="http://msdn.microsoft.com/es-es/library/bb972267.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Leer una Imagen de una Base de Datos">Leer una Imagen de una Base de Datos</a>            </div>
+            <div class="toclevel2" data-toclevel="2" style="padding-left: 34px;">
+<span class="toc_empty"></span><a href="http://msdn.microsoft.com/es-es/library/bb972268.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Desarrollo de Software basado en Componentes">Desarrollo de Software basado en Componentes</a>            </div>
+            <div class="toclevel2" data-toclevel="2" style="padding-left: 34px;">
+<span class="toc_empty"></span><a href="http://msdn.microsoft.com/es-es/library/bb972269.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Configuración de Aplicaciones .NET Enterprise Library, cómo utilizar Configuration Application Block">Configuración de Aplicaciones .NET Enterprise Library, cómo utilizar Configuration Application Block</a>            </div>
+            <div class="toclevel2" data-toclevel="2" style="padding-left: 34px;">
+<span class="toc_empty"></span><a href="http://msdn.microsoft.com/es-es/library/bb972270.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Solucionando el Problema del &quot;Doble Submit&quot;">Solucionando el Problema del "Doble Submit"</a>            </div>
+            <div class="toclevel2" data-toclevel="2" style="padding-left: 34px;">
+<span class="toc_empty"></span><a href="http://msdn.microsoft.com/es-es/library/bb972271.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Uso del prefijo &quot;SP_&quot; en el nombre de procedimientos almacenados">Uso del prefijo "SP_" en el nombre de procedimientos almacenados</a>            </div>
+            <div class="toclevel2" data-toclevel="2" style="padding-left: 34px;">
+<span class="toc_empty"></span><a href="http://msdn.microsoft.com/es-es/library/bb972272.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="El Patrón Singleton">El Patrón Singleton</a>            </div>
+            <div class="toclevel2" data-toclevel="2" style="padding-left: 34px;">
+<span class="toc_empty"></span><a href="http://msdn.microsoft.com/es-es/library/bb972273.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Espacios de Nombre (namespace) y Consultas XPATH en C#">Espacios de Nombre (namespace) y Consultas XPATH en C#</a>            </div>
+            <div class="toclevel2" data-toclevel="2" style="padding-left: 34px;">
+<span class="toc_empty"></span><a href="http://msdn.microsoft.com/es-es/library/bb972274.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Definir tamaños personalizados de papel con Visual Basic .NET">Definir tamaños personalizados de papel con Visual Basic .NET</a>            </div>
+            <div class="toclevel2" data-toclevel="2" style="padding-left: 34px;">
+<span class="toc_empty"></span><a href="http://msdn.microsoft.com/es-es/library/bb972275.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Decisiones Inteligentes">Decisiones Inteligentes</a>            </div>
+            <div class="toclevel2" data-toclevel="2" style="padding-left: 34px;">
+<span class="toc_empty"></span><a href="http://msdn.microsoft.com/es-es/library/bb972276.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Control de versiones sobre Bases de Datos SQL Server 2000/2005">Control de versiones sobre Bases de Datos SQL Server 2000/2005</a>            </div>
+            <div class="toclevel2" data-toclevel="2" style="padding-left: 34px;">
+<span class="toc_empty"></span><a href="http://msdn.microsoft.com/es-es/library/bb972277.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Configuración Regional de Aplicaciones y Procesos">Configuración Regional de Aplicaciones y Procesos</a>            </div>
+            <div class="toclevel2" data-toclevel="2" style="padding-left: 34px;">
+<span class="toc_empty"></span><a href="http://msdn.microsoft.com/es-es/library/bb972278.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Integración de Aplicaciones con Microsoft CRM">Integración de Aplicaciones con Microsoft CRM</a>            </div>
+            <div class="toclevel2" data-toclevel="2" style="padding-left: 34px;">
+<span class="toc_empty"></span><a href="http://msdn.microsoft.com/es-es/library/bb972279.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Explorador de Librerías basado en .NET">Explorador de Librerías basado en .NET</a>            </div>
+            <div class="toclevel2" data-toclevel="2" style="padding-left: 34px;">
+<span class="toc_empty"></span><a href="http://msdn.microsoft.com/es-es/library/bb972280.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Migración de tecnología ASP 3.0 con componentes ActiveX a ASP .net">Migración de tecnología ASP 3.0 con componentes ActiveX a ASP .net</a>            </div>
+            <div class="toclevel2" data-toclevel="2" style="padding-left: 34px;">
+<span class="toc_empty"></span><a href="http://msdn.microsoft.com/es-es/library/bb972281.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Herencia de Formularios - Más allá de la herencia gráfica">Herencia de Formularios - Más allá de la herencia gráfica</a>            </div>
+            <div class="toclevel2" data-toclevel="2" style="padding-left: 34px;">
+<span class="toc_empty"></span><a href="http://msdn.microsoft.com/es-es/library/bb972282.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Delegados en .NET - Parte I">Delegados en .NET - Parte I</a>            </div>
+            <div class="toclevel2" data-toclevel="2" style="padding-left: 34px;">
+<span class="toc_empty"></span><a href="http://msdn.microsoft.com/es-es/library/bb972283.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Implementando Autenticación en Composite UI Application Block con Membership">Implementando Autenticación en Composite UI Application Block con Membership</a>            </div>
+            <div class="toclevel2" data-toclevel="2" style="padding-left: 34px;">
+<span class="toc_empty"></span><a href="http://msdn.microsoft.com/es-es/library/bb972284.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Visual Studio 2005 Team System, herramientas integradas para un efectivo desarrollo">Visual Studio 2005 Team System, herramientas integradas para un efectivo desarrollo</a>            </div>
+            <div class="toclevel2" data-toclevel="2" style="padding-left: 34px;">
+<span class="toc_empty"></span><a href="http://msdn.microsoft.com/es-es/library/bb972285.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Carga de árboles ilimitados">Carga de árboles ilimitados</a>            </div>
+            <div class="toclevel2" data-toclevel="2" style="padding-left: 34px;">
+<span class="toc_empty"></span><a href="http://msdn.microsoft.com/es-es/library/bb972286.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="TDD Paso a paso utilizando VSTS">TDD Paso a paso utilizando VSTS</a>            </div>
+            <div class="toclevel2" data-toclevel="2" style="padding-left: 34px;">
+<span class="toc_empty"></span><a href="http://msdn.microsoft.com/es-es/library/bb972287.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Cómo utilizar Recursos Embebidos en componentes del lado del Cliente con ASP .net 2.0">Cómo utilizar Recursos Embebidos en componentes del lado del Cliente con ASP .net 2.0</a>            </div>
+            <div class="toclevel2" data-toclevel="2" style="padding-left: 34px;">
+<span class="toc_empty"></span><a href="http://msdn.microsoft.com/es-es/library/bb972288.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Comprobación del Rendimiento de los Genéricos en C# 2.0">Comprobación del Rendimiento de los Genéricos en C# 2.0</a>            </div>
+            <div class="toclevel2" data-toclevel="2" style="padding-left: 34px;">
+<span class="toc_empty"></span><a href="http://msdn.microsoft.com/es-es/library/bb972289.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Programación de Redes con .Net 2.0 - Parte II">Programación de Redes con .Net 2.0 - Parte II</a>            </div>
+            <div class="toclevel2" data-toclevel="2" style="padding-left: 34px;">
+<span class="toc_empty"></span><a href="http://msdn.microsoft.com/es-es/library/bb972290.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Introducción a Windows Communication Foundation">Introducción a Windows Communication Foundation</a>            </div>
+            <div class="toclevel2" data-toclevel="2" style="padding-left: 34px;">
+<span class="toc_empty"></span><a href="http://msdn.microsoft.com/es-es/library/bb972189.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Usando el Patrón de Diseño AdapterManual de Laboratorio (Hands-On Lab)">Usando el Patrón de Diseño AdapterManual de Laboratorio (Hands-On Lab)</a>            </div>
+            <div class="toclevel2" data-toclevel="2" style="padding-left: 34px;">
+<span class="toc_empty"></span><a href="http://msdn.microsoft.com/es-es/library/bb972190.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="SQL Server Express - Instalación y Configuración">SQL Server Express - Instalación y Configuración</a>            </div>
+            <div class="toclevel2" data-toclevel="2" style="padding-left: 34px;">
+<span class="toc_empty"></span><a href="http://msdn.microsoft.com/es-es/library/bb972199.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="ADO .NET 2.0 – Usando el Control SqlDataSource y el Control GridView">ADO .NET 2.0 – Usando el Control SqlDataSource y el Control GridView</a>            </div>
+            <div class="toclevel2" data-toclevel="2" style="padding-left: 34px;">
+<span class="toc_empty"></span><a href="http://msdn.microsoft.com/es-es/library/bb972200.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Implementación de Callback usando ASP .NET 2.0">Implementación de Callback usando ASP .NET 2.0</a>            </div>
+            <div class="toclevel2" data-toclevel="2" style="padding-left: 34px;">
+<span class="toc_empty"></span><a href="http://msdn.microsoft.com/es-es/library/bb972195.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Tipos parciales en C# 2.0">Tipos parciales en C# 2.0</a>            </div>
+            <div class="toclevel2" data-toclevel="2" style="padding-left: 34px;">
+<span class="toc_empty"></span><a href="http://msdn.microsoft.com/es-es/library/bb972196.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Escribiendo en archivos XML con ASP .NET (Parte II) - XmlNode">Escribiendo en archivos XML con ASP .NET (Parte II) - XmlNode</a>            </div>
+            <div class="toclevel2" data-toclevel="2" style="padding-left: 34px;">
+<span class="toc_empty"></span><a href="http://msdn.microsoft.com/es-es/library/bb972202.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="CSharpSniffer (Husmeador de tráfico en adaptador de red local)">CSharpSniffer (Husmeador de tráfico en adaptador de red local)</a>            </div>
+            <div class="toclevel2" data-toclevel="2" style="padding-left: 34px;">
+<span class="toc_empty"></span><a href="http://msdn.microsoft.com/es-es/library/bb972204.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Arquitectura para Aplicaciones Corporativas">Arquitectura para Aplicaciones Corporativas</a>            </div>
+            <div class="toclevel2" data-toclevel="2" style="padding-left: 34px;">
+<span class="toc_empty"></span><a href="http://msdn.microsoft.com/es-es/library/bb972205.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Autenticación de Usuarios basada en Roles utilizando HTTPModules en ASP .NET">Autenticación de Usuarios basada en Roles utilizando HTTPModules en ASP .NET</a>            </div>
+            <div class="toclevel2" data-toclevel="2" style="padding-left: 34px;">
+<span class="toc_empty"></span><a href="http://msdn.microsoft.com/es-es/library/bb972206.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Gestión de Publicidad en ASP .NET">Gestión de Publicidad en ASP .NET</a>            </div>
+            <div class="toclevel2" data-toclevel="2" style="padding-left: 34px;">
+<span class="toc_empty"></span><a href="http://msdn.microsoft.com/es-es/library/bb972210.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="El primer paso hacia los Enterprise Services (COM+)">El primer paso hacia los Enterprise Services (COM+)</a>            </div>
+            <div class="toclevel2" data-toclevel="2" style="padding-left: 34px;">
+<span class="toc_empty"></span><a href="http://msdn.microsoft.com/es-es/library/bb972211.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Reporting Services – Generando y Publicando Reportes Dinámicamente">Reporting Services – Generando y Publicando Reportes Dinámicamente</a>            </div>
+            <div class="toclevel2" data-toclevel="2" style="padding-left: 34px;">
+<span class="toc_empty"></span><a href="http://msdn.microsoft.com/es-es/library/bb972214.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="UML, ejemplo sencillo sobre Modelado de un Proyecto">UML, ejemplo sencillo sobre Modelado de un Proyecto</a>            </div>
+            <div class="toclevel2" data-toclevel="2" style="padding-left: 34px;">
+<span class="toc_empty"></span><a href="http://msdn.microsoft.com/es-es/library/bb972215.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Transformar Filas a Columnas">Transformar Filas a Columnas</a>            </div>
+            <div class="toclevel2" data-toclevel="2" style="padding-left: 34px;">
+<span class="toc_empty"></span><a href="http://msdn.microsoft.com/es-es/library/bb972216.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Desmitificando la Encriptación (Parte I)">Desmitificando la Encriptación (Parte I)</a>            </div>
+            <div class="toclevel2 current" data-toclevel="2" style="padding-left: 34px;">
+<span class="toc_empty"></span><a href="./Desmitificando la Encriptación (Parte II)_files/Desmitificando la Encriptación (Parte II).htm" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Desmitificando la Encriptación (Parte II)">Desmitificando la Encriptación (Parte II)</a>            </div>
+            <div class="toclevel2" data-toclevel="2" style="padding-left: 34px;">
+<span class="toc_empty"></span><a href="http://msdn.microsoft.com/es-es/library/bb972218.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="De los Ensamblados Compartidos, su Nombre Unico y la GAC">De los Ensamblados Compartidos, su Nombre Unico y la GAC</a>            </div>
+            <div class="toclevel2" data-toclevel="2" style="padding-left: 34px;">
+<span class="toc_empty"></span><a href="http://msdn.microsoft.com/es-es/library/bb972219.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="De la forma dinámica de hacer Código Dinámico">De la forma dinámica de hacer Código Dinámico</a>            </div>
+            <div class="toclevel2" data-toclevel="2" style="padding-left: 34px;">
+<span class="toc_empty"></span><a href="http://msdn.microsoft.com/es-es/library/bb972230.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Intercalación [Collation] en SQL Server 2000">Intercalación [Collation] en SQL Server 2000</a>            </div>
+            <div class="toclevel2" data-toclevel="2" style="padding-left: 34px;">
+<span class="toc_empty"></span><a href="http://msdn.microsoft.com/es-es/library/bb972232.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Fundamentos de la POO">Fundamentos de la POO</a>            </div>
+            <div class="toclevel2" data-toclevel="2" style="padding-left: 34px;">
+<span class="toc_empty"></span><a href="http://msdn.microsoft.com/es-es/library/bb972233.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Procesando dinámicamente fórmulas creadas por el Usuario">Procesando dinámicamente fórmulas creadas por el Usuario</a>            </div>
+            <div class="toclevel2" data-toclevel="2" style="padding-left: 34px;">
+<span class="toc_empty"></span><a href="http://msdn.microsoft.com/es-es/library/bb972236.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Enviando y recibiendo lo necesario de un Servidor Web a través de XML y XSL">Enviando y recibiendo lo necesario de un Servidor Web a través de XML y XSL</a>            </div>
+            <div class="toclevel2" data-toclevel="2" style="padding-left: 34px;">
+<span class="toc_empty"></span><a href="http://msdn.microsoft.com/es-es/library/bb972240.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="¿Qué es un Patrón de Diseño?">¿Qué es un Patrón de Diseño?</a>            </div>
+            <div class="toclevel2" data-toclevel="2" style="padding-left: 34px;">
+<span class="toc_empty"></span><a href="http://msdn.microsoft.com/es-es/library/bb972242.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Patrones y Antipatrones: una Introducción - Parte I">Patrones y Antipatrones: una Introducción - Parte I</a>            </div>
+            <div class="toclevel2" data-toclevel="2" style="padding-left: 34px;">
+<span class="toc_empty"></span><a href="http://msdn.microsoft.com/es-es/library/bb972243.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Automatización de Backups y Restores">Automatización de Backups y Restores</a>            </div>
+            <div class="toclevel2" data-toclevel="2" style="padding-left: 34px;">
+<span class="toc_empty"></span><a href="http://msdn.microsoft.com/es-es/library/bb972245.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Cómo asegurar la disponibilidad de los Datos en SQL Server 2000">Cómo asegurar la disponibilidad de los Datos en SQL Server 2000</a>            </div>
+            <div class="toclevel2" data-toclevel="2" style="padding-left: 34px;">
+<span class="toc_empty"></span><a href="http://msdn.microsoft.com/es-es/library/bb972246.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Desarrollo de aplicaciones basadas en Microsoft Content Management Server 2002">Desarrollo de aplicaciones basadas en Microsoft Content Management Server 2002</a>            </div>
+            <div class="toclevel2" data-toclevel="2" style="padding-left: 34px;">
+<span class="toc_empty"></span><a href="http://msdn.microsoft.com/es-es/library/bb507192.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Obtener más información acerca de Microsoft Robotics Studio">Obtener más información acerca de Microsoft Robotics Studio</a>            </div>
+</div>
+        
+
+        
+
+        
+        
+        <div id="toc-resizable-ew" class="toc-resizable-ew" style="min-height: 9332px;"></div>
+        
+
+<a id="NavigationResize" href="javascript:void(0)" style="left: 280px; display: inline-block;">
+    <img class="cl_nav_resize_open" src="./Desmitificando la Encriptación (Parte II)_files/ImageSprite.png" title="Expandir" alt="Expandir" style="">
+    <img class="cl_nav_resize_close" src="./Desmitificando la Encriptación (Parte II)_files/ImageSprite.png" title="Minimizar" alt="Minimizar" style="display: none;">
+</a>
+
+
+
+    </div>
+<div id="content" class="content noL2" style="margin-left: 280px; width: auto;">
+
+
+
+
+
+
+
+    
+    
+
+    <div id="ratingCounterSeperator" class="cl_lw_vs_seperator" style="display: none;"></div>
+
+    
+
+        
+
+<div class="topic" xmlns="http://www.w3.org/1999/xhtml">
+  <h1 class="title">
+Desmitificando la Encriptación (Parte II)
+</h1><div id="ratingCounter" style="display: block;">
+        <span id="rcA" class="ratingText">
+            Personas que lo han encontrado útil: 15 de 18 <span id="rateThisPrefix">- </span><a id="rateThisTopic" href="http://msdn.microsoft.com/es-es/library/bb972217.aspx#feedback" title="Valorar este tema">Valorar este tema</a>
+            
+        </span>
+    </div>
+  
+  <div id="mainSection">
+<div id="mainBody">
+<div>
+<p>Por <a href="http://msdn.microsoft.com/es-es/library/bb972217.aspx#authorbrief">Patrick Mac Kay Tepper </a></p>
+<h5>Contenido</h5>
+<p>
+<a href="http://msdn.microsoft.com/es-es/library/bb972217.aspx#XSLTsection122121120120"></a>&nbsp;<a href="http://msdn.microsoft.com/es-es/library/bb972217.aspx#XSLTsection122121120120">Introducción</a><br>
+<a href="http://msdn.microsoft.com/es-es/library/bb972217.aspx#XSLTsection123121120120"></a>&nbsp;<a href="http://msdn.microsoft.com/es-es/library/bb972217.aspx#XSLTsection123121120120">Encriptación Asimétrica</a><br>
+<a href="http://msdn.microsoft.com/es-es/library/bb972217.aspx#XSLTsection124121120120"></a>&nbsp;<a href="http://msdn.microsoft.com/es-es/library/bb972217.aspx#XSLTsection124121120120">Encriptación Asimétrica + Simétrica</a><br>
+<a href="http://msdn.microsoft.com/es-es/library/bb972217.aspx#XSLTsection125121120120"></a>&nbsp;<a href="http://msdn.microsoft.com/es-es/library/bb972217.aspx#XSLTsection125121120120">Hash</a><br>
+<a href="http://msdn.microsoft.com/es-es/library/bb972217.aspx#XSLTsection126121120120"></a>&nbsp;<a href="http://msdn.microsoft.com/es-es/library/bb972217.aspx#XSLTsection126121120120">Conclusiones</a><br>
+<a href="http://msdn.microsoft.com/es-es/library/bb972217.aspx#XSLTsection127121120120"></a>&nbsp;<a href="http://msdn.microsoft.com/es-es/library/bb972217.aspx#XSLTsection127121120120">Respuestas a las Preguntas</a><br>
+</p>
+<h3 id="XSLTsection122121120120">Introducción</h3>
+<p>En esta segunda y última parte de este artículo, se explicarán los algoritmos asimétricos y el <em>Hash</em>. Habiendo revisado ya la encriptación simétrica, procedamos ahora a revisar qué es la encriptación asimétrica y cuándo debe utilizarse. </p>
+<div>
+<a href="http://msdn.microsoft.com/es-es/library/bb972217.aspx#mainSection"></a>&nbsp;<a href="http://msdn.microsoft.com/es-es/library/bb972217.aspx#mainSection">Principio de la página</a><br>
+</div>
+<h3 id="XSLTsection123121120120">Encriptación Asimétrica</h3>
+<p>La encriptación asimétrica permite que dos personas puedan enviarse información encriptada, sin necesidad de compartir la llave de encriptación. Se utiliza una llave pública para encriptar el texto y una llave privada para desencriptar. A pesar de que puede sonar extraño que se encripte con la llave pública y desencripte con la privada, el motivo para hacerlo es el siguiente: si alguien necesita que le envíen la información encriptada, deja disponible la llave pública para que quienes le desean enviar algo lo encripten. Nadie puede desencriptar algo con la misma llave pública. El único que puede desencriptar es quien posea la llave privada, quien justamente es el que recibe la información encriptada.</p>
+<p>Los algoritmos de encriptación asimétrica más conocidos son:</p>
+<ul>
+<li>
+<p>
+<strong>RSA (</strong>
+<strong>
+<em>Rivest</em>
+</strong>
+<strong>
+<em>,</em>
+</strong>
+<strong>
+<em> Shamir</em>
+</strong>
+<strong>
+<em>,</em>
+</strong>
+<strong>
+<em> Adleman</em>
+</strong>
+<strong>)</strong>
+<br>Creado en 1978, hoy es el algoritmo de mayor uso en encriptación asimétrica. Tiene dificultades para encriptar grandes volúmenes de información, por lo que es usado por lo general en conjunto con algoritmos simétricos. </p>
+</li>
+<li>
+<p>
+<strong>
+<em>Diffie-Hellman</em>
+</strong>
+<strong> (&amp; </strong>
+<strong>
+<em>Merkle</em>
+</strong>
+<strong>)</strong>
+<br>No es precisamente un algoritmo de encriptación sino un algoritmo para generar llaves públicas y privadas en ambientes inseguros. </p>
+</li>
+<li>
+<p>
+<strong>ECC (</strong>
+<strong>
+<em>Elliptical Curve Cryptography</em>
+</strong>
+<strong>)</strong>
+<br>Es un algoritmo que se utiliza poco, pero tiene importancia cuando es necesario encriptar grandes volúmenes de información.</p>
+</li>
+</ul>
+<p>El tamaño de la llave es el siguiente:</p>
+<table>
+<tbody><tr><td>
+<div class="mtps-table">
+<div class="mtps-row"><span class="mtps-th">
+<span>Algoritmo</span>
+</span><span class="mtps-th">
+<span>Largos válidos (bits)</span>
+</span><span class="mtps-th">
+<span>Largo por defecto (bits)</span>
+</span></div>
+<div class="mtps-row"><span class="mtps-cell">
+<span>RSA</span>
+</span><span class="mtps-cell">
+<span>384 a 16.384 (incrementos de a 8)</span>
+</span><span class="mtps-cell">
+<span>1.024</span>
+</span></div>
+</div>
+<p>
+</p>
+</td></tr>
+</tbody></table>
+<p>Mientras más larga sea la llave, más seguro será. La relación con los algoritmos simétricos no es directa. En este caso, una llave de 1024 <em>bits</em> de RSA es equivalente en seguridad a una de 75 <em>bits</em> de un algoritmo simétrico. </p>
+<p>Como era de esperar, en nuestra demostración utilizaremos el algoritmo de mayor uso, RSA. Debido a que el funcionamiento es diferente comparado con el algoritmo anterior, la pantalla varía levemente. Existirá una zona donde se desplegará la llave pública generada, dejándole el almacenamiento de la llave privada a la clase <strong>miRSA</strong>. </p>
+<p>La idea de esto es que exista una clase que provea una llave pública, para que el cliente encripte la información y luego éste le envíe lo encriptado a la misma clase, para que con la llave privada la desencripte. En este caso, se ha dejado el método <strong>desencriptar</strong> como público, por que se necesita para pintar el resultado en el formulario. Este no debiera ser un método público en una implementación real. </p>
+<p>Antes de ver la <em>demo</em>, es necesario revisar el siguiente capítulo, debido a que la encriptación con RSA no es eficiente y tiene limitaciones de tamaño.</p>
+<div>
+<a href="http://msdn.microsoft.com/es-es/library/bb972217.aspx#mainSection"></a>&nbsp;<a href="http://msdn.microsoft.com/es-es/library/bb972217.aspx#mainSection">Principio de la página</a><br>
+</div>
+<h3 id="XSLTsection124121120120">Encriptación Asimétrica + Simétrica</h3>
+<p>Debido a que la encriptación asimétrica es casi 1000 veces más lenta que la simétrica, cuando la información a encriptar es mucha, se utiliza una combinación de algoritmos. El algoritmo simétrico se utiliza para encriptar la información y el asimétrico para encriptar la llave del algoritmo simétrico con que se encriptó la información. Entonces, el proceso es mucho más rápido. Esta técnica se utiliza hoy en SSL en la negociación entre el navegador del cliente y el servidor. En cada ida y vuelta al servidor se generan nuevas llaves y se realiza todo el proceso. También es utilizada por <em>Windows</em> en la encriptación de los archivos. </p>
+<p>Otro motivo para utilizar esta encriptación combinada es la necesidad de encriptar textos largos. La encriptación asimétrica además de ser ineficiente en tiempo, tiene limitaciones de tamaño. El tamaño máximo depende del largo de la llave. En la demostración, puedes probar colocando mucho texto y verás que se cae. </p>
+<p>Estas limitantes nos obligan a utilizar el método combinado. </p>
+<p id="figura01back">Nuestra demostración implementa ambos métodos, y se decide cuál utilizar con la selección del <em>check</em> Utilizar Simétrico. La aplicación se ve como se muestra en la <a href="http://msdn.microsoft.com/es-es/library/bb972217.aspx#figura01">Figura 1</a> y <a href="http://msdn.microsoft.com/es-es/library/bb972217.aspx#figura02">Figura 2</a>. Antes de hacer cada <em>demo</em>, se debe seleccionar si se utilizará en conjunto con encriptación simétrica.</p>
+<p id="figura01"><img id="art218-img01-482x392" alt="Bb972217.art218-img01-482x392(es-es,MSDN.10).jpg" src="./Desmitificando la Encriptación (Parte II)_files/IC139053.jpg" title="Bb972217.art218-img01-482x392(es-es,MSDN.10).jpg" xmlns="">
+<br><strong>Figura 1:</strong> Encriptación utilizando solamente RSA.<a href="http://msdn.microsoft.com/es-es/library/bb972217.aspx#figura01back">Volver al texto</a> .<br><br></p>
+<p id="figura02"><img id="art218-img02-482x392" alt="Bb972217.art218-img02-482x392(es-es,MSDN.10).jpg" src="./Desmitificando la Encriptación (Parte II)_files/IC136162.jpg" title="Bb972217.art218-img02-482x392(es-es,MSDN.10).jpg" xmlns="">
+<br><strong>Figura 2:</strong> Encriptación utilizando RSA con Rijndael.<a href="http://msdn.microsoft.com/es-es/library/bb972217.aspx#figura01back">Volver al texto</a> .<br><br></p>
+<p>El resultado de la encriptación es notoriamente más largo. </p>
+<p>Como vemos, si generamos una llave y luego procedemos con los siguientes pasos, la encriptación se produce en un lado y la desencriptación en otro. Incluso <em>.NET</em> provee el método <strong>
+<em>ToXmlString()</em>
+</strong> de <strong>
+<em>RSACryptoServiceProvider</em>
+</strong> que retorna la llave en formato XML, ideal para ser enviada por algún medio público (<em>Web Service</em>, Archivo XML, etc.). </p>
+<p>Dependiendo de si se utiliza en conjunto con algún algoritmo simétrico, la encriptación y desencriptación es diferente. Como algoritmo simétrico se utiliza AES ó <em>Rijndael</em>. </p>
+<p>El código de nuestra clase <strong>miRSA</strong> es el siguiente:</p>
+<pre>public class miRSA
+{
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; private RSACryptoServiceProvider _objRSA = null;
+&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public miRSA()
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; this._objRSA = new RSACryptoServiceProvider(1024);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }
+&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public string ObtenerLlavePublica()
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return this._objRSA.ToXmlString(false);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }
+&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public string DesEncriptar(byte[] bytEncriptado, bool blnConSimetrico)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; { 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (blnConSimetrico)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; byte[] keyArray = new byte[_objRSA.KeySize/8];
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; byte[] encrypted = new byte[bytEncriptado.Length - keyArray.Length];
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Array.Copy(bytEncriptado, 0, keyArray, 0, keyArray.Length);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Array.Copy(bytEncriptado, keyArray.Length, encrypted, 0, encrypted.Length);
+&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; byte[] simKey = this._objRSA.Decrypt(keyArray, false);
+&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return MiRijndael.Desencriptar(encrypted, simKey);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; else
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return System.Text.Encoding.UTF8.GetString(this._objRSA.Decrypt(bytEncriptado, false));
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }
+} </pre><br>
+<p>Y el código del cliente público es el siguiente (declarado en algún lugar del formulario):</p>
+<pre>private miRSA _objKey&nbsp; = null; 
+&nbsp;
+public Form1() 
+{ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; InitializeComponent(); 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; _objKey = new miRSA(); 
+} 
+&nbsp;
+private void btnAsimEncriptar_Click(object sender, System.EventArgs e) 
+{ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; byte[] _bytEncriptado = null; 
+&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //Creamos una instancia del encritador publico 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; RSACryptoServiceProvider _objEncriptadorPublico = new RSACryptoServiceProvider(); 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //Le asignamos la llave genarada 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; _objEncriptadorPublico.FromXmlString(this.txtAsimLlavePublica.Text); 
+&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (this.chkSimetrica.Checked) 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; { 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //Se declara la memoria para almacenar la llave utilizada por nuestro Rijndael personalizado 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; byte[] _bytKey = (Rijndael.Create()).Key; 
+&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //Se encripta el texto y se obtiene la llave que se utilizó para la encriptación 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; byte[] _bytEncriptadoSimetrico = TransEncripHash.MiRijndael.Encriptar(this.txtAsimAEncriptar.Text, 
+_bytKey); 
+&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //Se encripta la llave con el algoritmo RSA 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; byte[] _bytEncriptadoLlave = _objEncriptadorPublico.Encrypt(_bytKey, false); 
+&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //Se copia en un arreglo la llave encriptada y el encriptado de Rijndael 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; _bytEncriptado = new byte[_bytEncriptadoLlave.Length + _bytEncriptadoSimetrico.Length]; 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; _bytEncriptadoLlave.CopyTo(_bytEncriptado,0); 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; _bytEncriptadoSimetrico.CopyTo(_bytEncriptado, _bytEncriptadoLlave.Length); 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; } 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; else 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; { 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; _bytEncriptado = _objEncriptadorPublico.Encrypt(System.Text.Encoding.UTF8.GetBytes
+(this.txtAsimAEncriptar.Text), false); 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; } 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; this.txtAsimEncriptado.Text = Convert.ToBase64String(_bytEncriptado); 
+} 
+&nbsp;
+private void btnAsimDesEncriptar_Click(object sender, System.EventArgs e) 
+{ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; this.txtAsimDesEncriptado.Text = this._objKey.DesEncriptar(Convert.FromBase64String
+(this.txtAsimEncriptado.Text), this.chkSimetrica.Checked); 
+} 
+private void btnAsimGenerar_Click(object sender, System.EventArgs e) 
+{ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; this.txtAsimLlavePublica.Text = this._objKey.ObtenerLlavePublica(); 
+}</pre><br>
+<p>En este ejemplo, la encriptación se produce en un lugar, luego de solicitar la clave pública a la clase (pero que perfectamente puede ser un servicio <em>Web</em>), la información encriptada se puede enviar a este servicio <em>Web</em> sin problemas de violación de seguridad, y sin necesidad de conocer ambas llaves. Si bien es cierto que la clase o servicio conoce ambas llaves, la llave pública no le es de ninguna utilidad.</p>
+<p>Antes de finalizar con este algoritmo, cabe mencionar que donde puede haber problemas es en la generación de la llave. Por eso, <em>Diffie-Hellman</em> (&amp; <em>Merkle</em>) se especializa en mejorar ese proceso, ya que es de vital importancia la generación de llaves.</p>
+<p>
+<strong>Nota:</strong> Existe cierta codificación que puede haber pasado desapercibida hasta ahora. Esta es la utilización de distintos métodos para transformar textos en arreglos de <em>bytes</em>, y viceversa. Los métodos reales para hacerlo son los que están implementados en los <em>encodings</em> de <em>.NET</em>, como por ejemplo <em>System.Text.Encoding.UTF8.GetString(bytes)</em> y <em>System.Text.Encoding.UTF8.GetBytes(string)</em>. En las <em>demos</em> se ha cambiado algunos deliberadamente por <em>Convert.ToBase64String(bytes)</em> y <em>Convert.FromBase64String(string)</em> para poder desplegarlo en los controles del formulario <em>Windows</em>. El resultado de una encriptación genera carácteres visibles y no visibles. Si no se transforman a <em>Base64</em> y desde <em>Base64</em> mientras son almacenados en un control, se pierde información. Si el resultado de la encriptación no va a ser desplegado sino que será almacenado en algún medio, los <em>bytes</em> de éste pueden escribirse sin problemas en el medio que sea.</p>
+<div>
+<a href="http://msdn.microsoft.com/es-es/library/bb972217.aspx#mainSection"></a>&nbsp;<a href="http://msdn.microsoft.com/es-es/library/bb972217.aspx#mainSection">Principio de la página</a><br>
+</div>
+<h3 id="XSLTsection125121120120">Hash</h3>
+<p>Por último, nos quedan los algoritmos de tipo <em>Hash</em>. Estos son algoritmos del tipo de los que se conocen como de sólo ida, ya que no es posible desencriptar lo que se ha encriptado. Puede ser que a primera vista no se le vea la utilidad, pero en los siguientes dos escenarios éste es el tipo de algoritmo necesario para realizar el proceso. El primero de ellos está dirigido a proteger información muy valiosa encriptando el contenido; y el segundo busca validar que no se modifique la información que se está enviando desde un lugar a otro.</p>
+<ul>
+<li>
+<p>
+<strong>Escenario 1:</strong> Almacenar contraseñas de un sistema. Las contraseñas de cualquier sistema serio jamás debieran poder desencriptarse. El motivo es simple. Si se pueden desencriptar, el riesgo de que alguien conozca la llave y tenga acceso a todo el sistema con todos los usuarios es muy grande. Entonces, si no puedo desencriptar una contraseña, ¿Cómo puedo saber entonces si una contraseña entregada es válida? La respuesta es muy simple. Se encripta la contraseña entregada y se compara el resultado de la encriptación con la contraseña previamente almacenada. </p>
+</li>
+<li>
+<p>
+<strong>Escenario 2:</strong> Validar que cierta información no se haya modificado. Si se desea enviar un bloque de datos y se quiere estar seguro de que nadie lo ha modificado durante el camino, lo que se hace es enviar el bloque de información sin encriptar y además se envía un <em>Hash/Digest</em> de este mismo bloque de datos. Entonces, nuestro receptor al tener la información sin encriptar, le aplica un <em>Hash</em> y con el mismo criterio del Escenario 1, determina si ambos bloques son iguales. Si lo son, el bloque que no está con <em>Hash</em> es el original. ¿Porqué no usar un algoritmo de encriptación reversible? Porque éste podría ser desencriptado, modificado y vuelto a encriptar y el receptor jamás sabría que fue modificado en el camino. Como el <em>Hash</em> no es reversible, esto último no podrá suceder jamás.</p>
+</li>
+</ul>
+<p>Los algoritmos para hacer <em>Hash</em> mas conocidos son los siguientes:</p>
+<table>
+<tbody><tr><td>
+<div class="mtps-table">
+<div class="mtps-row"><span class="mtps-th">
+<span>Algoritmo</span>
+</span><span class="mtps-th">
+<span>Tamaño del Hash (bits)</span>
+</span></div>
+<div class="mtps-row"><span class="mtps-cell">
+<span>MD5</span>
+</span><span class="mtps-cell">
+<span>128</span>
+</span></div>
+<div class="mtps-row"><span class="mtps-cell">
+<span>SHA-1</span>
+</span><span class="mtps-cell">
+<span>160</span>
+</span></div>
+<div class="mtps-row"><span class="mtps-cell">
+<span>SHA-256</span>
+</span><span class="mtps-cell">
+<span>256</span>
+</span></div>
+<div class="mtps-row"><span class="mtps-cell">
+<span>SHA-384</span>
+</span><span class="mtps-cell">
+<span>384</span>
+</span></div>
+<div class="mtps-row"><span class="mtps-cell">
+<span>SHA-512</span>
+</span><span class="mtps-cell">
+<span>512</span>
+</span></div>
+</div>
+<p>
+</p>
+</td></tr>
+</tbody></table>
+<p>La robustez de un algoritmo de <em>Hash</em> es comparable a la mitad del largo del resultado en <em>bits</em>. Entonces, pensar que con MD5 se está seguro puede ser un error. SHA-256 es el indicado para obtener seguridad de 128 <em>bits</em>. Es un hecho que SHA-256 es mucho más lento, pero como <em>Bruce Schneier</em> dice “Ya existen suficientes sistemas rápidos e inseguros”. </p>
+<p>Pero a pesar de parecer muy efectivo, existe un problema con el <em>Hash</em> para cada uno de los escenarios indicados anteriormente. Como son problemas conocidos, existen soluciones conocidas también. Revisemos ahora cada uno de los problemas y sus soluciones. </p>
+<p>
+<strong>Problemas Escenario 1</strong>
+</p>
+<p>Si bien el problema no está tan relacionado con el <em>Hash</em>, debido a la utilización de contraseñas de escasa dificultad, haciendo un ataque de fuerza bruta o por diccionario se podrían encontrar valores de <em>Hash</em> que coinciden con el <em>Hash</em> de las contraseñas almacenadas. Para esto se pueden ejecutar dos planes de acción independientes, pero obteniéndose el mejor resultado con la utilización de ambos. </p>
+<p>La <strong>Solución 1</strong> consiste en realizar varias pasadas de <em>Hash</em> sobre los datos, aplicándole el <em>Hash</em> al resultado del <em>Hash</em> anterior. Realizando esto varios cientos de veces (idealmente mil veces) podemos dificultar más el trabajo de un <em>hacker</em>. Más información de porqué se debe iterar muchas veces y las consecuencias de no hacerlo, la puedes encontrar en <a href="http://www.atrevido.net/blog/PermaLink.aspx?guid=12b1338b-171e-4692-850e-8f59ed12f24a">http://www.atrevido.net/blog/PermaLink.aspx?guid=12b1338b-171e-4692-850e-8f59ed12f24a  </a> . </p>
+<p>La <strong>Solución 2</strong> requiere agregar un texto adicional a la contraseña. Esto se conoce como <em>Salt</em>. Entonces, cada vez que un usuario cambie o esté validando una contraseña, hay que concatenarle a la contraseña este <em>Salt</em> y de ahí generar el <em>Hash</em>. De esta forma le agrega variación a las contraseñas pobremente definidas. Esta solución requiere un trabajo adicional ya que es necesario además almacenar el texto del <em>Salt</em> junto a la información del usuario y la contraseña encriptada. Este texto se debe crear con carácteres generados al azar. </p>
+<p>En el ejemplo se mostrará la combinación de ambas soluciones. Como encriptación de <em>Hash</em> se usará SHA256. Los otros algoritmos mencionados con anterioridad están disponibles también en <em>.NET</em>. </p>
+<p id="figura03back">El resultado de la encriptación 1000 veces de cierto texto con un <em>Salt</em> definido, es el que se muestra en la <a href="http://msdn.microsoft.com/es-es/library/bb972217.aspx#figura03">Figura 3</a>: </p>
+<p id="figura03"><img id="art218-img03-482x392" alt="Bb972217.art218-img03-482x392(es-es,MSDN.10).jpg" src="./Desmitificando la Encriptación (Parte II)_files/IC106716.jpg" title="Bb972217.art218-img03-482x392(es-es,MSDN.10).jpg" xmlns="">
+<br><strong>Figura 3. </strong><a href="http://msdn.microsoft.com/es-es/library/bb972217.aspx#figura03back">Volver al texto</a>.<br><br></p>
+<p>El código para realizar esto es muy simple y es el que se muestra a continuación:</p>
+<pre>public class HashContraseñas
+{
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public static byte[] Encriptar(string strPassword, string strSalt, int intIteraciones)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; string _strPasswordSalt = strPassword + strSalt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SHA256Managed _objSha256 = new SHA256Managed();
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; byte[] _objTemporal = null;
+&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; try
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; _objTemporal = System.Text.Encoding.UTF8.GetBytes(
+_strPasswordSalt);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; for (int i = 0; i &lt;= intIteraciones - 1; i++)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; _objTemporal = _objSha256.ComputeHash(
+_objTemporal);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; finally { _objSha256.Clear(); }
+&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return _objTemporal;
+}
+} </pre><br>
+<p>
+<strong>Qué cosas se deben clarificar en este proceso</strong>
+<br>El resultado de este <em>Hash</em> (Sha256) siempre retorna 256 <em>bits</em>, es decir, 32 <em>bytes</em>. Cuidado con confundir con el largo del <em>string</em> resultante de la conversión a <em>Base</em>64. Esta conversión genera más carácteres. Para verificar, puedes medir el largo del arreglo colocando un punto de interrupción en el retorno (<em>return</em>), y notarás que son 32 <em>bytes</em>.</p>
+<p>Además, las funciones de <em>hash</em> no tienen limitante para el tamaño del texto de entrada. Sea cual fuere el tamaño, el largo de la salida es el mismo y se procesan todos los carácteres del <em>string</em> de entrada.</p>
+<p>Para un sistema de almacenamiento de contraseñas de usuario seguro, hay que hacer algunas modificaciones a esta función, pero son mínimas. Las modificaciones no pasan por cambios en el algoritmo, sino más bien por crear una función para que genere <em>Salt</em> randómicos y crear la función para la comparación de las contraseñas.</p>
+<p>Probablemente te preguntes porqué hay 2 cajas de texto con el mismo texto. Como este proceso es común, o al menos debiera serlo, <em>.NET</em> provee una clase llamada <em>PasswordDeriveBytes</em> que sirve para realizar de forma automática todo lo anteriormente visto. En el evento <em>click</em>, además de la llamada a la función detallada de más arriba (<em>HashContraseñas.Encriptar</em>), se crea una instancia de esta clase (<em>PasswordDeriveBytes</em>) y se le especifican los mismos parámetros que estamos utilizando en nuestro algoritmo de <em>Hash</em> (la contraseña, el <em>Salt</em>, el algoritmo SHA256 y la cantidad de iteraciones). Esto hace que en sólo pocas líneas se pueda realizar el mismo proceso.</p>
+<p>El código ejecutado es el siguiente:</p>
+<pre>PasswordDeriveBytes _objPdb = new PasswordDeriveBytes(this.txtHashEncriptar1.Text,
+ System.Text.Encoding.UTF8.GetBytes(this.txtSalt.Text), "SHA256", Convert.ToInt32(this.txtCantidad.Text));
+&nbsp;
+this.txtHashEncriptado2.Text = Convert.ToBase64String(_objPdb.GetBytes(32));</pre><br>
+<p>Para comparar arreglos de <em>bytes</em>, se verá más adelante una función con tal objetivo.</p>
+<p>
+<strong>Problemas Escenario 2:</strong> Si alguien puede ejecutar un <em>Hash</em> sobre un conjunto de datos y obtener el resultado, ¿Porqué no podría modificar el contenido del documento que estamos enviando y generar el <em>Hash</em> nuevamente, reemplazando el contenido del <em>Hash</em> anterior? ¿Cómo se puede diferenciar mi proceso de <em>Hash</em> del proceso de <em>Hash</em> impostor? No es posible a menos que haya alguna llave de por medio.</p>
+<p>Debido a lo anterior, se han inventado los siguientes algoritmos de <em>Hash</em>, que utilizan llaves para realizar el proceso. En este caso, si el resultado se sobrescribe, al obtener el <em>Hash</em> con la llave, el resultado jamás coincidirá con el que viene en el mensaje.</p>
+<p>Estos algoritmos y sus llaves son los siguientes:</p>
+<table>
+<tbody><tr><td>
+<div class="mtps-table">
+<div class="mtps-row"><span class="mtps-th">
+<span>Algoritmo</span>
+</span><span class="mtps-th">
+<span>Tamaño del Hash (bits)</span>
+</span><span class="mtps-th">
+<span>Tamaño de llave (bits)</span>
+</span></div>
+<div class="mtps-row"><span class="mtps-cell">
+<span>HMAC-SHA1</span>
+</span><span class="mtps-cell">
+<span>160</span>
+</span><span class="mtps-cell">
+<span>64</span>
+</span></div>
+<div class="mtps-row"><span class="mtps-cell">
+<span>MAC-3DES-CBC</span>
+</span><span class="mtps-cell">
+<span>64</span>
+</span><span class="mtps-cell">
+<span>8, 16, 24</span>
+</span></div>
+</div>
+<p>
+</p>
+</td></tr>
+</tbody></table>
+<p>Para realizar la <em>demo</em>, debemos primero generar una llave. Hasta ahora, las llaves se han creado manualmente, pero ahora vamos a utilizar herramientas del <em>Framework</em> para generarlas. Como la llave de 64 <em>bits</em> es del mismo largo que la que utiliza el algoritmo DES, se utilizará la clase de éste para generar una. Existe el botón “Generar Key” que es el encargado de generar y almacenar una llave. Esta se genera en la función del botón, y se almacena en una variable de formulario. El código es el siguiente:</p>
+<pre>privatevoid btnHashKey_Click(object sender, System.EventArgs e)
+{
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this._objHashKey = (new System.Security.Cryptography.DESCryptoServiceProvider()).Key;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this.lblSalt.Text = "Key : " + Convert.ToBase64String(this._objHashKey);
+}</pre><br>
+<p>Con la primer sentencia se crea la instancia del proveedor de DES y se obtiene el <em>Key</em> almacenándolo en <em>_objHashKey</em>, una variable de formulario. Con la segunda línea, se copia el contenido de la <em>Key</em> en una etiqueta del formulario, previamente transformándolo en <em>Base</em>64. Cabe mencionar que la transformación a <em>Base</em>64 genera una cadena más larga que la cantidad de <em>bytes</em> que está recibiendo, por eso si cuentas la cantidad de carácteres del <em>Key</em>, no cumple con ser de 64 <em>bits</em> (8 <em>bytes</em>). </p>
+<p id="figura04back">La validación es muy simple de realizar. Recuerda que lo que se quiere hacer es verificar que la información que se está enviando no se haya modificado en el camino. Entonces lo que se debe hacer es generar un nuevo <em>Hash</em> con el texto en cuestión y la contraseña, y comparar el resultado del <em>Hash</em> generado con el que se envió inicialmente. La comparación de <em>Hash</em> se realiza con una función para comparar arreglos (Ver <a href="http://msdn.microsoft.com/es-es/library/bb972217.aspx#figura04">Figura 4</a>): </p>
+<p id="figura04"><img id="art218-img04-482x392" alt="Bb972217.art218-img04-482x392(es-es,MSDN.10).jpg" src="./Desmitificando la Encriptación (Parte II)_files/IC80147.jpg" title="Bb972217.art218-img04-482x392(es-es,MSDN.10).jpg" xmlns="">
+<br><strong>Figura 4:</strong> Resultado de presionar <strong>Validar Hash</strong> sin hacer ninguna modificación. <a href="http://msdn.microsoft.com/es-es/library/bb972217.aspx#figura04back">Volver al texto</a>.<br><br></p>
+<p id="figura05back">En cambio, si se modifica levemente el texto, agregando la palabra "me" (o cualquiera) en el círculo rojo remarcado, y se trata de validar, el resultado es erróneo inmediatamente. Con esta funcionalidad se valida que nadie haya modificado el contenido de lo que se está enviando (Ver <a href="http://msdn.microsoft.com/es-es/library/bb972217.aspx#figura05">Figura 5</a>): </p>
+<p id="figura05"><img id="art218-img05-482x392" alt="Bb972217.art218-img05-482x392(es-es,MSDN.10).jpg" src="./Desmitificando la Encriptación (Parte II)_files/IC1951.jpg" title="Bb972217.art218-img05-482x392(es-es,MSDN.10).jpg" xmlns="">
+<br><strong>Figura 5:</strong> Resultado de presionar <strong>Validar Hash</strong> con una modificación. <a href="http://msdn.microsoft.com/es-es/library/bb972217.aspx#figura05back">Volver al texto</a>.<br><br></p>
+<p>Además, si se genera una nueva <em>Key</em> (con el botón <strong>Generar </strong>
+<strong>
+<em>Key</em>
+</strong>) y se valida, el resultado es fallido, como era de esperarse. Existe otro método para realizar esta misma validación pero sin compartir las llaves. La idea es muy similar a la estudiada en los algoritmos asimétricos, en donde una de las partes tiene una llave para encriptar y otra parte tiene otra llave para encriptar también. Algo similar a esto es lo que se utiliza para la firma digital, pero por ser un tema tan amplio, no cabe en este artículo y merece un artículo completo para su explicación. Algunas claves para poder conocer como funciona esto, las siguientes clases del <em>Framework</em> poseen funcionalidad para lograrlo. Estas son <em>RSACryptoServiceProvider</em> y <em>DSACryptoServiceProvider</em>. Por último, algo de código. Para generar un<em> Hash</em> con un <em>Key</em> y para comparar arreglos de <em>bytes</em> se utilizan los siguientes bloques de código:</p>
+<pre>public class HashValidacion 
+{ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public static byte[] Encriptar(string strTexto, byte[] objKey) 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; { 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; HMACSHA1 _objHMACSHA = new HMACSHA1(objKey); 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; try 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; { 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return _objHMACSHA.ComputeHash(Encoding.UTF8.GetBytes(strTexto)); 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; } 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; finally 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; { 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; _objHMACSHA.Clear(); 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; } 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; } 
+&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public static bool CompareByteArray(Byte[] arrayA, Byte[] arrayB) 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; { 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (arrayA.Length != arrayB.Length) 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return false; 
+&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; for (int i = 0; i &lt;= arrayA.Length - 1; i++) 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (!arrayA[i].Equals(arrayB[i])) 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return false; 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return true; 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; } 
+} </pre><br>
+<div>
+<a href="http://msdn.microsoft.com/es-es/library/bb972217.aspx#mainSection"></a>&nbsp;<a href="http://msdn.microsoft.com/es-es/library/bb972217.aspx#mainSection">Principio de la página</a><br>
+</div>
+<h3 id="XSLTsection126121120120">Conclusiones</h3>
+<p>A través de las dos partes de este artículo se han explorado los métodos más comunes de encriptación, revisándose cada escenario donde se aplican. Cada escenario se ha complementado con ejemplos y código 100% funcional. Se ha&nbsp; desmitificado la encriptación como un proceso complicado y nebuloso, mostrándose de forma clara cuándo y cómo aplicar cada algoritmo, además de la forma correcta de hacerlo.</p>
+<div>
+<a href="http://msdn.microsoft.com/es-es/library/bb972217.aspx#mainSection"></a>&nbsp;<a href="http://msdn.microsoft.com/es-es/library/bb972217.aspx#mainSection">Principio de la página</a><br>
+</div>
+<h3 id="XSLTsection127121120120">Respuestas a las Preguntas</h3>
+<p>Revisemos entonces algunas de las preguntas inicialmente planteadas y veamos cómo podemos responderlas ahora. </p>
+<ul>
+<li>
+<p>¿Se está almacenando la información crítica de forma segura?<br>
+<strong>Esta pregunta la puede respnder el lector.</strong>
+</p>
+</li>
+<li>
+<p>¿Qué entendemos por seguro?<br><strong>Se ha mostrado la diferencia entre algoritmos que transforman texto con respecto a otros que realmente encriptan.</strong> </p>
+</li>
+<li>
+<p>Si se está encriptando, ¿Qué algoritmo se está utilizando?<br><strong>Se revisaron los algoritmos más conocidos y se mostraron sus ventajas y falencias. Sea cual fuere, el algoritmo debe implementarse adecuadamente.</strong></p>
+</li>
+<li>
+<p>¿Se permite la desencriptación de datos que no debieran poder desencriptarse?<br>
+<strong>Esta pregunta la puede responder el lector</strong>
+<strong>,</strong>
+<strong> pero la respuesta debe ser NO. </strong>
+</p>
+</li>
+<li>
+<p>¿Cómo está realizándose la encriptación?<br><strong>Se revisó la forma correcta de encriptar con cada algoritmo, como también las malas prácticas y los riesgos que se corren al no hacer el proceso como debe ser.</strong></p>
+</li>
+<li>
+<p>¿Dónde están almacenadas la o las llaves?<br><strong>Esta es una muy buena pregunta y la respuesta escapa al alcance de este artículo, pero como sugerencia se puede mencionar lo siguiente: se puede utilizar <em>DPAPI</em> o <em>Certificate Storage</em>. Para implementar DPAPI tanto desde aplicaciones <em>Windows</em> como <em>web</em>, puedes visitar los siguientes enlaces:</strong></p>
+<p>DPAPI: <a href="http://msdn2.microsoft.com/library/aa302402.aspx">http://msdn2.microsoft.com/library/aa302402.aspx</a>
+<br>DPAPI en <em>Web</em>: <a href="http://msdn2.microsoft.com/library/aa302404.aspx">http://msdn2.microsoft.com/library/aa302404.aspx</a></p>
+<p><strong>Pensamientos como el siguiente no son seguros: "si almaceno la llave en un directorio escondido, es difícil que un <em>hacker</em> la encuentre", como así también "A un <em>hacker </em>le va a tomar mucho tiempo encontrarla." Si hay algo que le sobra a un <em>hacker</em> es tiempo y ganas.</strong></p>
+</li>
+<li>
+<p>¿Con qué frecuencia se cambian las llaves?<br><strong>La respuesta es depende, lamentablemente. Depende de la criticidad del sistema, como también del uso de las llaves. Para una conexión de transferencia, se crean las llaves, se utilizan y se descartan. En un sistema crítico tal como el de un banco, el cambio de llaves debería hacerse cada una hora, o como máximo, cada un día. Para información que va a tener mayor duración, el tiempo puede ser mayor.</strong></p>
+</li>
+<li>
+<p>¿Cómo enfrento el problema de cambiar las llaves con tanta frecuencia?<br><strong>Como cambiar las llaves no es una tarea simple en recursos y tiempo, se emplea el concepto de llave maestra y llaves hijas. La información a encriptar se encripta con las llaves hijas y luego&nbsp; con la llave maestra se encriptan las llaves hijas y se almacenan.&nbsp; Entonces, al momento de aplicar cambio de llave, se cambia sólo la llave maestra, procediéndose a desencriptar todas las llaves hijas con la antigua y a encriptar todas con la llave nueva. Esto disminuye el tiempo a factor de N (cantidad de llaves) y no de la cantidad de <em>bytes</em> de información encriptada. Esto no agrega seguridad, sólo ayuda a realizar un proceso de forma eficiente.</strong></p>
+</li>
+<li>
+<p>¿Con qué criterio se definen las nuevas llaves?<br><strong>Para definir una llave se puede ejecutar la función <em>GenerateKey()</em> que todo algoritmo simétrico posee. Esto genera una llave randómica.</strong></p>
+</li>
+</ul>
+<p id="authorbrief">
+<strong>Patrick Mac Kay</strong> es Ingeniero Civil en Computación de la Universidad de Chile desde 2000. Trabaja como Arquitecto de Software de un sitio de comercio electrónico B2B en Chile; a su cargo estuvo la implementación de este sitio en ASP .net y Visual Basic .net 2003 sobre Windows .net Web Server 2003. Posee 5 años de experiencia en el desarrollo de aplicaciones Web. Es MVP y cuenta con las certificaciones MCP en VB5, VB6 y ASP .net en Visual Basic. </p>
+<div>
+<a href="http://msdn.microsoft.com/es-es/library/bb972217.aspx#mainSection">
+
+</a>
+<a href="http://msdn.microsoft.com/es-es/library/bb972217.aspx#mainSection">Principio de la página</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <p style="padding: 15px 0px; margin: 0px;"></p>
+    
+    
+    
+
+
+
+
+<div class="libraryMemberFilter">
+    <div class="filterContainer">
+        <span>Mostrar:</span>
+        <label>
+            <input type="checkbox" class="libraryFilterInherited" checked="checked" value="Inherit">Heredado
+        </label>
+        <label>
+            <input type="checkbox" class="libraryFilterProtected" checked="checked" value="Protected">Protegido
+        </label>
+    </div>
+</div>
+    
+<input type="hidden" id="libraryMemberFilterEmptyWarning" value="No hay miembros disponibles que coincidan con la configuración de filtro actual.">
+
+
+ 
+</div>
+
+
+
+
+
+            </div>
+            <div class="clear"></div>
+        
+            
+    
+<input name="__RequestVerificationToken" type="hidden" value="AFCFZhOlCc78MvTlQ7KsyNjs0FfIsAJWyiy-EcDStAxEWgJT9jp37KwAtyyZtCG1Z1x5yOUs5GlC87sYAfc8R-qFa1KYHzr5lNDZ4ASrHGJ59dESQyQk2AtoIQOd5FnBtfavrw2">
+<input id="ratingSubmitUrl" type="hidden" value="http://msdn.microsoft.com/es-es/library/feedback/add/bb972217.aspx">
+<input id="isTopicRated" type="hidden" value="false">
+
+
+
+
+    <div id="ux-footer" class="" style="" dir="ltr">
+    <footer class="top">
+        <div data-fragmentname="LeftLinks" id="Fragment_LeftLinks" xmlns="http://www.w3.org/1999/xhtml">
+  
+  <div class="LinkList">
+    <div class="LinkListTitle">Centros de desarrolladores</div>
+    <div class="Links">
+      <ul class="LinkColumn" style="width: 100%">
+        <li>
+          <a href="http://msdn.microsoft.com/windows" id="27861_1" class="windowsBlue" xmlns="http://www.w3.org/1999/xhtml">Windows</a>
+        </li>
+        <li>
+          <a href="http://dev.windowsphone.com/" id="27861_2" class="windowsPurple" xmlns="http://www.w3.org/1999/xhtml">Windows Phone</a>
+        </li>
+        <li>
+          <a href="http://msdn.microsoft.com/office" id="27861_3" class="office" xmlns="http://www.w3.org/1999/xhtml">Office</a>
+        </li>
+        <li>
+          <a href="http://www.windowsazure.com/en-us/documentation/" id="27861_4" class="windowsBlue" xmlns="http://www.w3.org/1999/xhtml">Windows Azure</a>
+        </li>
+        <li>
+          <a href="http://msdn.microsoft.com/vstudio" id="27861_5" class="visualStudio" xmlns="http://www.w3.org/1999/xhtml">Visual Studio</a>
+        </li>
+        <li>
+          <a href="http://msdn.microsoft.com/aa937802" id="27861_6" xmlns="http://www.w3.org/1999/xhtml">Más...</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>    
+        <div id="rightLinks">
+            <div data-fragmentname="CenterLinks1" id="Fragment_CenterLinks1" xmlns="http://www.w3.org/1999/xhtml">
+  
+  <div class="LinkList">
+    <div class="LinkListTitle">Recursos de aprendizaje</div>
+    <div class="LinkListDescription"></div>
+    <div class="Links">
+      <ul class="LinkColumn" style="width: 100%">
+        <li>
+          <a href="http://www.microsoftvirtualacademy.com/" id="27861_14" xmlns="http://www.w3.org/1999/xhtml">Microsoft Virtual Academy</a>
+        </li>
+        <li>
+          <a href="http://channel9.msdn.com/" id="27861_16" xmlns="http://www.w3.org/1999/xhtml">Channel 9</a>
+        </li>
+        <li>
+          <a href="http://www.interoperabilitybridges.com/" id="27861_17" xmlns="http://www.w3.org/1999/xhtml">Puentes de interoperabilidad</a>
+        </li>
+        <li>
+          <a href="http://msdn.microsoft.com/magazine/" id="CenterLinks1_427_33" xmlns="http://www.w3.org/1999/xhtml">MSDN Magazine</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+            <div data-fragmentname="CenterLinks2" id="Fragment_CenterLinks2" xmlns="http://www.w3.org/1999/xhtml">
+  
+  <div class="LinkList">
+    <div class="LinkListTitle">Comunidad</div>
+    <div class="LinkListDescription"></div>
+    <div class="Links">
+      <ul class="LinkColumn" style="width: 100%">
+        <li>
+          <a href="http://social.msdn.microsoft.com/forums/es-es/home" id="27861_19" xmlns="http://www.w3.org/1999/xhtml">Foros</a>
+        </li>
+        <li>
+          <a href="http://blogs.msdn.com/b/developer-tools/" id="27861_20" xmlns="http://www.w3.org/1999/xhtml">Blogs</a>
+        </li>
+        <li>
+          <a href="http://www.codeplex.com/" id="27861_22" xmlns="http://www.w3.org/1999/xhtml">CodePlex</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+            <div data-fragmentname="CenterLinks3" id="Fragment_CenterLinks3" xmlns="http://www.w3.org/1999/xhtml">
+  
+  <div class="LinkList">
+    <div class="LinkListTitle">Soporte técnico</div>
+    <div class="LinkListDescription"></div>
+    <div class="Links">
+      <ul class="LinkColumn" style="width: 100%">
+        <li>
+          <a href="http://msdn.microsoft.com/hh361695" id="CenterLinks3_427_34" xmlns="http://www.w3.org/1999/xhtml">Autoasistencia</a>
+        </li>
+        <li>
+          <a href="http://support.microsoft.com/" id="27861_24" xmlns="http://www.w3.org/1999/xhtml">Otras opciones de soporte técnico</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+            <div data-fragmentname="CenterLinks4" id="Fragment_CenterLinks4" xmlns="http://www.w3.org/1999/xhtml" class="nth-child-4n">
+  
+  <div class="LinkList">
+    <div class="LinkListTitle">Programas</div>
+    <div class="LinkListDescription"></div>
+    <div class="Links">
+      <ul class="LinkColumn" style="width: 100%">
+        <li>
+          <a href="http://www.microsoft.com/bizspark/" id="27861_27" xmlns="http://www.w3.org/1999/xhtml">BizSpark (para empresas nuevas)</a>
+        </li>
+        <li>
+          <a href="https://www.dreamspark.com/" id="27861_28" xmlns="http://www.w3.org/1999/xhtml">DreamSpark</a>
+        </li>
+        <li>
+          <a href="https://www.microsoft.com/faculty" id="27861_29" xmlns="http://www.w3.org/1999/xhtml">Faculty Connection</a>
+        </li>
+        <li>
+          <a href="http://www.microsoft.com/student/es-es/default.aspx#fbid=EmeXUox3qFv" id="CenterLinks4_427_32" xmlns="http://www.w3.org/1999/xhtml">Microsoft Student</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+    <div class="feedbackContainer">
+        <div id="feedbackSection1" class="clear">
+            <div class="left">¿Te ha resultado útil?</div>
+            <div class="left">
+                <div class="left">
+                    <input type="radio" name="feedback" id="feedbackYes" value="1" class="feedbackYesClick" data-enhance="false"><label class="feedbackYesClick" for="feedbackYes"> Sí</label>
+                </div>
+                <div class="left">
+                    <input type="radio" name="feedback" id="feedbackNo" value="0" class="feedbackNoClick" data-enhance="false"><label class="feedbackNoClick" for="feedbackNo"> No</label>
+                </div>
+            </div>
+            <a class="rateThisAnchor" name="feedback"></a>
+        </div>
+        <div id="feedbackSection2" class="clear">
+        </div>
+        <div id="feedbackSection3" class="clear">
+                    <div>
+                        <input id="checkboxNo201" name="chkbxNo" type="checkbox" value="201" data-enhance="false">
+                        <label for="checkboxNo201">No es preciso</label>
+                    </div>
+                    <div>
+                        <input id="checkboxNo202" name="chkbxNo" type="checkbox" value="202" data-enhance="false">
+                        <label for="checkboxNo202">No es lo suficientemente profundo</label>
+                    </div>
+                    <div>
+                        <input id="checkboxNo203" name="chkbxNo" type="checkbox" value="203" data-enhance="false">
+                        <label for="checkboxNo203">Se necesitan ejemplos de código adicionales</label>
+                    </div>
+                    <div>
+                        <input id="checkboxNo204" name="chkbxNo" type="checkbox" value="204" data-enhance="false">
+                        <label for="checkboxNo204">La traducción necesita mejoras</label>
+                    </div>
+        </div>
+        <div id="feedbackSection4" class="clear">
+            <div>
+                <textarea id="feedbackTextArea" name="feedbackText" class="TellUsMoreTextBoxSearchLoaded" data-enhance="false">Más información...</textarea>
+            </div>
+            <div class="left"><span class="counter">(Caracteres restantes: <span id="feedbackTextCounter">1500</span>)</span></div>
+            <div class="right">
+                <button type="button" id="feedbackSubmit" title="Haga clic para Enviar comentarios" data-enhance="false">Enviar</button>
+            </div>
+        </div>
+        <div id="feedbackSection5">Gracias por sus comentarios</div>
+        <input id="feedbackValue" type="hidden" value="">
+        <input id="tellUsMoreText" type="hidden" value="Más información...">
+        <input id="maxTextBoxCharacters" type="hidden" value="1500">
+        <input type="hidden" id="submitUrl" value="/es-es/msdn/ux/uxservices/feedback/add/footer">
+        <input type="hidden" id="feedbackSiteName" name="feedbackSiteName" value="">
+        <input type="hidden" id="feedbackPriority" name="feedbackPriority" value="">
+        <input type="hidden" id="feedbackSourceUrl" name="feedbackSourceUrl" value="">
+        <input type="hidden" id="ClientIP" name="ClientIP" value="">
+        <input type="hidden" id="ClientOS" name="ClientOS" value="">
+        <input type="hidden" id="ClientBrowser" name="ClientBrowser" value="">
+        <input type="hidden" id="ClientTime" name="ClientTime" value="">
+        <input type="hidden" id="ClientDate" name="ClientDate" value="">
+    </div>
+    
+    
+        </div>
+    </footer>
+    
+    <footer class="bottom">
+        <span class="localeContainer">
+                <form class="selectLocale" id="selectLocaleForm" action="http://msdn.microsoft.com/es-es/selectlocale-dmc">
+        <input type="hidden" name="fromPage" value="http%3a%2f%2fmsdn.microsoft.com%2fes-es%2flibrary%2fbb972217.aspx">
+        <a href="http://msdn.microsoft.com/es-es/library/bb972217.aspx#" onclick="$(&#39;#selectLocaleForm&#39;).submit();return false;" title="Cambie su idioma">España (Español)</a>
+    </form>    
+
+
+        </span>
+        
+        <div data-fragmentname="BottomLinks" id="Fragment_BottomLinks" xmlns="http://www.w3.org/1999/xhtml">
+  
+  <div class="LinkList">
+    <div class="LinkListDescription"></div>
+    <div class="Links">
+      <ul class="LinkColumn horizontal">
+        <li>
+          <a href="http://msdn.microsoft.com/newsletter.aspx" id="27861_8" xmlns="http://www.w3.org/1999/xhtml">Boletín de noticias</a>
+        </li>
+        <li>
+          <a href="http://msdn.microsoft.com/dn529288" id="27861_10" xmlns="http://www.w3.org/1999/xhtml">Privacidad y Cookies</a>
+        </li>
+        <li>
+          <a href="http://msdn.microsoft.com/cc300389.aspx" id="27861_11" xmlns="http://www.w3.org/1999/xhtml">Términos de uso</a>
+        </li>
+        <li>
+          <a href="http://www.microsoft.com/en-us/legal/intellectualproperty/Trademarks/EN-US.aspx" id="27861_12" xmlns="http://www.w3.org/1999/xhtml">Marcas registradas</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>    
+        <span class="logoLegal">
+            <span class="logo"></span>
+            <span class="copyright">© 2014 Microsoft</span>
+        </span>
+    </footer>
+</div>
+    
+
+
+            <div class="footerPrintView">
+                <div class="footerCopyrightPrintView">© 2014 Microsoft. Reservados todos los derechos.</div>
+            </div>
+
+            
+            
+    
+    
+    <input id="tocPaddingPerLevel" type="hidden" value="17">
+
+
+        
+            <input id="MtpsDevice" type="hidden" value="Default">
+
+
+<!--[CDATA[ Third party scripts and code linked to or referenced from this website are licensed to you by the parties that own such code, not by Microsoft.  See ASP.NET Ajax CDN Terms of Use – http://www.asp.net/ajaxlibrary/CDN.ashx. ]]-->
+        
+            
+            
+            
+            
+            
+        
+
+
+
+
+
+<noscript>&lt;div&gt;&lt;img alt="DCSIMG" id="Img1" width="1" height="1" src="http://m.webtrends.com/dcsmgru7m99k7mqmgrhudo0k8_8c6m/njs.gif?dcsuri=/nojavascript&amp;amp;WT.js=No" /&gt;&lt;/div&gt;</noscript>
+
+
+
+
+
+
+
+
+
+<noscript>
+  &lt;a href="http://www.omniture.com" title="Web Analytics"&gt;
+    &lt;img src="//msstonojsmsdn.112.2o7.net/b/ss/msstonojsmsdn/1/H.20.2--NS/0" height="1" width="1" border="0" alt="" /&gt;
+  &lt;/a&gt;
+</noscript>
+
+
+
+
+<div id="globalRequestVerification">
+    <input name="__RequestVerificationToken" type="hidden" value="B7uTq50fcZ39k8Qa1Yh1LngxV7WvHQvfVSWzdxBCjfmpSkWO5O6wNbtUoBtwPul-mh8lmIYRfY1VZo_m7kVwQvH3Kxtn4sR4E4JcBTFQ9N3FrL5quTZCLtd_eRf2zrq25CykhQ2">
+</div>
+
+
+        </div>
+    <script type="text/javascript" class="mtps-injected">
+/*<![CDATA[*/
+(function(window,document){"use strict";function preload(scripts){for(var result=[],script,e,i=0;i<scripts.length;i++)script=scripts[i],script.hasOwnProperty("url")&&(e=document.createElement("script"),e.src=script.url,script.throwaway=e),result.push(script);return result}function inject(scripts,index){var script,elem;if(index>=scripts.length){delete mtps.injectScripts;return}script=scripts[index];elem=document.createElement("script");elem.className="mtps-injected";elem.async=!1;var isLoaded=!1,timeoutId=0,injectNextFnName="",injectNext=elem.onerror=function(){isLoaded||(isLoaded=!0,inject(scripts,index+1),window.clearTimeout(timeoutId),elem.onload=elem.onerror=elem.onreadystatechange=null,injectNextFnName&&delete mtps[injectNextFnName],elem.removeEventListener&&elem.removeEventListener("load",injectNext,!1))};elem.addEventListener?elem.addEventListener("load",injectNext,!1):elem.readyState==="uninitialized"?elem.onreadystatechange=function(){(this.readyState==="loaded"||this.readyState==="complete")&&injectNext()}:elem.onload=injectNext;script.hasOwnProperty("url")?(timeoutId=window.setTimeout(injectNext,12e4),elem.src=script.url):(injectNextFnName="_injectNextScript_"+index,mtps[injectNextFnName]=injectNext,timeoutId=window.setTimeout(injectNext,2e3),elem.text="try {\n"+script.txt+"\n} finally { MTPS."+injectNextFnName+" && MTPS."+injectNextFnName+"(); }");parent.appendChild(elem)}var mtps=window.MTPS||(window.MTPS={}),parent=document.getElementsByTagName("head")[0];mtps.injectScripts=function(scripts){inject(preload(scripts),0)}})(window,document);
+MTPS.injectScripts([
+	{ txt: "/**/\r\n(window.MTPS || (window.MTPS = {})).cdnDomains || (window.MTPS.cdnDomains = { \r\n\t\"image\": \"http://i.msdn.microsoft.com\", \r\n\t\"js\": \"http://i2.msdn.microsoft.com\", \r\n\t\"css\": \"http://i3.msdn.microsoft.com\"\r\n});\r\n/**/" },
+	{ url: "http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js" },
+	{ txt: "//\n    window.appInsightsId = \u00273760cd7b-6401-4f33-bfd9-226063ffa136\u0027;\n    //" },
+	{ txt: "//\n  var literalNormalizedUrl = \u0027/es-es/library/bb972217(d=default,l=es-es,v=msdn.10).aspx\u0027;\n  var wt_nvr_ru = \u0027WT_NVR_RU\u0027;\n  var wt_fpcdom = \u0027.microsoft.com\u0027;\n  var wt_domlist = \u0027msdn.microsoft.com\u0027;\n  var wt_pathlist = \u0027\u0027;\n  var wt_paramlist = \u0027DCSext.mtps_devcenter\u0027;\n  var wt_siteid = \u0027MSDN\u0027;\n  var gDomain = \u0027m.webtrends.com\u0027;\n  var gDcsId = \u0027dcsmgru7m99k7mqmgrhudo0k8_8c6m\u0027;\n  var gFpc = \u0027WT_FPC\u0027;\n\n\n\n  if (document.cookie.indexOf(gFpc + \"=\") == -1) {\n    var wtidJs = document.createElement(\"script\");\n    wtidJs.src = \"//\" + gDomain + \"/\" + gDcsId + \"/wtid.js\";\n    document.getElementsByTagName(\"head\")[0].appendChild(wtidJs);\n  }\n\n\n\n  var detectedLocale = \u0027es-es\u0027;\n  var wtsp = \u0027msdnlib_techart\u0027;\n  var gTrackEvents = \u00270\u0027;\n/**/" },
+	{ txt: "/**/\n  var omni_guid = \"b8b49f98-04ce-438a-aea3-6be279074cbf\";\n/**/" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:Utilities,1:Banner,2:Layout,3:Header,1:Feedback,0:AppInsightsPerf,3:Footer,0:Topic,4:webtrendsscript,5:omni_rsid_MSDN,6:SearchBox;/Areas/Epx/Content/Scripts:0,/Areas/Epx/Shared/Content:1,/Areas/Centers/Themes/Base/Content:2,/Areas/Centers/Themes/MsdnBase/Content:3,/Areas/Global/Content/Webtrends/resources:4,/Areas/Global/Content/Omniture/resources/MSDN:5,/Areas/Epx/Themes/Base/Content:6\u0026amp;hashKey=3AB3C70C2483C1E38B727E4B514F6571" },
+	{ url: "http://i2.services.social.microsoft.com/search/Widgets/SearchBox.jss?boxid=HeaderSearchTextBox\u0026btnid=HeaderSearchButton\u0026brand=MSDN\u0026loc=es-es\u0026focusOnInit=false\u0026emptyWatermark=true" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:PrintExportButton,1:Toc,1:NavigationResize,2:FeedbackCounter,1:LibraryMemberFilter,3:Toc_Fixed,3:CodeSnippet,3:TopicNotInScope,3:CollapsibleArea,3:VersionSelector,3:SurveyBroker;/Areas/Library/Themes/Base/Content:0,/Areas/Library/Content:1,/Areas/Epx/Shared/Content:2,/Areas/Epx/Content/Scripts:3\u0026amp;hashKey=815D461BC989ED4A0FD0928991227F0A" },
+	{ txt: "$(document).ready(function() {\n        try {\n            var token = $(\"#globalRequestVerification input[name=\u0027__RequestVerificationToken\u0027]\").clone();\n            $(\"#siteFeedbackForm\").append(token);\n        } catch(err) {\n            \n        }\n    });" }
+]);
+
+/*]]>*/
+</script>
+<script src="./Desmitificando la Encriptación (Parte II)_files/broker-config.js"></script><div id="_WEDCSInsertedData" style="display: none;"><iframe id="_msnFrame" src="./Desmitificando la Encriptación (Parte II)_files/c.gif" style="z-index:-1;height:1px;width:1px;display:none;visibility:hidden;" onload="javascript:MscomBeacon();"></iframe></div></body></html>

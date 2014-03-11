@@ -1,0 +1,352 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0064)http://support.microsoft.com/viewkb/viewkb.aspx?contentid=307010 -->
+<html lang="en-US"><head len="465"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><title></title><script type="text/javascript">var gCookieDomain='support.microsoft.com';</script><script type="text/javascript" src="jquery-1.7.2.min.js"></script><script type="text/javascript" src="default.js"></script><script type="text/javascript" src="kb.classic.js"></script><meta name="ROBOTS" content="NOINDEX, NOFOLLOW"></head><body onload="thisLoad();" onunload="thisUnload();" len="31886"><div id="topRow" len="6322"><div class="kb" len="6300">
+  <div class="kb_default cltr" len="6261">
+    <a id="top" len="0"></a>
+    <div class="title-block-wrapper" len="1756">
+      <div class="title-block" len="1713">
+        <h1 class="title" id="mt_title" len="52" lang="en">How to encrypt and decrypt a file by using Visual C#</h1>
+        <div class="sideBar" translate="false" len="991">
+          <div id="kb_sideBar_printBtn" class="functionButton" xmlns:bi="urn:schemas-microsoft-com:mscom:bi" style="display: inline-block;">
+            <a id="PrintPage" href="javascript:void(0);" onclick="return MS_HandleClick(this, &#39;SupportTools&#39;, true);" bi:title="Print" class="expandalltext">
+              <img onclick="javascript:void(0);" src="print-icon-white.png" alt="Print">
+              <span onclick="javascript:void(0);">Print</span>
+            </a>
+          </div>
+          <script>$("#kb_sideBar_printBtn").css("display","inline-block");</script>
+          <div class="functionButton" xmlns:bi="urn:schemas-microsoft-com:mscom:bi">
+            <a href="mailto:?body=KB307010%20How%20to%20encrypt%20and%20decrypt%20a%20file%20by%20using%20Visual%20C%23%20http://support.microsoft.com/kb/307010" bi:title="Email">
+              <img src="email-icon.png" alt="Email">
+              <span>Email</span>
+            </a>
+          </div>
+        </div>
+        <div class="clear" len="0"></div>
+        <div class="translate" translate="false" len="473">
+          <a href="javascript:void(0);" id="kb_translateBtn" onclick="DisplayTranslatePanel();">
+            <span>Article translations</span>
+            <img src="Caret-Translate.png" alt="Article translations">
+          </a>
+          <script>$("#kb_translateBtn").show();kb_translateiconurl="/library/images/support/CN/Caret-Translate.png";kb_translateexpandiconurl="/library/images/support/CN/Caret-Translate-expand.png";</script>
+        </div>
+      </div>
+    </div>
+    <div id="kb_translatePanel" translate="false" class="translatePanel popup" style="display: none;" len="4257">
+      <div class="closeButton">
+        <a href="javascript:void(0);" onclick="DisplayTranslatePanel();" id="kb_translatePanel_closeBtn">
+          <span>Close</span>
+          <img src="Close-icon.png" alt="Close">
+        </a>
+        <script>$("#kb_translatePanel_closeBtn").show();</script>
+      </div>
+      <div class="column">
+        <div class="item" xmlns:bi="urn:schemas-microsoft-com:mscom:bi">
+          <a href="http://support.microsoft.com/kb/307010/ar" bi:title="Article Translation">(الشرق الاوسط (العربية</a>
+        </div>
+        <div class="item" xmlns:bi="urn:schemas-microsoft-com:mscom:bi">
+          <a href="http://support.microsoft.com/kb/307010/pt-br" bi:title="Article Translation">Brasil (Português)</a>
+        </div>
+        <div class="item" xmlns:bi="urn:schemas-microsoft-com:mscom:bi">
+          <a href="http://support.microsoft.com/kb/307010/cs" bi:title="Article Translation">Česká republika (Čeština)</a>
+        </div>
+        <div class="item" xmlns:bi="urn:schemas-microsoft-com:mscom:bi">
+          <a href="http://support.microsoft.com/kb/307010/de" bi:title="Article Translation">Deutschland (Deutsch)</a>
+        </div>
+        <div class="item" xmlns:bi="urn:schemas-microsoft-com:mscom:bi">
+          <a href="Cómo cifrar y descifrar un archivo mediante el uso de Visual C#.htm" bi:title="Article Translation">España, Latinoamérica (Español)</a>
+        </div>
+        <div class="item" xmlns:bi="urn:schemas-microsoft-com:mscom:bi">
+          <a href="http://support.microsoft.com/kb/307010/fr" bi:title="Article Translation">France (Français)</a>
+        </div>
+      </div>
+      <div class="column">
+        <div class="item" xmlns:bi="urn:schemas-microsoft-com:mscom:bi">
+          <a href="http://support.microsoft.com/kb/307010/id-id" bi:title="Article Translation">Indonesia (Bahasa Indonesia)</a>
+        </div>
+        <div class="item" xmlns:bi="urn:schemas-microsoft-com:mscom:bi">
+          <a href="http://support.microsoft.com/kb/307010/it" bi:title="Article Translation">Italia (Italiano)</a>
+        </div>
+        <div class="item" xmlns:bi="urn:schemas-microsoft-com:mscom:bi">
+          <a href="http://support.microsoft.com/kb/307010/pt" bi:title="Article Translation">Portugal (Português)</a>
+        </div>
+        <div class="item" xmlns:bi="urn:schemas-microsoft-com:mscom:bi">
+          <a href="http://support.microsoft.com/kb/307010/ro" bi:title="Article Translation">România (Română)</a>
+        </div>
+        <div class="item" xmlns:bi="urn:schemas-microsoft-com:mscom:bi">
+          <a href="http://support.microsoft.com/kb/307010/sk" bi:title="Article Translation">Slovenská Republika (Slovenčina)</a>
+        </div>
+        <div class="item" xmlns:bi="urn:schemas-microsoft-com:mscom:bi">
+          <a href="http://support.microsoft.com/kb/307010/tr" bi:title="Article Translation">Türkiye (Türkçe)</a>
+        </div>
+      </div>
+      <div class="column">
+        <div class="item" xmlns:bi="urn:schemas-microsoft-com:mscom:bi">
+          <a href="http://support.microsoft.com/kb/307010/vi-vn" bi:title="Article Translation">Việt Nam (Tiếng Việt)</a>
+        </div>
+        <div class="item" xmlns:bi="urn:schemas-microsoft-com:mscom:bi">
+          <a href="http://support.microsoft.com/kb/307010/ru" bi:title="Article Translation">Россия (Русский)</a>
+        </div>
+        <div class="item" xmlns:bi="urn:schemas-microsoft-com:mscom:bi">
+          <a href="http://support.microsoft.com/kb/307010/uk-ua" bi:title="Article Translation">Україна (Україньска)</a>
+        </div>
+        <div class="item" xmlns:bi="urn:schemas-microsoft-com:mscom:bi">
+          <a href="http://support.microsoft.com/kb/307010/hi" bi:title="Article Translation">भारत (हिंदी)</a>
+        </div>
+        <div class="item" xmlns:bi="urn:schemas-microsoft-com:mscom:bi">
+          <a href="http://support.microsoft.com/kb/307010/th" bi:title="Article Translation">ไทย (ไทย)</a>
+        </div>
+        <div class="item" xmlns:bi="urn:schemas-microsoft-com:mscom:bi">
+          <a href="http://support.microsoft.com/kb/307010/ko" bi:title="Article Translation">대한민국 (한국어)</a>
+        </div>
+      </div>
+      <div class="column last">
+        <div class="item" xmlns:bi="urn:schemas-microsoft-com:mscom:bi">
+          <a href="http://support.microsoft.com/kb/307010/zh-cn" bi:title="Article Translation">中国 (简体中文)</a>
+        </div>
+        <div class="item" xmlns:bi="urn:schemas-microsoft-com:mscom:bi">
+          <a href="http://support.microsoft.com/kb/307010/zh-tw" bi:title="Article Translation">台灣 (繁體中文)</a>
+        </div>
+        <div class="item" xmlns:bi="urn:schemas-microsoft-com:mscom:bi">
+          <a href="http://support.microsoft.com/kb/307010/ja" bi:title="Article Translation">日本 (日本語)</a>
+        </div>
+      </div>
+      <div style="clear: both;"></div>
+    </div>
+    <script len="49">$("#kb_translatePanel").hide().addClass("popup");</script>
+  </div>
+</div></div><div id="mainRow" len="25433"><div class="primaryTable" len="25401"><table cellpadding="0" cellspacing="0" class="primaryTable" len="25333"><tbody len="25318"><tr len="25309"><td class="primaryMainColumn" len="25274"><div id="mainColumn" lang="en-us" len="25234"><div id="kb" class="kb" len="25204"><div id="kb_default" class="kb_default ltr" len="25154"><!-- - -KB 3 start- - --><div class="articleProperty" id="mt_article_properties" translate="false" xmlns:bi="urn:schemas-microsoft-com:mscom:bi" len="174">Article ID: 307010 - <a href="http://support.microsoft.com/viewkb/viewkb.aspx?contentid=307010#appliesto" bi:title="articleProperties" onclick="return ScrollToSection(&#39;.articleProperties&#39;);">View products that this article applies to.</a></div><script type="text/javascript" xmlns:bi="urn:schemas-microsoft-com:mscom:bi" len="50">if (!loadTOCNode) {var loadTOCNode = function(){}}</script><div class="notice" xmlns:bi="urn:schemas-microsoft-com:mscom:bi" len="51" lang="en">This article was previously published under Q307010</div><div class="notice" xmlns:bi="urn:schemas-microsoft-com:mscom:bi" len="253"><div class="notice" len="227"><font lang="en"> For a Microsoft Visual Basic .NET version of this article, see <a class="KBlink" href="http://support.microsoft.com/kb/301070" bi:title="/kb/301070" len="6">301070</a></font><div class="pLink" len="66" lang="en"> (http://support.microsoft.com/kb/301070/ ) </div><font>. </font></div></div><div class="notice" xmlns:bi="urn:schemas-microsoft-com:mscom:bi" len="282"><font lang="en">This article refers to the following Microsoft .NET Framework Class Library namespaces: </font><ul len="100"><li len="16"><b len="9" lang="en">System.IO</b></li><li len="22"><b len="15" lang="en">System.Security</b></li><li len="35"><b len="28" lang="en">System.Security.Cryptography</b></li></ul><font><font lang="en"><font lang="en"><b len="4">Note</b> </font><font lang="en">This article does not apply to the Microsoft .NET Framework 2.0.</font></font><font lang="en">This article does not apply to the Microsoft .NET Framework 2.0.</font></font></div><script type="text/javascript" xmlns:bi="urn:schemas-microsoft-com:mscom:bi" len="43">
+      GSS.Utility.DisplaySsbBanner();
+    </script><div id="divSsbBannerContent" style="display:none" xmlns:bi="urn:schemas-microsoft-com:mscom:bi" len="341"><div class="notice" len="315"><h5 id="tocHeadRef" len="205" lang="en">If you are a Small Business customer, find additional troubleshooting and learning resources at the <a href="http://smallbusiness.support.microsoft.com/en-us/kb/307010" len="26">Support for Small Business</a> site.</h5><script type="text/javascript" len="45">
+          loadTOCNode(4, 'notice');
+        </script></div></div><div id="kb_section" class="section" xmlns:bi="urn:schemas-microsoft-com:mscom:bi" len="23108"><div id="kb_expandcollapseall" class="expandcollapseall_open" translate="false" len="395"><a href="javascript:void(0);" bi:title="Show All" class="expandalltext" id="expandAll">Expand all</a> | <a href="javascript:void(0);" bi:title="Hide All" class="collapsealltext" id="collapseAll">Collapse all</a><script type="text/javascript">
+          if (kb_page_object)
+          {
+          kb_page_object.kb_imageExpandHoverText = 'Click to expand this image';
+          }
+        </script></div><h2 class="subTitle tocTitle kb_tabs_toggle_closed" id="tocHeadRef" translate="false" len="226"><img src="20x20_grey_plus.png" class="kb_tabs_toggle kb_tabs_toggle_open" alt="Collapse image"><span><a href="javascript:void(0);" bi:title="On This Page" id="mt_toc_title">On This Page</a></span></h2><div class="sbody kb_tabs_toggle_closed" id="tocDiv" style="margin-left: 40px;" len="2063"><ul len="2054"><li len="1593"><a bi:title="summary" href="http://support.microsoft.com/viewkb/viewkb.aspx?contentid=307010#" onclick="return tocScrollTo(this);" len="115"><img src="downarrow(1).gif" alt=""><span class="tocTxt" lang="en">Summary</span></a><ul class="tocLine" len="1382"><li len="216"><a bi:title="summary" href="http://support.microsoft.com/viewkb/viewkb.aspx?contentid=307010#" onclick="return tocScrollTo(this);" len="120"><img src="downarrow(1).gif" alt=""><span class="tocTxt" lang="en">Requirements</span></a><ul class="tocLine" len="0"></ul></li><li len="229"><a bi:title="summary" href="http://support.microsoft.com/viewkb/viewkb.aspx?contentid=307010#" onclick="return tocScrollTo(this);" len="133"><img src="downarrow(1).gif" alt=""><span class="tocTxt" lang="en">Encryption and decryption</span></a><ul class="tocLine" len="0"></ul></li><li len="218"><a bi:title="summary" href="http://support.microsoft.com/viewkb/viewkb.aspx?contentid=307010#" onclick="return tocScrollTo(this);" len="122"><img src="downarrow(1).gif" alt=""><span class="tocTxt" lang="en">Encrypt a file</span></a><ul class="tocLine" len="0"></ul></li><li len="449"><a bi:title="summary" href="http://support.microsoft.com/viewkb/viewkb.aspx?contentid=307010#" onclick="return tocScrollTo(this);" len="122"><img src="downarrow(1).gif" alt=""><span class="tocTxt" lang="en">Decrypt a file</span></a><ul class="tocLine" len="231"><li len="222"><a bi:title="summary" href="http://support.microsoft.com/viewkb/viewkb.aspx?contentid=307010#" onclick="return tocScrollTo(this);" len="126"><img src="downarrow(1).gif" alt=""><span class="tocTxt" lang="en">Test the procedure</span></a><ul class="tocLine" len="0"></ul></li></ul></li><li len="225"><a bi:title="summary" href="http://support.microsoft.com/viewkb/viewkb.aspx?contentid=307010#" onclick="return tocScrollTo(this);" len="129"><img src="downarrow(1).gif" alt=""><span class="tocTxt" lang="en">Complete code listing</span></a><ul class="tocLine" len="0"></ul></li></ul></li><li len="217"><a bi:title="references" href="http://support.microsoft.com/viewkb/viewkb.aspx?contentid=307010#" onclick="return tocScrollTo(this);" len="118"><img src="downarrow(1).gif" alt=""><span class="tocTxt" lang="en">References</span></a><ul class="tocLine" len="0"></ul></li><li len="217"><a bi:title="Properties" href="http://support.microsoft.com/viewkb/viewkb.aspx?contentid=307010#" onclick="return tocScrollTo(this);" len="118"><img src="downarrow(1).gif" alt=""><span class="tocTxt" lang="en">Properties</span></a><ul class="tocLine" len="0"></ul></li></ul></div><script type="text/javascript" len="257">
+      var tocObject = {};
+      var tocArrow = "/library/images/support/kbgraphics/public/en-us/downarrow.gif";
+      var depthLimit = 10;
+      var depth3Limit = 10;
+      var depth4Limit = 5;
+      var depth5Limit = 3;
+      var tocEntryMinimum = 1;
+    </script><noscript len="61">&lt;style&gt;.tocTitle, #tocDiv{display: none;}&lt;/style&gt;</noscript><h2 class="subTitle" id="tocHeadRef" translate="false" len="199"><img src="20x20_grey_minus.png" class="kb_tabs_toggle kb_tabs_toggle_open" alt="Collapse image"><span><a href="javascript:void(0);" bi:title="summary">Summary</a></span></h2><script type="text/javascript" len="54">
+              loadTOCNode(1, 'summary');
+            </script><div class="sbody" id="MT0" style="margin-left: 40px;" len="16486"><font lang="en"> This article describes how to use the cryptography classes that are provided by the Microsoft .NET Framework to encrypt a text file to an unreadable state, and then to decrypt that text file back to its original format.</font><h3 id="tocHeadRef" len="12" lang="en">Requirements</h3><script type="text/javascript" len="42">
+        loadTOCNode(2, 'summary');
+      </script><font lang="en"> The following list outlines the recommended hardware, software, network infrastructure, and service packs that you must have: </font><ul len="236"><li len="154" lang="en">Microsoft Windows 2000 Professional, Windows 2000 Server, Windows 2000 Advanced Server, Windows NT 4.0 Server or Microsoft Windows XP Professional</li><li len="64" lang="en">Microsoft Visual Studio 2005 or Microsoft Visual Studio .NET</li></ul><h3 id="tocHeadRef" len="25" lang="en">Encryption and decryption</h3><script type="text/javascript" len="42">
+        loadTOCNode(2, 'summary');
+      </script><font><font lang="en"> The <b len="29">System.Security.Cryptographic</b> namespace in the Microsoft .NET Framework provides a variety of tools to help you with encryption and with decryption. The  The  namespace in the Microsoft .NET Framework provides a variety of tools to help you with encryption and with decryption. </font><font lang="en">The <b len="12">CryptoStream</b> class is one of the many classes that is provided. </font><font lang="en">The <b len="12">CryptoStream</b> class is designed to encrypt or to decrypt content as it is streamed out to a file. </font></font><h3 id="tocHeadRef" len="14" lang="en">Encrypt a file</h3><script type="text/javascript" len="42">
+        loadTOCNode(2, 'summary');
+      </script><font lang="en">To encrypt a file, follow these steps: </font><ol len="6929"><li len="47" lang="en">Start Visual Studio 2005 or Visual Studio .NET.</li><li len="321"><font lang="en">Click <strong class="uiterm" len="9">Visual C#</strong> under <strong class="uiterm" len="8">Projects</strong>, and then click <strong class="uiterm" len="19">Console Application</strong> under <strong class="uiterm" len="9">Templates</strong>. Visual C# .NET creates a Click  under , and then click  under . </font><font lang="en">Visual C# .NET creates a <b len="6">Static</b> class for you, together with an empty <b len="6">Main()</b> procedure.</font></li><li len="687"><font lang="en">Use the <b len="5">using</b> statement (as indicated in the sample code that follows) on the following namespaces: </font><ul len="149"><li len="13"><b len="6" lang="en">System</b></li><li len="22"><b len="15" lang="en">System.Security</b></li><li len="35"><b len="28" lang="en">System.Security.Cryptography</b></li><li len="18"><b len="11" lang="en">System.Text</b></li><li len="16"><b len="9" lang="en">System.IO</b></li></ul><font><font lang="en"><font lang="en"> so that you do not have to qualify declarations from these namespaces later in your code. </font><font lang="en">You must use these statements before any other declarations.</font></font><font lang="en">You must use these statements before any other declarations.</font></font><div class="kb_codebody" len="223"><div class="kb_codecontent" len="189"><code len="176"><pre class="code">using System;
+using System.IO;
+using System.Security;
+using System.Security.Cryptography;
+using System.Runtime.InteropServices;
+using System.Text;
+					</pre></code></div></div></li><li len="1392"><font><font lang="en">Generate a secret key to encrypt and to decrypt the data. The Generate a secret key to encrypt and to decrypt the data. </font><font lang="en">The <b len="24">DESCryptoServiceProvider</b> is based on a symmetric encryption algorithm. </font><font lang="en">The symmetric encryption requires a key and an initialization vector (IV) to encrypt the data. </font><font lang="en">To decrypt the data, you must have the same key and the same IV. </font><font lang="en">You must also use the same encryption algorithm. </font><font lang="en">You can generate the keys by using either of the following methods: </font></font><ul len="941"><li len="107"><font lang="en"><font lang="en"><b len="8">Method 1</b> </font><font lang="en">You can prompt the user for a password. </font><font lang="en">Then, use the password as the key and the IV.</font></font><font lang="en">You can prompt the user for a password. </font><font lang="en">Then, use the password as the key and the IV.</font></li><li len="816"><font><font lang="en"><font lang="en"><b len="8">Method 2</b> </font><font lang="en">When you create a new instance of the symmetric cryptographic classes, a new key and IV are automatically created for the session. </font><font lang="en">Use the key and IV that are generated by the managed symmetric cryptographic classes to encrypt and to decrypt the file. </font></font><font lang="en">When you create a new instance of the symmetric cryptographic classes, a new key and IV are automatically created for the session. </font><font lang="en">Use the key and IV that are generated by the managed symmetric cryptographic classes to encrypt and to decrypt the file. </font></font><br len="0"><br len="0"><font lang="en">For more information about how to generate and distribute keys, see the Microsoft .NET Framework SDK Documentation, or see the following Microsoft Developer Network (MSDN) Web site:</font><div class="indent" len="297"><a href="http://msdn.microsoft.com/en-us/library/5e9ft273(v=vs.80).aspx" bi:title="http://msdn.microsoft.com/en-us/library/5e9ft273(v=vs.80).aspx" len="45" lang="en">Generating keys for encryption and decryption</a><div class="pLink" len="76" lang="en"> (http://msdn.microsoft.com/en-us/library/5e9ft273(v=vs.80).aspx) </div></div></li></ul></li><li len="809"><font lang="en">Add the following function to generate a new key for a session (as noted in Method 2 of step 4):</font><div class="kb_codebody" len="678"><div class="kb_codecontent" len="644"><code len="631"><pre class="code">//  Call this function to remove the key from memory after use for security.
+[System.Runtime.InteropServices.DllImport("KERNEL32.DLL", EntryPoint="RtlZeroMemory")]
+public static extern bool ZeroMemory(ref string Destination, int Length);
+		
+// Function to Generate a 64 bits Key.
+static string GenerateKey() 
+{
+	// Create an instance of Symetric Algorithm. Key and IV is generated automatically.
+	DESCryptoServiceProvider desCrypto =(DESCryptoServiceProvider)DESCryptoServiceProvider.Create();
+
+	// Use the Automatically generated key for Encryption. 
+	return ASCIIEncoding.ASCII.GetString(desCrypto.Key);
+}</pre></code></div></div></li><li len="494"><font><font lang="en">Create a method in your class that is named <b len="11">EncryptFile</b>. </font><font lang="en">The <b len="11">EncryptFile</b> class must have the following three parameters: </font></font><ul len="150"><li len="21"><i len="14" lang="en">sInputFilename</i></li><li len="22"><i len="15" lang="en">sOutputFilename</i></li><li len="80"><font lang="en"><i len="4">sKey</i> </font><font lang="en">(The secret key that is used to encrypt and decrypt the file.)</font></li></ul><div class="kb_codebody" len="164"><div class="kb_codecontent" len="130"><code len="117"><pre class="code">static void EncryptFile(string sInputFilename,
+		string sOutputFilename,
+		string sKey)
+					</pre></code></div></div></li><li len="491"><font><font lang="en">In the <b len="11">EncryptFile</b> procedure, create an input <b len="10">FileStream</b> object and an output <b len="10">FileStream</b> object. </font><font lang="en">These objects can be read from and written to the target files.</font></font><div class="kb_codebody" len="275"><div class="kb_codecontent" len="241"><code len="228"><pre class="code">FileStream fsInput = new FileStream(sInputFilename, 
+				FileMode.Open, 
+				FileAccess.Read);
+
+FileStream fsEncrypted = new FileStream(sOutputFilename, 
+				FileMode.Create, 
+				FileAccess.Write);
+					</pre></code></div></div></li><li len="469"><font><font lang="en">Declare an instance of the <b len="24">DESCryptoServiceProvider</b> class. </font><font lang="en">This represents the actual encryption and the actual decryption technology that is used on the files. </font><font lang="en">At this point, you can create a different provider if you prefer to use RSAsecutiry or another cryptographic technique.</font></font><div class="kb_codebody" len="139"><div class="kb_codecontent" len="105"><code len="92"><pre class="code">DESCryptoServiceProvider DES = new DESCryptoServiceProvider();
+					</pre></code></div></div></li><li len="1170"><font><font lang="en">The cryptographic provider must be provided with your secret key as an array of bytes. </font><font lang="en">The <font lang="en">System.Text</font> namespace provides a function that is named <font lang="en">GetBytes()</font>. </font><font lang="en">As part of its encoding features, the <font lang="en">GetBytes()</font> function takes a string, and then returns an array of bytes. </font><font lang="en">The size of the key is different for each cryptographic technique. </font><font lang="en">For example, Data Encryption Standard (DES) takes a 64-bit key that is equal to 8 bytes or to 8 characters.</font></font><br len="0"><br len="0"><font><font lang="en"> If you do not provide a key, the provider randomly generates one. </font><font lang="en">This successfully encrypts the file, but there is no way to decrypt the file. </font><font lang="en">Note that you must also provide the initialization vector (IV). </font><font lang="en">This value is used as part of the encryption. </font><font lang="en">Like the key, the IV is randomly generated if you do not provide the value. </font><font lang="en">Because the values must be the same for the encryption and the decryption, you must not permit random generation of these values.</font></font><div class="kb_codebody" len="167"><div class="kb_codecontent" len="133"><code len="120"><pre class="code">DES.Key = ASCIIEncoding.ASCII.GetBytes(sKey);
+DES.IV = ASCIIEncoding.ASCII.GetBytes(sKey);
+					</pre></code></div></div></li><li len="493"><font lang="en">Create an instance of the <b len="12">CryptoStream</b> class by using the cryptographic provider to obtain an encrypting object (<b len="15">CreateEncryptor</b>) and the existing output <b len="10">FileStream</b> object as a part of the constructor.</font><div class="kb_codebody" len="236"><div class="kb_codecontent" len="202"><code len="189"><pre class="code">ICryptoTransform desencrypt = DES.CreateEncryptor();
+CryptoStream cryptostream = new CryptoStream(fsEncrypted, 
+					desencrypt, 
+					CryptoStreamMode.Write);
+					</pre></code></div></div></li><li len="457"><font><font lang="en">Read in the input file, and then write out to the output file. </font><font lang="en">Pass through the <font lang="en">CryptoStream</font> object where the file is encrypted by using the key that you provided.</font></font><div class="kb_codebody" len="248"><div class="kb_codecontent" len="214"><code len="201"><pre class="code">byte[] bytearrayinput = new byte[fsInput.Length - 1];
+fsInput.Read(bytearrayinput, 0, bytearrayinput.Length);
+cryptostream.Write(bytearrayinput, 0, bytearrayinput.Length);
+					</pre></code></div></div></li></ol><h3 id="tocHeadRef" len="14" lang="en">Decrypt a file</h3><script type="text/javascript" len="42">
+        loadTOCNode(2, 'summary');
+      </script><font lang="en">To decrypt a file, follow these steps: </font><ol len="3007"><li len="1896"><font><font lang="en">Create a method, and then name it <span class="userInput" len="11">DecryptFile</span>. The decryption process is similar to the encryption process, however, the Create a method, and then name it . </font><font lang="en">The decryption process is similar to the encryption process, however, the <b len="11">DecryptFile</b> procedure has two key differences from the <b len="11">EncryptFile</b> procedure. </font></font><ul len="322"><li len="149" lang="en"><b len="15">CreateDecryptor</b> is used instead of <b len="15">CreateEncryptor</b> to create the <b len="12">CryptoStream</b> object, that specifies how the object can be used.</li><li len="155" lang="en">When the decrypted text is written to the destination file, the <b len="12">CryptoStream</b> object is now the source instead of the destination stream.</li></ul><div class="kb_codebody" len="1277"><div class="kb_codecontent" len="1243"><code len="1230"><pre class="code">static void DecryptFile(string sInputFilename, 
+	                string sOutputFilename,
+	                string sKey)
+{
+	DESCryptoServiceProvider DES = new DESCryptoServiceProvider();
+	//A 64 bit key and IV is required for this provider.
+	//Set secret key For DES algorithm.
+	DES.Key = ASCIIEncoding.ASCII.GetBytes(sKey);
+	//Set initialization vector.
+	DES.IV = ASCIIEncoding.ASCII.GetBytes(sKey);
+
+	//Create a file stream to read the encrypted file back.
+	FileStream fsread = new FileStream(sInputFilename, 
+		                           FileMode.Open, 
+		                           FileAccess.Read);
+	//Create a DES decryptor from the DES instance.
+	ICryptoTransform desdecrypt = DES.CreateDecryptor();
+	//Create crypto stream set to read and do a 
+	//DES decryption transform on incoming bytes.
+	CryptoStream cryptostreamDecr = new CryptoStream(fsread, 
+		                                         desdecrypt,
+		                                         CryptoStreamMode.Read);
+	//Print the contents of the decrypted file.
+	StreamWriter fsDecrypted = new StreamWriter(sOutputFilename);
+	fsDecrypted.Write(new StreamReader(cryptostreamDecr).ReadToEnd());
+	fsDecrypted.Flush();
+	fsDecrypted.Close();
+}
+					</pre></code></div></div></li><li len="951"><font lang="en">Add the following lines to the <b len="6">Main()</b> procedure to call both <b len="11">EncryptFile</b> and <b len="11">DecryptFile</b>:</font><div class="kb_codebody" len="810"><div class="kb_codecontent" len="776"><code len="763"><pre class="code">static void Main()
+{
+      // Must be 64 bits, 8 bytes.
+      // Distribute this key to the user who will decrypt this file.
+      string sSecretKey;
+         
+      // Get the key for the file to encrypt.
+      sSecretKey = GenerateKey();
+
+      // For additional security pin the key.
+      GCHandle gch = GCHandle.Alloc( sSecretKey,GCHandleType.Pinned );
+         
+      // Encrypt the file.        
+      EncryptFile(@"C:\MyData.txt", 
+         @"C:\Encrypted.txt", 
+         sSecretKey);
+
+      // Decrypt the file.
+      DecryptFile(@"C:\Encrypted.txt", 
+         @"C:\Decrypted.txt", 
+         sSecretKey);
+
+      // Remove the key from memory. 
+      ZeroMemory(gch.AddrOfPinnedObject(), sSecretKey.Length * 2);
+      gch.Free();
+}</pre></code></div></div></li><li len="133"><font lang="en"><font lang="en">Save the file. </font><font lang="en">Run your application. </font><font lang="en">Make sure that the path that is used for the input file name points to an existing file.</font></font><font lang="en">Run your application. </font><font lang="en">Make sure that the path that is used for the input file name points to an existing file.</font></li></ol><h4 id="tocHeadRef" len="18" lang="en">Test the procedure</h4><script type="text/javascript" len="38">
+      loadTOCNode(3, 'summary');
+    </script><font><font lang="en"> Test this code with a text (.txt) file to confirm that the code encrypted and decrypted the file correctly. Make sure that you decrypt the file to a new file (as in the  Test this code with a text (.txt) file to confirm that the code encrypted and decrypted the file correctly. </font><font lang="en">Make sure that you decrypt the file to a new file (as in the <b len="6">Main()</b> procedure in this article) instead of to the original file. </font><font lang="en">Examine the decrypted file, and then compare it to the original file. </font></font><h3 id="tocHeadRef" len="21" lang="en">Complete code listing</h3><script type="text/javascript" len="42">
+        loadTOCNode(2, 'summary');
+      </script><div class="kb_codebody" len="4051"><div class="kb_codecontent" len="4017"><code len="4004"><pre class="code">using System;
+using System.IO;
+using System.Security;
+using System.Security.Cryptography;
+using System.Runtime.InteropServices;
+using System.Text;
+
+namespace CSEncryptDecrypt
+{
+   class Class1
+   {
+      //  Call this function to remove the key from memory after use for security
+      [System.Runtime.InteropServices.DllImport("KERNEL32.DLL", EntryPoint="RtlZeroMemory")]
+      public static extern bool ZeroMemory(IntPtr Destination, int Length);
+		
+      // Function to Generate a 64 bits Key.
+      static string GenerateKey() 
+      {
+         // Create an instance of Symetric Algorithm. Key and IV is generated automatically.
+         DESCryptoServiceProvider desCrypto =(DESCryptoServiceProvider)DESCryptoServiceProvider.Create();
+
+         // Use the Automatically generated key for Encryption. 
+         return ASCIIEncoding.ASCII.GetString(desCrypto.Key);
+      }
+
+      static void EncryptFile(string sInputFilename,
+         string sOutputFilename, 
+         string sKey) 
+      {
+         FileStream fsInput = new FileStream(sInputFilename, 
+            FileMode.Open, 
+            FileAccess.Read);
+
+         FileStream fsEncrypted = new FileStream(sOutputFilename, 
+            FileMode.Create, 
+            FileAccess.Write);
+         DESCryptoServiceProvider DES = new DESCryptoServiceProvider();
+         DES.Key = ASCIIEncoding.ASCII.GetBytes(sKey);
+         DES.IV = ASCIIEncoding.ASCII.GetBytes(sKey);
+         ICryptoTransform desencrypt = DES.CreateEncryptor();
+         CryptoStream cryptostream = new CryptoStream(fsEncrypted, 
+            desencrypt, 
+            CryptoStreamMode.Write); 
+
+         byte[] bytearrayinput = new byte[fsInput.Length];
+         fsInput.Read(bytearrayinput, 0, bytearrayinput.Length);
+         cryptostream.Write(bytearrayinput, 0, bytearrayinput.Length);
+         cryptostream.Close();
+         fsInput.Close();
+         fsEncrypted.Close();
+      }
+
+      static void DecryptFile(string sInputFilename, 
+         string sOutputFilename,
+         string sKey)
+      {
+         DESCryptoServiceProvider DES = new DESCryptoServiceProvider();
+         //A 64 bit key and IV is required for this provider.
+         //Set secret key For DES algorithm.
+         DES.Key = ASCIIEncoding.ASCII.GetBytes(sKey);
+         //Set initialization vector.
+         DES.IV = ASCIIEncoding.ASCII.GetBytes(sKey);
+
+         //Create a file stream to read the encrypted file back.
+         FileStream fsread = new FileStream(sInputFilename, 
+            FileMode.Open, 
+            FileAccess.Read);
+         //Create a DES decryptor from the DES instance.
+         ICryptoTransform desdecrypt = DES.CreateDecryptor();
+         //Create crypto stream set to read and do a 
+         //DES decryption transform on incoming bytes.
+         CryptoStream cryptostreamDecr = new CryptoStream(fsread, 
+            desdecrypt,
+            CryptoStreamMode.Read);
+         //Print the contents of the decrypted file.
+         StreamWriter fsDecrypted = new StreamWriter(sOutputFilename);
+         fsDecrypted.Write(new StreamReader(cryptostreamDecr).ReadToEnd());
+         fsDecrypted.Flush();
+         fsDecrypted.Close();
+      } 
+
+      static void Main()
+      {
+         // Must be 64 bits, 8 bytes.
+         // Distribute this key to the user who will decrypt this file.
+         string sSecretKey;
+         
+         // Get the Key for the file to Encrypt.
+         sSecretKey = GenerateKey();
+
+         // For additional security Pin the key.
+         GCHandle gch = GCHandle.Alloc( sSecretKey,GCHandleType.Pinned );
+         
+         // Encrypt the file.        
+         EncryptFile(@"C:\MyData.txt", 
+            @"C:\Encrypted.txt", 
+            sSecretKey);
+
+         // Decrypt the file.
+         DecryptFile(@"C:\Encrypted.txt", 
+            @"C:\Decrypted.txt", 
+            sSecretKey);
+
+         // Remove the Key from memory. 
+         ZeroMemory(gch.AddrOfPinnedObject(), sSecretKey.Length * 2);
+         gch.Free();
+      }
+   }
+}</pre></code></div></div><div class="topOfPage" translate="false" len="282"><a href="http://support.microsoft.com/viewkb/viewkb.aspx?contentid=307010#top" bi:title="Top of Page"><img src="uparrow.gif" alt=""><span>Back to the top</span></a><font class="noShow"> | </font><a href="http://support.microsoft.com/viewkb/viewkb.aspx?contentid=307010#survey" bi:title="kbfeedback" class="noShow" onclick="return ScrollToSection(&#39;.kbfeedback&#39;);">Give Feedback</a></div></div><h2 class="subTitle" id="tocHeadRef" translate="false" len="205"><img src="20x20_grey_minus.png" class="kb_tabs_toggle kb_tabs_toggle_open" alt="Collapse image"><span><a href="javascript:void(0);" bi:title="references">References</a></span></h2><script type="text/javascript" len="57">
+              loadTOCNode(1, 'references');
+            </script><div class="sbody" id="MT1" style="margin-left: 40px;" len="1140"><font lang="en">For more information about cryptography, and about using the cryptographic features of .NET, see the following MSDN Web sites: </font><div class="indent" len="350"><a href="http://msdn.microsoft.com/en-us/library/system.security.cryptography(v=vs.71).aspx" bi:title="http://msdn.microsoft.com/en-us/library/system.security.cryptography(v=vs.71).aspx" len="38" lang="en">System.Security.Cryptography namespace</a><div class="pLink" len="96" lang="en"> (http://msdn.microsoft.com/en-us/library/system.security.cryptography(v=vs.71).aspx) </div></div><div class="indent" len="278"><a href="http://msdn.microsoft.com/en-us/netframework/default.aspx" bi:title="http://msdn.microsoft.com/en-us/netframework/default.aspx" len="41" lang="en">Microsoft .NET Framework Developer Center</a><div class="pLink" len="71" lang="en"> (http://msdn.microsoft.com/en-us/netframework/default.aspx) </div></div><div class="topOfPage" translate="false" len="282"><a href="http://support.microsoft.com/viewkb/viewkb.aspx?contentid=307010#top" bi:title="Top of Page"><img src="uparrow.gif" alt=""><span>Back to the top</span></a><font class="noShow"> | </font><a href="http://support.microsoft.com/viewkb/viewkb.aspx?contentid=307010#survey" bi:title="kbfeedback" class="noShow" onclick="return ScrollToSection(&#39;.kbfeedback&#39;);">Give Feedback</a></div></div><h2 class="subTitle articleProperties" id="tocHeadRef" translate="false" len="233"><img src="20x20_grey_minus.png" class="kb_tabs_toggle kb_tabs_toggle_open" alt="Collapse image"><span><a href="javascript:void(0);" id="mt_propertyHead" bi:title="articleProperties">Properties</a></span></h2><script type="text/javascript" len="41">
+      loadTOCNode(1, 'Properties');
+    </script><div class="sbody" translate="false" style="margin-left: 40px;" len="857"><div class="articlePropertyBottom">Article ID: 307010 - Last Review: November 15, 2012 - Revision: 9.0</div><div class="appliesTo"><a id="appliesto"></a><h5>Applies to</h5><ul><li>Microsoft Visual C# 2005</li><li>Microsoft Visual C# .NET 2003 Standard Edition</li><li>Microsoft Visual C# .NET 2002 Standard Edition</li></ul></div><div class="keywords"><table><tbody><tr><td class="header"><h5>Keywords:&nbsp;
+              </h5></td><td class="text">kbsecurity kbio kbcrypt kbhowtomaster KB307010</td></tr></tbody></table></div><div class="topOfPage" translate="false"><a href="http://support.microsoft.com/viewkb/viewkb.aspx?contentid=307010#top" bi:title="Top of Page"><img src="uparrow.gif" alt=""><span>Back to the top</span></a><font class="noShow"> | </font><a href="http://support.microsoft.com/viewkb/viewkb.aspx?contentid=307010#survey" bi:title="kbfeedback" class="noShow" onclick="return ScrollToSection(&#39;.kbfeedback&#39;);">Give Feedback</a></div></div></div><script type="text/javascript" xmlns:bi="urn:schemas-microsoft-com:mscom:bi" len="12">addMtSpan();</script><!-- - -KB 3 end- - --></div></div></div></td></tr></tbody></table></div></div><script type="text/javascript" len="44">function thisLoad(){}function thisUnload(){}</script></body></html>
